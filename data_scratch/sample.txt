@@ -1,0 +1,5 @@
+[2019-02-23 11:30:18.770442] Starting Data Sampling...
+[2019-02-23 11:30:32.707644] Data Sampling Complete.
+
+    Total Records: 6125899
+Sampled Records: 613445

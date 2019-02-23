@@ -7,12 +7,14 @@ cycler==0.10.0
 decorator==4.3.2
 defusedxml==0.5.0
 entrypoints==0.3
+imbalanced-learn==0.4.3
+imblearn==0.0
 ipykernel==5.1.0
 ipython==7.2.0
 ipython-genutils==0.2.0
 ipywidgets==7.4.2
 jedi==0.13.2
-jinja2==2.10
+Jinja2==2.10
 joblib==0.13.1
 jsonschema==3.0.0b3
 jupyter==1.0.0
@@ -21,7 +23,7 @@ jupyter-console==6.0.0
 jupyter-core==4.4.0
 kiwisolver==1.0.1
 lightgbm==2.2.2
-markupsafe==1.1.0
+MarkupSafe==1.1.0
 matplotlib==3.0.2
 mistune==0.8.4
 nbconvert==5.4.0
@@ -36,7 +38,7 @@ pickleshare==0.7.5
 prometheus-client==0.5.0
 prompt-toolkit==2.0.8
 pydotplus==2.0.2
-pygments==2.3.1
+Pygments==2.3.1
 pyparsing==2.3.1
 pyrsistent==0.14.9
 python-dateutil==2.7.5
@@ -47,7 +49,7 @@ qtconsole==4.4.3
 scikit-learn==0.20.2
 scikit-optimize==0.5.2
 scipy==1.2.0
-send2trash==1.5.0
+Send2Trash==1.5.0
 six==1.12.0
 sklearn-pandas==1.8.0
 statsmodels==0.9.0

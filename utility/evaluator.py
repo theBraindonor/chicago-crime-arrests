@@ -44,23 +44,13 @@ class Evaluator:
         self.logger.log(pd.DataFrame(confusion_matrix(test.y_actual, test.y_predict)))
         self.logger.log('')
 
-        if train is not None:
-            self.logger.log('Accuracy:')
-            self.logger.log('   Train: %f' % accuracy_score(train.y_actual, train.y_predict))
-            self.logger.log(' Testing: %f\n' % accuracy_score(test.y_actual, test.y_predict))
-        else:
-            self.logger.log('Accuracy: %f\n' % accuracy_score(test.y_actual, test.y_predict))
-
+        self.logger.log('Performance:')
+        self.logger.log('Accuracy: %f' % accuracy_score(test.y_actual, test.y_predict))
         if not multiclass:
-            if train is not None:
-                self.logger.log('     AUC:')
-                self.logger.log('   Train: %f' % roc_auc_score(train.y_actual, train.y_predict))
-                self.logger.log(' Testing: %f\n' % roc_auc_score(test.y_actual, test.y_predict))
-            else:
-                self.logger.log('     AUC: %f\n' % roc_auc_score(test.y_actual, test.y_predict))
-
+            self.logger.log('ROC AUC: %f' % roc_auc_score(test.y_actual, test.y_predict))
         if test_proba is not None:
-            self.logger.log('Log-Loss: %f\n' % log_loss(test_proba.y_actual, test_proba.y_predict))
+            self.logger.log('Log-Loss: %f' % log_loss(test_proba.y_actual, test_proba.y_predict))
+        self.logger.log('')
 
         if 'pca' in estimator.named_steps:
             pca_n_components = estimator.named_steps['pca'].n_components_

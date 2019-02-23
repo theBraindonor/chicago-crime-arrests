@@ -1,3 +1,9 @@
 
 /.idea
 /venv
+__pycache__
+
+/data_scratch/*.csv
+/data_scratch/*.json
+
+/model/experiment/output/*.p

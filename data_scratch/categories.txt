@@ -1,0 +1,9 @@
+[2019-02-23 11:41:54.770309] Starting Category Transformation.
+[2019-02-23 11:42:29.310248] Category Transformation Complete.
+
+Processed 6797523 total records
+Saving 403 category values in data_scratch/iucr_codes.json
+Saving 36 category values in data_scratch/type_codes.json
+Saving 381 category values in data_scratch/description_codes.json
+Saving 181 category values in data_scratch/location_codes.json
+Saving 27 category values in data_scratch/fbi_codes.json

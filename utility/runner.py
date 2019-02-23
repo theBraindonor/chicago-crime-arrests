@@ -9,6 +9,8 @@ __version__ = "1.0"
 
 import pandas as pd
 
+from collections import Counter
+
 from skopt import BayesSearchCV
 
 from sklearn.model_selection import train_test_split
@@ -36,7 +38,8 @@ class Runner:
             random_state=None,
             test_size=0.25,
             multiclass=False,
-            record_predict_proba=False):
+            record_predict_proba=False,
+            sampling=None):
         use_project_path()
 
         logger = Logger('%s.txt' % self.name)
@@ -102,7 +105,8 @@ class Runner:
             cv=5,
             verbose=3,
             multiclass=False,
-            record_predict_proba=False):
+            record_predict_proba=False,
+            sampling=None):
         use_project_path()
 
         logger = Logger('%s.txt' % self.name)
@@ -124,6 +128,16 @@ class Runner:
             data_frame = data_frame.sample(n=sample, random_state=random_state)
 
         x_train, x_test, y_train, y_test = train_test_split(data_frame, data_frame[self.target], test_size=test_size)
+
+        if sampling is not None:
+            logger.time_log('Starting Data Re-Sampling...')
+            logger.log('Original Training Shape is %s' % Counter(y_train))
+            x_new, y_new = sampling.fit_resample(x_train, y_train)
+            logger.log('Balanced Training Shape is %s' % Counter(y_new))
+            if hasattr(x_train, 'columns'):
+                x_new = pd.DataFrame(x_new, columns=x_train.columns)
+            x_train, y_train = x_new, y_new
+            logger.time_log('Re-Sampling Complete.\n')
 
         logger.time_log('Starting HyperParameter Search...')
         results = search.fit(x_train, y_train)
