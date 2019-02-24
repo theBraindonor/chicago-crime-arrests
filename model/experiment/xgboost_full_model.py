@@ -22,7 +22,7 @@ from skopt.space import Integer, Real
 from sklearn.pipeline import Pipeline
 
 from utility import HyperParameters, Runner
-from model import load_clean_sample_data_frame, ordinal_data_mapper
+from model import load_sample_data_frame, ordinal_data_mapper
 
 sample = None
 iterations = 24
@@ -45,28 +45,28 @@ xgboost_basic = Pipeline([
 
 def test_xgboost():
     runner = Runner(
-        'model/experiment/output/xgboost_basic',
-        load_clean_sample_data_frame(),
+        'model/experiment/output/xgboost_basic_full',
+        load_sample_data_frame(),
         'arrest',
         xgboost_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'roc_auc',
+        'neg_log_loss',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True
     )
 
     runner = Runner(
-        'model/experiment/output/xgboost_under_sampled',
-        load_clean_sample_data_frame(),
+        'model/experiment/output/xgboost_under_sampled_full',
+        load_sample_data_frame(),
         'arrest',
         xgboost_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'roc_auc',
+        'neg_log_loss',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,
@@ -74,14 +74,14 @@ def test_xgboost():
     )
 
     runner = Runner(
-        'model/experiment/output/xgboost_over_sampled',
-        load_clean_sample_data_frame(),
+        'model/experiment/output/xgboost_over_sampled_full',
+        load_sample_data_frame(),
         'arrest',
         xgboost_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'roc_auc',
+        'neg_log_loss',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,
@@ -89,14 +89,14 @@ def test_xgboost():
     )
 
     runner = Runner(
-        'model/experiment/output/xgboost_combine_sampled',
-        load_clean_sample_data_frame(),
+        'model/experiment/output/xgboost_combine_sampled_full',
+        load_sample_data_frame(),
         'arrest',
         xgboost_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'roc_auc',
+        'neg_log_loss',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,

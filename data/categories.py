@@ -55,30 +55,29 @@ if __name__ == '__main__':
 
     logger.time_log('Starting Category Transformation.')
     with open('data_scratch/Crimes_-_2001_to_present.csv') as input_file:
-        with open('data_scratch/preprocessed_crimes.csv', 'w', newline='') as output_file:
-            reader = csv.reader(input_file)
+        reader = csv.reader(input_file)
 
-            for i, line in enumerate(reader):
-                raw_record_count += 1
-                if raw_record_count == 0:
-                    continue
+        for i, line in enumerate(reader):
+            raw_record_count += 1
+            if raw_record_count == 0:
+                continue
 
-                iucr = line[4]
-                type = line[5]
-                description = line[6]
-                location = line[7]
-                fbi_code = line[14]
+            iucr = line[4]
+            type = line[5]
+            description = line[6]
+            location = line[7]
+            fbi_code = line[14]
 
-                iucr_codes[iucr] = 1
-                type_codes[type] = 1
-                description_codes[description] = 1
-                location_codes[location] = 1
-                fbi_codes[fbi_code] = 1
+            iucr_codes[iucr] = 1
+            type_codes[type] = 1
+            description_codes[description] = 1
+            location_codes[location] = 1
+            fbi_codes[fbi_code] = 1
 
-            logger.time_log('Category Transformation Complete.\n')
-            logger.log('Processed %s total records' % raw_record_count)
-            serialize_codes(iucr_codes, 'data_scratch/iucr_codes.json', logger)
-            serialize_codes(type_codes, 'data_scratch/type_codes.json', logger)
-            serialize_codes(description_codes, 'data_scratch/description_codes.json', logger)
-            serialize_codes(location_codes, 'data_scratch/location_codes.json', logger)
-            serialize_codes(fbi_codes, 'data_scratch/fbi_codes.json', logger)
+        logger.time_log('Category Transformation Complete.\n')
+        logger.log('Processed %s total records' % raw_record_count)
+        serialize_codes(iucr_codes, 'data_scratch/iucr_codes.json', logger)
+        serialize_codes(type_codes, 'data_scratch/type_codes.json', logger)
+        serialize_codes(description_codes, 'data_scratch/description_codes.json', logger)
+        serialize_codes(location_codes, 'data_scratch/location_codes.json', logger)
+        serialize_codes(fbi_codes, 'data_scratch/fbi_codes.json', logger)

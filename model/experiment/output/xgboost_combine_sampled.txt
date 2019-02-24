@@ -1,68 +1,73 @@
-[2019-02-23 15:36:13.432796] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 333453, 1.0: 126630})
-Balanced Training Shape is Counter({1.0: 268845, 0.0: 204234})
-[2019-02-23 15:37:32.311361] Re-Sampling Complete.
+[2019-02-24 13:15:26.619520] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 332732, 1.0: 72503})
+Balanced Training Shape is Counter({1.0: 297212, 0.0: 209481})
+[2019-02-24 13:16:44.224247] Re-Sampling Complete.
 
-[2019-02-23 15:37:32.311361] Starting HyperParameter Search...
-[2019-02-23 15:38:26.278970] Search Complete.
+[2019-02-24 13:16:44.224247] Starting HyperParameter Search...
+[2019-02-24 13:18:51.405239] Search Complete.
 
-[2019-02-23 15:38:26.278970] Testing Training Partition...
-[2019-02-23 15:38:32.097848] Testing Complete.
+[2019-02-24 13:18:51.405239] Testing Training Partition...
+[2019-02-24 13:19:07.369162] Testing Complete.
 
-[2019-02-23 15:38:32.097848] Testing Holdout Partition...
-[2019-02-23 15:38:34.436126] Testing Complete.
+[2019-02-24 13:19:07.369162] Testing Holdout Partition...
+[2019-02-24 13:19:12.345500] Testing Complete.
 
-[2019-02-23 15:38:34.448139] Testing Holdout Partition (probability)...
-[2019-02-23 15:38:36.784549] Testing Complete.
+[2019-02-24 13:19:12.354500] Testing Holdout Partition (probability)...
+[2019-02-24 13:19:17.315409] Testing Complete.
 
 
 Best Score:
-nan
+0.9809648601490584
 
 Best Parameters:
-{'xgb__colsample_bylevel': 0.46500571921497463, 'xgb__colsample_bynode': 0.45841285557492795, 'xgb__colsample_bytree': 0.7752014530643716, 'xgb__gamma': 6.611794905152847, 'xgb__learning_rate': 0.2404017997295104, 'xgb__max_depth': 6, 'xgb__n_estimators': 222}
+{'xgb__colsample_bylevel': 0.7334656786350724, 'xgb__colsample_bynode': 0.47604784559432145, 'xgb__colsample_bytree': 0.7658054514017123, 'xgb__gamma': 0.23217741667690614, 'xgb__learning_rate': 0.12392171606866456, 'xgb__max_depth': 7, 'xgb__n_estimators': 361}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.90      0.93      0.91    111263
-         1.0       0.80      0.71      0.75     42099
+         0.0       0.90      0.90      0.90    110597
+         1.0       0.56      0.57      0.56     24482
 
-   micro avg       0.87      0.87      0.87    153362
-   macro avg       0.85      0.82      0.83    153362
-weighted avg       0.87      0.87      0.87    153362
+   micro avg       0.84      0.84      0.84    135079
+   macro avg       0.73      0.74      0.73    135079
+weighted avg       0.84      0.84      0.84    135079
 
 
 Confusion Matrix:
-        0      1
-0  103898   7365
-1   12178  29921
+       0      1
+0  99412  11185
+1  10498  13984
 
 Performance:
-Accuracy: 0.872569
-ROC AUC: 0.822267
-Log-Loss: 0.337330
+Accuracy: 0.839479
+ROC AUC: 0.735031
+Log-Loss: 0.384567
 
 Feature Importance:
-        Feature  Importance
-3          iucr    0.118056
-6      location    0.098049
-5   description    0.097884
-4          type    0.092427
-12     fbi_code    0.087963
-2          hour    0.085317
-14    longitude    0.068618
-13     latitude    0.062996
-8          beat    0.060185
-0         month    0.059028
-11    community    0.048280
-1       weekday    0.045139
-10         ward    0.036541
-7      domestic    0.021329
-9      district    0.018188
+            Feature  Importance
+6          location    0.110366
+3              iucr    0.096842
+2              hour    0.087713
+14        longitude    0.084614
+13         latitude    0.082979
+5       description    0.082331
+8              beat    0.079197
+0             month    0.058896
+11        community    0.051742
+10             ward    0.050618
+12         fbi_code    0.049256
+1           weekday    0.047450
+4              type    0.042886
+9          district    0.019280
+7          domestic    0.015533
+15      index_crime    0.012161
+18   property_crime    0.010764
+17    violent_crime    0.008448
+16  non_index_crime    0.005791
+19  public_violence    0.003134
 
 Search Scoring
    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                                                                                                           params
-1        -0.141014        0.080651         -0.123835         0.020639       9.811834         0.566217  {'xgb__colsample_bylevel': 0.46131382465161413, 'xgb__colsample_bynode': 0.6935110231144241, 'xgb__colsample_bytree': 0.6678755571699753, 'xgb__gamma': 0.0022937354784989907, 'xgb__learning_rate': 0.2532057171489359, 'xgb__max_depth': 4, 'xgb__n_estima...
-0              NaN             NaN               NaN              NaN      19.672051         1.366558  {'xgb__colsample_bylevel': 0.46500571921497463, 'xgb__colsample_bynode': 0.45841285557492795, 'xgb__colsample_bytree': 0.7752014530643716, 'xgb__gamma': 6.611794905152847, 'xgb__learning_rate': 0.2404017997295104, 'xgb__max_depth': 6, 'xgb__n_estimator...
+0         0.980965        0.037150          0.989306         0.005332      45.767802         3.633118  {'xgb__colsample_bylevel': 0.7334656786350724, 'xgb__colsample_bynode': 0.47604784559432145, 'xgb__colsample_bytree': 0.7658054514017123, 'xgb__gamma': 0.23217741667690614, 'xgb__learning_rate': 0.12392171606866456, 'xgb__max_depth': 7, 'xgb__n_estimat...
+1         0.979249        0.038471          0.983186         0.008185      22.296968         1.302585  {'xgb__colsample_bylevel': 0.43177784592045604, 'xgb__colsample_bynode': 0.4561897356208638, 'xgb__colsample_bytree': 0.596796419155378, 'xgb__gamma': 3.307847979395845, 'xgb__learning_rate': 0.2155038606624733, 'xgb__max_depth': 4, 'xgb__n_estimators'...
 

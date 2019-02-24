@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a decision tree model with a variety of balancing techniques
+    Experiment with a decision tree model with a variety of balancing techniques on the cleaned data set
 """
 
 __author__ = "John Hoff"
@@ -11,7 +11,7 @@ __copyright__ = "Copyright 2019, John Hoff"
 __license__ = "Creative Commons Attribution-ShareAlike 4.0 International License"
 __version__ = "1.0"
 
-from imblearn.combine import SMOTEENN, SMOTETomek
+from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
@@ -21,7 +21,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.tree import DecisionTreeClassifier
 
 from utility import HyperParameters, Runner
-from model import load_sample_data_frame, ordinal_data_mapper
+from model import load_clean_sample_data_frame, ordinal_data_mapper
 
 sample = None
 iterations = 24
@@ -42,13 +42,13 @@ decision_tree_basic = Pipeline([
 def test_decision_tree():
     runner = Runner(
         'model/experiment/output/decision_tree_basic',
-        load_sample_data_frame(),
+        load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True
@@ -56,13 +56,13 @@ def test_decision_tree():
 
     runner = Runner(
         'model/experiment/output/decision_tree_under_sampled',
-        load_sample_data_frame(),
+        load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,
@@ -71,13 +71,13 @@ def test_decision_tree():
 
     runner = Runner(
         'model/experiment/output/decision_tree_over_sampled',
-        load_sample_data_frame(),
+        load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,
@@ -86,13 +86,13 @@ def test_decision_tree():
 
     runner = Runner(
         'model/experiment/output/decision_tree_combine_sampled',
-        load_sample_data_frame(),
+        load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,

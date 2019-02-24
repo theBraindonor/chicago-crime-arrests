@@ -1,24 +1,29 @@
-[2019-02-23 11:42:53.671142] Starting Pre-Processing.
-[2019-02-23 11:45:30.085561] Pre-Processing Complete.
+[2019-02-24 12:03:09.784803] Starting Pre-Processing.
+[2019-02-24 12:06:01.563245] Pre-Processing Complete.
 
 Total Records: 6797523
 Processed Records: 6125899
 
 Missing Data:
-    arrest: 1
-    year: 1
-    month: 1
-    weekday: 1
-    hour: 1
-    iucr: 1
-    type: 1
-    description: 1
-    location: 4411
-    domestic: 1
-    beat: 1
-    district: 48
-    ward: 614855
-    community: 613532
-    fbi_code: 1
-    latitude: 61681
-    longitude: 61681
+    arrest: 0
+    year: 0
+    month: 0
+    weekday: 0
+    hour: 0
+    iucr: 0
+    type: 0
+    description: 0
+    location: 4410
+    domestic: 0
+    beat: 0
+    district: 47
+    ward: 614854
+    community: 613531
+    fbi_code: 0
+    latitude: 61680
+    longitude: 61680
+    index_crime: 0
+    non_index_crime: 0
+    violent_crime: 0
+    property_crime: 0
+    public_violence: 0

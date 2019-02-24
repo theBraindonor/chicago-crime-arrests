@@ -15,17 +15,29 @@ import pandas as pd
 
 from utility import use_project_path
 
+clean_sample_data_filename = 'data_scratch/sampled_cleaned_crimes.csv'
+clean_data_filename = 'data_scratch/cleaned_crimes.csv'
 sample_data_filename = 'data_scratch/sampled_crimes.csv'
 data_filename = 'data_scratch/preprocessed_crimes.csv'
 
 
-def load_sample_data_frame():
+def load_data(filename):
     use_project_path()
-    data_frame = pd.read_csv(sample_data_filename, dtype='float')
+    data_frame = pd.read_csv(filename, dtype='float')
     return data_frame
+
+
+def load_sample_data_frame():
+    return load_data(sample_data_filename)
 
 
 def load_data_frame():
-    use_project_path()
-    data_frame = pd.read_csv(data_filename, dtype='float')
-    return data_frame
+    return load_data(data_filename)
+
+
+def load_clean_sample_data_frame():
+    return load_data(clean_sample_data_filename)
+
+
+def load_clean_data_frame():
+    return load_data(clean_data_filename)

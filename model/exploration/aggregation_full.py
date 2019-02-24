@@ -52,7 +52,7 @@ if __name__ == '__main__':
     total_arrests = 0
     total_rate = 0
 
-    with open('data_scratch/cleaned_crimes.csv') as input_file:
+    with open('data_scratch/preprocessed_crimes.csv') as input_file:
         reader = csv.reader(input_file)
 
         for i, line in enumerate(reader):
@@ -88,30 +88,30 @@ if __name__ == '__main__':
     data_frame = pd.DataFrame(iucr_matrix, columns=['iucr', 'crimes', 'arrests', 'arrest_rate'])
     data_frame['arrest_rate'] = data_frame['arrests'] / data_frame['crimes']
     data_frame.sort_values('arrest_rate', ascending=False, inplace=True)
-    data_frame.to_csv('model/exploration/output/iucr_aggregation.csv', index=False)
+    data_frame.to_csv('model/exploration/output/iucr_aggregation_full.csv', index=False)
 
     data_frame = pd.DataFrame(type_matrix, columns=['type', 'crimes', 'arrests', 'arrest_rate'])
     data_frame['arrest_rate'] = data_frame['arrests'] / data_frame['crimes']
     data_frame.sort_values('arrest_rate', ascending=False, inplace=True)
-    data_frame.to_csv('model/exploration/output/type_aggregation.csv', index=False)
+    data_frame.to_csv('model/exploration/output/type_aggregation_full.csv', index=False)
 
     data_frame = pd.DataFrame(description_matrix, columns=['description', 'crimes', 'arrests', 'arrest_rate'])
     data_frame['arrest_rate'] = data_frame['arrests'] / data_frame['crimes']
     data_frame.sort_values('arrest_rate', ascending=False, inplace=True)
-    data_frame.to_csv('model/exploration/output/description_aggregation.csv', index=False)
+    data_frame.to_csv('model/exploration/output/description_aggregation_full.csv', index=False)
 
     data_frame = pd.DataFrame(location_matrix, columns=['location', 'crimes', 'arrests', 'arrest_rate'])
     data_frame['arrest_rate'] = data_frame['arrests'] / data_frame['crimes']
     data_frame.sort_values('arrest_rate', ascending=False, inplace=True)
-    data_frame.to_csv('model/exploration/output/location_aggregation.csv', index=False)
+    data_frame.to_csv('model/exploration/output/location_aggregation_full.csv', index=False)
 
     data_frame = pd.DataFrame(fbi_matrix, columns=['fbi', 'crimes', 'arrests', 'arrest_rate'])
     data_frame['arrest_rate'] = data_frame['arrests'] / data_frame['crimes']
     data_frame.sort_values('arrest_rate', ascending=False, inplace=True)
-    data_frame.to_csv('model/exploration/output/fbi_aggregation.csv', index=False)
+    data_frame.to_csv('model/exploration/output/fbi_aggregation_full.csv', index=False)
 
     data_frame = pd.DataFrame([[total_crimes, total_arrests, 0]], columns=['crimes', 'arrests', 'arrest_rate'])
     data_frame['arrest_rate'] = data_frame['arrests'] / data_frame['crimes']
     data_frame.sort_values('arrest_rate', ascending=False, inplace=True)
-    data_frame.to_csv('model/exploration/output/total_aggregation.csv', index=False)
+    data_frame.to_csv('model/exploration/output/total_aggregation_full.csv', index=False)
 

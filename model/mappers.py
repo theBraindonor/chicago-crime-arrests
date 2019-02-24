@@ -21,7 +21,6 @@ ordinal_data_mapper = DataFrameMapper([
     (['hour'], [MinMaxScaler()]),
     (['iucr'], [MinMaxScaler()]),
     (['type'], [MinMaxScaler()]),
-    (['description'], [MinMaxScaler()]),
     (['location'], [MinMaxScaler()]),
     (['domestic'], [MinMaxScaler()]),
     (['beat'], [MinMaxScaler()]),
@@ -30,7 +29,12 @@ ordinal_data_mapper = DataFrameMapper([
     (['community'], [MinMaxScaler()]),
     (['fbi_code'], [MinMaxScaler()]),
     (['latitude'], [StandardScaler()]),
-    (['longitude'], [StandardScaler()])
+    (['longitude'], [StandardScaler()]),
+    (['index_crime'], None),
+    (['non_index_crime'], None),
+    (['violent_crime'], None),
+    (['property_crime'], None),
+    (['public_violence'], None)
 ])
 
 one_hot_data_mapper = DataFrameMapper([
@@ -39,7 +43,6 @@ one_hot_data_mapper = DataFrameMapper([
     (['hour'], [OneHotEncoder(handle_unknown='ignore')]),
     (['iucr'], [OneHotEncoder(handle_unknown='ignore')]),
     (['type'], [OneHotEncoder(handle_unknown='ignore')]),
-    (['description'], [OneHotEncoder(handle_unknown='ignore')]),
     (['location'], [OneHotEncoder(handle_unknown='ignore')]),
     (['domestic'], [OneHotEncoder(handle_unknown='ignore')]),
     (['beat'], [OneHotEncoder(handle_unknown='ignore')]),
@@ -48,7 +51,12 @@ one_hot_data_mapper = DataFrameMapper([
     (['community'], [OneHotEncoder(handle_unknown='ignore')]),
     (['fbi_code'], [OneHotEncoder(handle_unknown='ignore')]),
     (['latitude'], [StandardScaler()]),
-    (['longitude'], [StandardScaler()])
+    (['longitude'], [StandardScaler()]),
+    (['index_crime'], None),
+    (['non_index_crime'], None),
+    (['violent_crime'], None),
+    (['property_crime'], None),
+    (['public_violence'], None)
 ])
 
 binned_geo_one_hot_data_mapper = DataFrameMapper([
@@ -57,7 +65,6 @@ binned_geo_one_hot_data_mapper = DataFrameMapper([
     (['hour'], [OneHotEncoder(handle_unknown='ignore')]),
     (['iucr'], [OneHotEncoder(handle_unknown='ignore')]),
     (['type'], [OneHotEncoder(handle_unknown='ignore')]),
-    (['description'], [OneHotEncoder(handle_unknown='ignore')]),
     (['location'], [OneHotEncoder(handle_unknown='ignore')]),
     (['domestic'], [OneHotEncoder(handle_unknown='ignore')]),
     (['beat'], [OneHotEncoder(handle_unknown='ignore')]),
@@ -66,5 +73,10 @@ binned_geo_one_hot_data_mapper = DataFrameMapper([
     (['community'], [OneHotEncoder(handle_unknown='ignore')]),
     (['fbi_code'], [OneHotEncoder(handle_unknown='ignore')]),
     (['latitude'], [KBinsDiscretizer(n_bins=1024)]),
-    (['longitude'], [KBinsDiscretizer(n_bins=1024)])
+    (['longitude'], [KBinsDiscretizer(n_bins=1024)]),
+    (['index_crime'], None),
+    (['non_index_crime'], None),
+    (['violent_crime'], None),
+    (['property_crime'], None),
+    (['public_violence'], None)
 ])

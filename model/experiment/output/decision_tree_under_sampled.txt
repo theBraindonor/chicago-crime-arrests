@@ -1,90 +1,94 @@
-[2019-02-23 14:59:55.782452] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 333676, 1.0: 126407})
-Balanced Training Shape is Counter({0.0: 126407, 1.0: 126407})
-[2019-02-23 14:59:56.060382] Re-Sampling Complete.
+[2019-02-24 13:40:49.393851] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 332580, 1.0: 72655})
+Balanced Training Shape is Counter({0.0: 72655, 1.0: 72655})
+[2019-02-24 13:40:49.631933] Re-Sampling Complete.
 
-[2019-02-23 14:59:56.060382] Starting HyperParameter Search...
-[2019-02-23 15:01:19.011364] Search Complete.
+[2019-02-24 13:40:49.631933] Starting HyperParameter Search...
+[2019-02-24 13:41:48.351617] Search Complete.
 
-[2019-02-23 15:01:19.011364] Testing Training Partition...
-[2019-02-23 15:01:19.787115] Testing Complete.
+[2019-02-24 13:41:48.351617] Testing Training Partition...
+[2019-02-24 13:41:49.203342] Testing Complete.
 
-[2019-02-23 15:01:19.787115] Testing Holdout Partition...
-[2019-02-23 15:01:20.487903] Testing Complete.
+[2019-02-24 13:41:49.203342] Testing Holdout Partition...
+[2019-02-24 13:41:50.001129] Testing Complete.
 
-[2019-02-23 15:01:20.496895] Testing Holdout Partition (probability)...
-[2019-02-23 15:01:21.221651] Testing Complete.
+[2019-02-24 13:41:50.009128] Testing Holdout Partition (probability)...
+[2019-02-24 13:41:50.846878] Testing Complete.
 
 
 Best Score:
--0.3770848586081686
+0.8360632991071213
 
 Best Parameters:
-{'dt__criterion': 'gini', 'dt__max_depth': 10, 'dt__min_samples_leaf': 0.00015948305917939964, 'dt__min_samples_split': 0.002}
+{'dt__criterion': 'gini', 'dt__max_depth': 12, 'dt__min_samples_leaf': 0.0009086867566272488, 'dt__min_samples_split': 0.0005205221473126771}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.90      0.91      0.90    111040
-         1.0       0.75      0.74      0.74     42322
+         0.0       0.93      0.74      0.83    110749
+         1.0       0.39      0.76      0.52     24330
 
-   micro avg       0.86      0.86      0.86    153362
-   macro avg       0.82      0.82      0.82    153362
-weighted avg       0.86      0.86      0.86    153362
+   micro avg       0.74      0.74      0.74    135079
+   macro avg       0.66      0.75      0.67    135079
+weighted avg       0.84      0.74      0.77    135079
 
 
 Confusion Matrix:
-        0      1
-0  100533  10507
-1   11085  31237
+       0      1
+0  81968  28781
+1   5852  18478
 
 Performance:
-Accuracy: 0.859209
-ROC AUC: 0.821728
-Log-Loss: 0.358624
+Accuracy: 0.743609
+ROC AUC: 0.749799
+Log-Loss: 0.501661
 
 Feature Importance:
-        Feature  Importance
-4          type    0.387342
-12     fbi_code    0.228528
-5   description    0.205515
-3          iucr    0.150124
-6      location    0.015108
-2          hour    0.003943
-7      domestic    0.002560
-14    longitude    0.002437
-11    community    0.001874
-13     latitude    0.001078
-8          beat    0.000995
-10         ward    0.000300
-9      district    0.000085
-1       weekday    0.000059
-0         month    0.000052
+            Feature  Importance
+3              iucr    0.435680
+4              type    0.345788
+17   property_crime    0.073978
+11         fbi_code    0.057197
+5          location    0.034835
+2              hour    0.009407
+6          domestic    0.007946
+12         latitude    0.006882
+18  public_violence    0.005866
+13        longitude    0.004209
+16    violent_crime    0.004125
+7              beat    0.003836
+10        community    0.003791
+14      index_crime    0.001717
+0             month    0.001521
+9              ward    0.001503
+8          district    0.000992
+1           weekday    0.000725
+15  non_index_crime    0.000000
 
 Search Scoring
-    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                              params
-21        -0.377085        0.003257         -0.366173         0.000815       2.094830         0.076176                      {'dt__criterion': 'gini', 'dt__max_depth': 10, 'dt__min_samples_leaf': 0.00015948305917939964, 'dt__min_samples_split': 0.002}
-23        -0.380101        0.003483         -0.368869         0.000657       1.968944         0.080184                        {'dt__criterion': 'gini', 'dt__max_depth': 9, 'dt__min_samples_leaf': 0.0003056915570002359, 'dt__min_samples_split': 2e-06}
-8         -0.380539        0.002283         -0.371526         0.000548       2.153801         0.079183     {'dt__criterion': 'entropy', 'dt__max_depth': 9, 'dt__min_samples_leaf': 0.0009556205144055093, 'dt__min_samples_split': 0.0017845349537892162}
-10        -0.383566        0.003950         -0.361232         0.001017       2.470302         0.074776                                    {'dt__criterion': 'entropy', 'dt__max_depth': 15, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 2e-06}
-15        -0.384284        0.003883         -0.360454         0.001057       2.539643         0.077377                                    {'dt__criterion': 'entropy', 'dt__max_depth': 24, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
-1         -0.384996        0.005224         -0.360397         0.000856       2.342083         0.078776      {'dt__criterion': 'gini', 'dt__max_depth': 13, 'dt__min_samples_leaf': 0.0007436110773795881, 'dt__min_samples_split': 0.00013691918501922704}
-11        -0.385418        0.006050         -0.360649         0.000996       2.268815         0.073777                                       {'dt__criterion': 'gini', 'dt__max_depth': 24, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
-14        -0.385766        0.006147         -0.360649         0.000996       2.332786         0.073976                                       {'dt__criterion': 'gini', 'dt__max_depth': 24, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
-19        -0.386898        0.004144         -0.359969         0.000647       2.443358         0.073381                    {'dt__criterion': 'entropy', 'dt__max_depth': 12, 'dt__min_samples_leaf': 0.0003563310699182859, 'dt__min_samples_split': 0.002}
-2         -0.387507        0.001821         -0.383970         0.000786       1.766613         0.085172        {'dt__criterion': 'gini', 'dt__max_depth': 7, 'dt__min_samples_leaf': 0.0007812191044918529, 'dt__min_samples_split': 0.0005732971465578484}
-0         -0.387545        0.006359         -0.356471         0.000728       2.308283         0.073577      {'dt__criterion': 'gini', 'dt__max_depth': 16, 'dt__min_samples_leaf': 0.0007188702680604948, 'dt__min_samples_split': 0.00027304711302005924}
-17        -0.387912        0.004468         -0.355816         0.000671       2.588850         0.071577                    {'dt__criterion': 'entropy', 'dt__max_depth': 23, 'dt__min_samples_leaf': 0.0006247439279162138, 'dt__min_samples_split': 0.002}
-4         -0.389546        0.006089         -0.355319         0.000823       2.316512         0.078920       {'dt__criterion': 'gini', 'dt__max_depth': 17, 'dt__min_samples_leaf': 0.0006957517411053223, 'dt__min_samples_split': 0.0001867139498567394}
-7         -0.393141        0.001678         -0.391371         0.000536       1.718937         0.087974     {'dt__criterion': 'entropy', 'dt__max_depth': 6, 'dt__min_samples_leaf': 3.590816444144977e-05, 'dt__min_samples_split': 0.0016628886978975201}
-5         -0.393859        0.002211         -0.392354         0.000443       1.566677         0.077176        {'dt__criterion': 'gini', 'dt__max_depth': 6, 'dt__min_samples_leaf': 0.0007077768495056767, 'dt__min_samples_split': 0.0016509015095287273}
-13        -0.398676        0.004716         -0.360867         0.000516       2.435707         0.078776                                    {'dt__criterion': 'entropy', 'dt__max_depth': 11, 'dt__min_samples_leaf': 1e-06, 'dt__min_samples_split': 0.002}
-20        -0.404476        0.001752         -0.403184         0.000808       1.535501         0.085973     {'dt__criterion': 'entropy', 'dt__max_depth': 5, 'dt__min_samples_leaf': 0.0005681530322824628, 'dt__min_samples_split': 0.0013551888567119585}
-6         -0.404518        0.001771         -0.403181         0.000810       1.542185         0.084173     {'dt__criterion': 'entropy', 'dt__max_depth': 5, 'dt__min_samples_leaf': 0.0004133958741326931, 'dt__min_samples_split': 0.0011127569540641128}
-9         -0.404853        0.002295         -0.404226         0.000632       1.447650         0.075786       {'dt__criterion': 'gini', 'dt__max_depth': 5, 'dt__min_samples_leaf': 0.00019294548257313854, 'dt__min_samples_split': 0.0009042154658296205}
-22        -0.407458        0.008039         -0.349120         0.000680       2.646726         0.079446                    {'dt__criterion': 'entropy', 'dt__max_depth': 18, 'dt__min_samples_leaf': 0.0004923153510702747, 'dt__min_samples_split': 2e-06}
-3         -0.408489        0.003871         -0.348839         0.000689       2.432446         0.083972       {'dt__criterion': 'gini', 'dt__max_depth': 23, 'dt__min_samples_leaf': 0.0004525986057745965, 'dt__min_samples_split': 0.0011398012152788286}
-18        -0.423820        0.002108         -0.423556         0.000717       1.249427         0.082772                       {'dt__criterion': 'gini', 'dt__max_depth': 4, 'dt__min_samples_leaf': 0.00019003801167722517, 'dt__min_samples_split': 0.002}
-12        -0.423980        0.002153         -0.423722         0.000534       1.336766         0.078776                                     {'dt__criterion': 'entropy', 'dt__max_depth': 4, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 2e-06}
-16        -0.959316        0.019895         -0.301755         0.001152       3.278692         0.088971  {'dt__criterion': 'entropy', 'dt__max_depth': 24, 'dt__min_samples_leaf': 1.1218723184099304e-05, 'dt__min_samples_split': 0.00039851869341854686}
+    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                             params
+3          0.836063        0.002737          0.844968         0.000626       1.271383         0.052384      {'dt__criterion': 'gini', 'dt__max_depth': 12, 'dt__min_samples_leaf': 0.0009086867566272488, 'dt__min_samples_split': 0.0005205221473126771}
+11         0.835710        0.002803          0.848172         0.000597       1.304452         0.055583                                      {'dt__criterion': 'gini', 'dt__max_depth': 14, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
+19         0.835692        0.002843          0.848178         0.000599       1.310836         0.057232                      {'dt__criterion': 'gini', 'dt__max_depth': 14, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.0014296797931529198}
+18         0.835678        0.002854          0.848179         0.000599       1.312172         0.054383      {'dt__criterion': 'gini', 'dt__max_depth': 14, 'dt__min_samples_leaf': 0.0009998256842172557, 'dt__min_samples_split': 0.0006808000900318824}
+2          0.835487        0.002917          0.849609         0.000559       1.550003         0.052860  {'dt__criterion': 'entropy', 'dt__max_depth': 13, 'dt__min_samples_leaf': 0.00020313737377156656, 'dt__min_samples_split': 0.0018251950558601715}
+4          0.835259        0.002136          0.849883         0.000780       1.297381         0.057595       {'dt__criterion': 'gini', 'dt__max_depth': 12, 'dt__min_samples_leaf': 8.392690586984982e-05, 'dt__min_samples_split': 0.001204360073017888}
+14         0.835035        0.002775          0.849310         0.000472       1.508713         0.060183                   {'dt__criterion': 'entropy', 'dt__max_depth': 15, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.0010667157479016566}
+17         0.834982        0.002225          0.854334         0.000428       1.376702         0.058983                      {'dt__criterion': 'gini', 'dt__max_depth': 17, 'dt__min_samples_leaf': 0.0005362969468791319, 'dt__min_samples_split': 0.002}
+22         0.834975        0.002721          0.841556         0.000633       1.245383         0.050384                                      {'dt__criterion': 'gini', 'dt__max_depth': 11, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
+8          0.834873        0.002055          0.850139         0.001116       1.519706         0.056383  {'dt__criterion': 'entropy', 'dt__max_depth': 12, 'dt__min_samples_leaf': 0.00017951116783475798, 'dt__min_samples_split': 0.0009868014102708059}
+0          0.834663        0.002441          0.843943         0.000745       1.403532         0.051477  {'dt__criterion': 'entropy', 'dt__max_depth': 11, 'dt__min_samples_leaf': 0.00044711847395950666, 'dt__min_samples_split': 0.0013192529803236408}
+21         0.834629        0.002735          0.850908         0.000603       1.537703         0.055983                   {'dt__criterion': 'entropy', 'dt__max_depth': 17, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.0013589488533769954}
+20         0.834458        0.002848          0.852107         0.000715       1.363553         0.055984       {'dt__criterion': 'gini', 'dt__max_depth': 21, 'dt__min_samples_leaf': 0.000987729338875241, 'dt__min_samples_split': 0.0014820682779923952}
+10         0.834394        0.002895          0.851888         0.000697       1.342998         0.058582                                      {'dt__criterion': 'gini', 'dt__max_depth': 24, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
+15         0.834207        0.002903          0.851652         0.000640       1.563245         0.054006                                   {'dt__criterion': 'entropy', 'dt__max_depth': 21, 'dt__min_samples_leaf': 0.001, 'dt__min_samples_split': 0.002}
+7          0.832656        0.002478          0.860604         0.000546       1.478520         0.055184      {'dt__criterion': 'gini', 'dt__max_depth': 18, 'dt__min_samples_leaf': 4.743485460157951e-05, 'dt__min_samples_split': 0.0018595837579249445}
+23         0.826044        0.002610          0.868985         0.000807       1.851765         0.056198                   {'dt__criterion': 'entropy', 'dt__max_depth': 24, 'dt__min_samples_leaf': 1e-06, 'dt__min_samples_split': 0.0016423636833584766}
+5          0.819466        0.001863          0.880826         0.000354       1.863700         0.054749  {'dt__criterion': 'entropy', 'dt__max_depth': 18, 'dt__min_samples_leaf': 4.6695168613004336e-05, 'dt__min_samples_split': 0.0004868618269519995}
+13         0.817926        0.002138          0.870598         0.001257       1.625388         0.054011                                   {'dt__criterion': 'entropy', 'dt__max_depth': 13, 'dt__min_samples_leaf': 1e-06, 'dt__min_samples_split': 2e-06}
+6          0.812561        0.003556          0.814896         0.000851       1.022288         0.052786      {'dt__criterion': 'gini', 'dt__max_depth': 7, 'dt__min_samples_leaf': 0.00035384498328786316, 'dt__min_samples_split': 0.0012666951493549145}
+1          0.802661        0.003012          0.803788         0.000783       0.909920         0.059013      {'dt__criterion': 'gini', 'dt__max_depth': 6, 'dt__min_samples_leaf': 0.00027609597191198944, 'dt__min_samples_split': 0.0017821049480583892}
+9          0.802489        0.003018          0.803661         0.000752       0.925698         0.054984        {'dt__criterion': 'gini', 'dt__max_depth': 6, 'dt__min_samples_leaf': 0.000832991025357893, 'dt__min_samples_split': 0.0008965034083812495}
+16         0.753928        0.002694          0.754225         0.000759       0.788946         0.050987                    {'dt__criterion': 'entropy', 'dt__max_depth': 4, 'dt__min_samples_leaf': 0.0003495313415017924, 'dt__min_samples_split': 2e-06}
+12         0.710848        0.003404          0.986860         0.001342       1.759442         0.055871                                      {'dt__criterion': 'gini', 'dt__max_depth': 24, 'dt__min_samples_leaf': 1e-06, 'dt__min_samples_split': 2e-06}
 

@@ -8,6 +8,7 @@ __license__ = "Creative Commons Attribution-ShareAlike 4.0 International License
 __version__ = "1.0"
 
 import pandas as pd
+import sys
 
 from collections import Counter
 
@@ -93,7 +94,6 @@ class Runner:
         if self.hyper_parameters is not None:
             self.hyper_parameters.save('%s_params.p' % self.name)
 
-
     def run_classification_search_experiment(
             self,
             scoring,
@@ -140,8 +140,13 @@ class Runner:
             logger.time_log('Re-Sampling Complete.\n')
 
         logger.time_log('Starting HyperParameter Search...')
-        results = search.fit(x_train, y_train)
-        logger.time_log('Search Complete.\n')
+        try:
+            results = search.fit(x_train, y_train)
+        except:
+            logger.log('Unexpected Error: %s' % sys.exc_info()[0])
+            raise
+        else:
+            logger.time_log('Search Complete.\n')
 
         logger.time_log('Testing Training Partition...')
         y_train_predict = batch_predict(results.best_estimator_, x_train)

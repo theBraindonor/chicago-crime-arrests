@@ -1,0 +1,68 @@
+[2019-02-24 13:09:43.979352] Starting HyperParameter Search...
+[2019-02-24 13:11:21.311596] Search Complete.
+
+[2019-02-24 13:11:21.311596] Testing Training Partition...
+[2019-02-24 13:11:25.107191] Testing Complete.
+
+[2019-02-24 13:11:25.108190] Testing Holdout Partition...
+[2019-02-24 13:11:26.970466] Testing Complete.
+
+[2019-02-24 13:11:26.978480] Testing Holdout Partition (probability)...
+[2019-02-24 13:11:28.849792] Testing Complete.
+
+
+Best Score:
+0.8473971821116314
+
+Best Parameters:
+{'xgb__colsample_bylevel': 0.4601900607850464, 'xgb__colsample_bynode': 0.7610840135665745, 'xgb__colsample_bytree': 0.5284747796921904, 'xgb__gamma': 10.217097096286786, 'xgb__learning_rate': 0.2648960775667528, 'xgb__max_depth': 6, 'xgb__n_estimators': 202}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.98      0.93    110800
+         1.0       0.78      0.39      0.52     24279
+
+   micro avg       0.87      0.87      0.87    135079
+   macro avg       0.83      0.68      0.72    135079
+weighted avg       0.86      0.87      0.85    135079
+
+
+Confusion Matrix:
+        0     1
+0  108176  2624
+1   14783  9496
+
+Performance:
+Accuracy: 0.871135
+ROC AUC: 0.683719
+Log-Loss: 0.330287
+
+Feature Importance:
+            Feature  Importance
+3              iucr    0.137631
+5       description    0.136545
+6          location    0.126766
+12         fbi_code    0.080043
+4              type    0.074973
+14        longitude    0.066643
+13         latitude    0.059037
+2              hour    0.054328
+8              beat    0.052155
+11        community    0.047809
+10             ward    0.032959
+7          domestic    0.024991
+9          district    0.023180
+0             month    0.015936
+16  non_index_crime    0.014125
+1           weekday    0.013039
+15      index_crime    0.012677
+18   property_crime    0.011228
+17    violent_crime    0.010866
+19  public_violence    0.005071
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                                                                                                           params
+1         0.847397        0.002418          0.853393         0.000537      17.163167         0.721168  {'xgb__colsample_bylevel': 0.4601900607850464, 'xgb__colsample_bynode': 0.7610840135665745, 'xgb__colsample_bytree': 0.5284747796921904, 'xgb__gamma': 10.217097096286786, 'xgb__learning_rate': 0.2648960775667528, 'xgb__max_depth': 6, 'xgb__n_estimators...
+0         0.843117        0.002016          0.913288         0.000646      41.325272         3.949684  {'xgb__colsample_bylevel': 0.4963079015914222, 'xgb__colsample_bynode': 0.4565796824158418, 'xgb__colsample_bytree': 0.6142261571574124, 'xgb__gamma': 0.0005868562681117064, 'xgb__learning_rate': 0.2616389316149925, 'xgb__max_depth': 7, 'xgb__n_estimat...
+

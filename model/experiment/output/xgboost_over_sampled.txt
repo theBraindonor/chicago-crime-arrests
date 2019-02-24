@@ -1,6 +1,73 @@
-[2019-02-23 16:10:11.743316] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 333538, 1.0: 126545})
-Balanced Training Shape is Counter({1.0: 333538, 0.0: 333538})
-[2019-02-23 16:10:19.473804] Re-Sampling Complete.
+[2019-02-24 13:12:13.576667] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 332689, 1.0: 72546})
+Balanced Training Shape is Counter({0.0: 332689, 1.0: 332689})
+[2019-02-24 13:12:18.710582] Re-Sampling Complete.
 
-[2019-02-23 16:10:19.473804] Starting HyperParameter Search...
+[2019-02-24 13:12:18.710582] Starting HyperParameter Search...
+[2019-02-24 13:14:57.077285] Search Complete.
+
+[2019-02-24 13:14:57.077285] Testing Training Partition...
+[2019-02-24 13:15:13.360464] Testing Complete.
+
+[2019-02-24 13:15:13.360464] Testing Holdout Partition...
+[2019-02-24 13:15:17.365113] Testing Complete.
+
+[2019-02-24 13:15:17.374105] Testing Holdout Partition (probability)...
+[2019-02-24 13:15:21.386827] Testing Complete.
+
+
+Best Score:
+0.9642609401267472
+
+Best Parameters:
+{'xgb__colsample_bylevel': 0.7803825815009044, 'xgb__colsample_bynode': 0.4893256031647773, 'xgb__colsample_bytree': 0.7772809386896424, 'xgb__gamma': 5.289965779012294, 'xgb__learning_rate': 0.13484784943765374, 'xgb__max_depth': 5, 'xgb__n_estimators': 490}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.97      0.93    110640
+         1.0       0.77      0.41      0.53     24439
+
+   micro avg       0.87      0.87      0.87    135079
+   macro avg       0.83      0.69      0.73    135079
+weighted avg       0.86      0.87      0.85    135079
+
+
+Confusion Matrix:
+        0     1
+0  107750  2890
+1   14521  9918
+
+Performance:
+Accuracy: 0.871105
+ROC AUC: 0.689853
+Log-Loss: 0.328454
+
+Feature Importance:
+            Feature  Importance
+6          location    0.123752
+5       description    0.107737
+3              iucr    0.097338
+2              hour    0.087874
+4              type    0.068532
+14        longitude    0.068324
+0             month    0.066452
+12         fbi_code    0.063540
+13         latitude    0.061564
+1           weekday    0.050125
+8              beat    0.048773
+11        community    0.037542
+10             ward    0.028182
+7          domestic    0.022151
+15      index_crime    0.016639
+18   property_crime    0.016015
+17    violent_crime    0.012271
+9          district    0.010191
+16  non_index_crime    0.008007
+19  public_violence    0.004992
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                                                                                                           params
+1         0.964261        0.063341          0.968641         0.014073      57.084833         3.748852  {'xgb__colsample_bylevel': 0.7803825815009044, 'xgb__colsample_bynode': 0.4893256031647773, 'xgb__colsample_bytree': 0.7772809386896424, 'xgb__gamma': 5.289965779012294, 'xgb__learning_rate': 0.13484784943765374, 'xgb__max_depth': 5, 'xgb__n_estimators...
+0         0.963914        0.064022          0.970019         0.013612      29.884230         2.073883  {'xgb__colsample_bylevel': 0.7654638106013453, 'xgb__colsample_bynode': 0.5381621203563036, 'xgb__colsample_bytree': 0.6377814371719382, 'xgb__gamma': 0.00028518435307859605, 'xgb__learning_rate': 0.22861509487833237, 'xgb__max_depth': 6, 'xgb__n_estim...
+
