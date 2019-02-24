@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a decision tree model with a variety of balancing techniques on the full data set
+    Experiment with an XGBoost model with a variety of balancing techniques on the full data set
 """
 
 __author__ = "John Hoff"
@@ -52,7 +52,7 @@ def test_xgboost():
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True
@@ -66,7 +66,7 @@ def test_xgboost():
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,
@@ -81,7 +81,7 @@ def test_xgboost():
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,
@@ -96,7 +96,7 @@ def test_xgboost():
         hyper_parameters
     )
     runner.run_classification_search_experiment(
-        'neg_log_loss',
+        'roc_auc',
         sample=sample,
         n_iter=iterations,
         record_predict_proba=True,

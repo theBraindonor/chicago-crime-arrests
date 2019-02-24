@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a decision tree model with a variety of balancing techniques on the full data set
+    Experiment with an XGBoost model with a variety of balancing techniques on the cleaned data set
 """
 
 __author__ = "John Hoff"
