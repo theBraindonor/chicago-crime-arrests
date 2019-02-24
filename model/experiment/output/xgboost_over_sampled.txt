@@ -1,0 +1,6 @@
+[2019-02-23 16:10:11.743316] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 333538, 1.0: 126545})
+Balanced Training Shape is Counter({1.0: 333538, 0.0: 333538})
+[2019-02-23 16:10:19.473804] Re-Sampling Complete.
+
+[2019-02-23 16:10:19.473804] Starting HyperParameter Search...

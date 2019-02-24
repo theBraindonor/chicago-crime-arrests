@@ -1,0 +1,68 @@
+[2019-02-23 15:36:13.432796] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 333453, 1.0: 126630})
+Balanced Training Shape is Counter({1.0: 268845, 0.0: 204234})
+[2019-02-23 15:37:32.311361] Re-Sampling Complete.
+
+[2019-02-23 15:37:32.311361] Starting HyperParameter Search...
+[2019-02-23 15:38:26.278970] Search Complete.
+
+[2019-02-23 15:38:26.278970] Testing Training Partition...
+[2019-02-23 15:38:32.097848] Testing Complete.
+
+[2019-02-23 15:38:32.097848] Testing Holdout Partition...
+[2019-02-23 15:38:34.436126] Testing Complete.
+
+[2019-02-23 15:38:34.448139] Testing Holdout Partition (probability)...
+[2019-02-23 15:38:36.784549] Testing Complete.
+
+
+Best Score:
+nan
+
+Best Parameters:
+{'xgb__colsample_bylevel': 0.46500571921497463, 'xgb__colsample_bynode': 0.45841285557492795, 'xgb__colsample_bytree': 0.7752014530643716, 'xgb__gamma': 6.611794905152847, 'xgb__learning_rate': 0.2404017997295104, 'xgb__max_depth': 6, 'xgb__n_estimators': 222}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.90      0.93      0.91    111263
+         1.0       0.80      0.71      0.75     42099
+
+   micro avg       0.87      0.87      0.87    153362
+   macro avg       0.85      0.82      0.83    153362
+weighted avg       0.87      0.87      0.87    153362
+
+
+Confusion Matrix:
+        0      1
+0  103898   7365
+1   12178  29921
+
+Performance:
+Accuracy: 0.872569
+ROC AUC: 0.822267
+Log-Loss: 0.337330
+
+Feature Importance:
+        Feature  Importance
+3          iucr    0.118056
+6      location    0.098049
+5   description    0.097884
+4          type    0.092427
+12     fbi_code    0.087963
+2          hour    0.085317
+14    longitude    0.068618
+13     latitude    0.062996
+8          beat    0.060185
+0         month    0.059028
+11    community    0.048280
+1       weekday    0.045139
+10         ward    0.036541
+7      domestic    0.021329
+9      district    0.018188
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                                                                                                           params
+1        -0.141014        0.080651         -0.123835         0.020639       9.811834         0.566217  {'xgb__colsample_bylevel': 0.46131382465161413, 'xgb__colsample_bynode': 0.6935110231144241, 'xgb__colsample_bytree': 0.6678755571699753, 'xgb__gamma': 0.0022937354784989907, 'xgb__learning_rate': 0.2532057171489359, 'xgb__max_depth': 4, 'xgb__n_estima...
+0              NaN             NaN               NaN              NaN      19.672051         1.366558  {'xgb__colsample_bylevel': 0.46500571921497463, 'xgb__colsample_bynode': 0.45841285557492795, 'xgb__colsample_bytree': 0.7752014530643716, 'xgb__gamma': 6.611794905152847, 'xgb__learning_rate': 0.2404017997295104, 'xgb__max_depth': 6, 'xgb__n_estimator...
+

@@ -35,6 +35,11 @@ def serialize_codes(original_codes, filename, logger):
     logger.log('Saving %s category values in %s' % (code_count, filename))
 
 
+def load_codes(filename):
+    with open(filename, 'r') as file:
+        return json.load(file)
+
+
 if __name__ == '__main__':
     use_project_path()
 

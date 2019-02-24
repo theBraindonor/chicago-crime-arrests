@@ -1,0 +1,5 @@
+[2019-02-24 10:15:20.206570] Starting Data Cleaning.
+[2019-02-24 10:15:51.598694] Data Cleaning Complete.
+
+Total Records: 6125899
+Clean Records: 5402455
