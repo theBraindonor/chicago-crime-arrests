@@ -45,7 +45,7 @@ def test_decision_tree():
         load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',
@@ -59,7 +59,7 @@ def test_decision_tree():
         load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',
@@ -74,7 +74,7 @@ def test_decision_tree():
         load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',
@@ -89,7 +89,7 @@ def test_decision_tree():
         load_clean_sample_data_frame(),
         'arrest',
         decision_tree_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',

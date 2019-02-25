@@ -1,0 +1,33 @@
+[2019-02-24 18:15:07.202094] Training Model...
+[2019-02-24 18:15:07.770911] Training Complete.
+
+[2019-02-24 18:15:07.770911] Testing Training Partition...
+[2019-02-24 18:15:09.250244] Testing Complete.
+
+[2019-02-24 18:15:09.250244] Testing Holdout Partition...
+[2019-02-24 18:15:10.057982] Testing Complete.
+
+[2019-02-24 18:15:10.066979] Testing Holdout Partition (probability)...
+[2019-02-24 18:15:10.877249] Testing Complete.
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.92      0.22      0.36      4085
+         1.0       0.21      0.91      0.34       915
+
+   micro avg       0.35      0.35      0.35      5000
+   macro avg       0.56      0.57      0.35      5000
+weighted avg       0.79      0.35      0.36      5000
+
+
+Confusion Matrix:
+     0     1
+0  916  3169
+1   80   835
+
+Performance:
+Accuracy: 0.350200
+ROC AUC: 0.568402
+Log-Loss: 22.031260
+

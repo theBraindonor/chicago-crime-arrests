@@ -49,7 +49,7 @@ def test_xgboost():
         load_sample_data_frame(),
         'arrest',
         xgboost_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',
@@ -63,7 +63,7 @@ def test_xgboost():
         load_sample_data_frame(),
         'arrest',
         xgboost_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',
@@ -78,7 +78,7 @@ def test_xgboost():
         load_sample_data_frame(),
         'arrest',
         xgboost_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',
@@ -93,7 +93,7 @@ def test_xgboost():
         load_sample_data_frame(),
         'arrest',
         xgboost_basic,
-        hyper_parameters
+        hyper_parameters=hyper_parameters
     )
     runner.run_classification_search_experiment(
         'roc_auc',

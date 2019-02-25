@@ -8,7 +8,6 @@ __license__ = "Creative Commons Attribution-ShareAlike 4.0 International License
 __version__ = "1.0"
 
 import pandas as pd
-import sys
 
 from collections import Counter
 
@@ -26,7 +25,7 @@ class Runner:
             df,
             target,
             estimator,
-            hyper_parameters):
+            hyper_parameters=None):
         self.name = name
         self.df = df
         self.target = target
@@ -37,7 +36,7 @@ class Runner:
             self,
             sample=None,
             random_state=None,
-            test_size=0.25,
+            test_size=0.20,
             multiclass=False,
             record_predict_proba=False,
             sampling=None):
@@ -51,6 +50,16 @@ class Runner:
             data_frame = data_frame.sample(n=sample, random_state=random_state)
 
         x_train, x_test, y_train, y_test = train_test_split(data_frame, data_frame[self.target], test_size=test_size)
+
+        if sampling is not None:
+            logger.time_log('Starting Data Re-Sampling...')
+            logger.log('Original Training Shape is %s' % Counter(y_train))
+            x_new, y_new = sampling.fit_resample(x_train, y_train)
+            logger.log('Balanced Training Shape is %s' % Counter(y_new))
+            if hasattr(x_train, 'columns'):
+                x_new = pd.DataFrame(x_new, columns=x_train.columns)
+            x_train, y_train = x_new, y_new
+            logger.time_log('Re-Sampling Complete.\n')
 
         if self.hyper_parameters is not None:
             self.estimator.set_params(**self.hyper_parameters.params)
@@ -99,7 +108,7 @@ class Runner:
             scoring,
             sample=None,
             random_state=None,
-            test_size=0.25,
+            test_size=0.20,
             n_jobs=-1,
             n_iter=2,
             cv=5,
@@ -140,13 +149,8 @@ class Runner:
             logger.time_log('Re-Sampling Complete.\n')
 
         logger.time_log('Starting HyperParameter Search...')
-        try:
-            results = search.fit(x_train, y_train)
-        except:
-            logger.log('Unexpected Error: %s' % sys.exc_info()[0])
-            raise
-        else:
-            logger.time_log('Search Complete.\n')
+        results = search.fit(x_train, y_train)
+        logger.time_log('Search Complete.\n')
 
         logger.time_log('Testing Training Partition...')
         y_train_predict = batch_predict(results.best_estimator_, x_train)

@@ -1,94 +1,94 @@
-[2019-02-24 16:37:27.873159] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 332439, 1.0: 72796})
-Balanced Training Shape is Counter({0.0: 72796, 1.0: 72796})
-[2019-02-24 16:37:28.103072] Re-Sampling Complete.
+[2019-02-24 20:06:03.557163] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354833, 1.0: 77418})
+Balanced Training Shape is Counter({0.0: 77418, 1.0: 77418})
+[2019-02-24 20:06:03.815068] Re-Sampling Complete.
 
-[2019-02-24 16:37:28.103072] Starting HyperParameter Search...
-[2019-02-24 16:42:01.589599] Search Complete.
+[2019-02-24 20:06:03.815068] Starting HyperParameter Search...
+[2019-02-24 20:11:08.889775] Search Complete.
 
-[2019-02-24 16:42:01.589599] Testing Training Partition...
-[2019-02-24 16:42:05.301667] Testing Complete.
+[2019-02-24 20:11:08.889775] Testing Training Partition...
+[2019-02-24 20:11:12.745620] Testing Complete.
 
-[2019-02-24 16:42:05.301667] Testing Holdout Partition...
-[2019-02-24 16:42:08.768429] Testing Complete.
+[2019-02-24 20:11:12.745620] Testing Holdout Partition...
+[2019-02-24 20:11:15.781158] Testing Complete.
 
-[2019-02-24 16:42:08.777443] Testing Holdout Partition (probability)...
-[2019-02-24 16:42:12.229095] Testing Complete.
+[2019-02-24 20:11:15.788152] Testing Holdout Partition (probability)...
+[2019-02-24 20:11:18.976944] Testing Complete.
 
 
 Best Score:
-0.8484066382259935
+0.8466792398194977
 
 Best Parameters:
-{'xgb__colsample_bylevel': 0.49730535941864834, 'xgb__colsample_bynode': 0.7897253320430226, 'xgb__colsample_bytree': 0.6487042615246151, 'xgb__gamma': 0.03337140113981798, 'xgb__learning_rate': 0.1003055164836588, 'xgb__max_depth': 6, 'xgb__n_estimators': 298}
+{'xgb__colsample_bylevel': 0.723941343631135, 'xgb__colsample_bynode': 0.43113537090327625, 'xgb__colsample_bytree': 0.7752841555917906, 'xgb__gamma': 8.196228854841756, 'xgb__learning_rate': 0.29894046369567073, 'xgb__max_depth': 7, 'xgb__n_estimators': 493}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.94      0.75      0.84    110890
-         1.0       0.40      0.76      0.53     24189
+         0.0       0.93      0.76      0.84     88496
+         1.0       0.41      0.76      0.53     19567
 
-   micro avg       0.76      0.76      0.76    135079
-   macro avg       0.67      0.76      0.68    135079
-weighted avg       0.84      0.76      0.78    135079
+   micro avg       0.76      0.76      0.76    108063
+   macro avg       0.67      0.76      0.68    108063
+weighted avg       0.84      0.76      0.78    108063
 
 
 Confusion Matrix:
        0      1
-0  83715  27175
-1   5707  18482
+0  67194  21302
+1   4750  14817
 
 Performance:
-Accuracy: 0.756572
-ROC AUC: 0.759502
-Log-Loss: 0.474737
+Accuracy: 0.758918
+ROC AUC: 0.758266
+Log-Loss: 0.472220
 
 Feature Importance:
             Feature  Importance
-3              iucr    0.133316
-5          location    0.106793
-12         latitude    0.101832
-13        longitude    0.091782
-7              beat    0.072446
-4              type    0.067549
-2              hour    0.067485
-11         fbi_code    0.065959
-0             month    0.054382
-9              ward    0.050884
-10        community    0.049866
-1           weekday    0.047068
-8          district    0.023725
-6          domestic    0.018064
-14      index_crime    0.014947
-17   property_crime    0.009414
-15  non_index_crime    0.009350
-16    violent_crime    0.008968
-18  public_violence    0.006170
+3              iucr    0.166443
+5          location    0.137808
+13        longitude    0.132215
+12         latitude    0.098658
+2              hour    0.072931
+7              beat    0.065324
+4              type    0.063311
+11         fbi_code    0.049888
+10        community    0.044519
+0             month    0.039150
+9              ward    0.030872
+1           weekday    0.028412
+6          domestic    0.021924
+8          district    0.014318
+14      index_crime    0.010515
+16    violent_crime    0.008054
+17   property_crime    0.006488
+18  public_violence    0.004698
+15  non_index_crime    0.004474
 
 Search Scoring
     mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                                                                                                           params
-6          0.848407        0.001838          0.872874         0.000532       8.651608         0.700774  {'xgb__colsample_bylevel': 0.49730535941864834, 'xgb__colsample_bynode': 0.7897253320430226, 'xgb__colsample_bytree': 0.6487042615246151, 'xgb__gamma': 0.03337140113981798, 'xgb__learning_rate': 0.1003055164836588, 'xgb__max_depth': 6, 'xgb__n_estimato...
-8          0.848341        0.001793          0.862384         0.000264       7.993613         0.385883  {'xgb__colsample_bylevel': 0.7111599907962597, 'xgb__colsample_bynode': 0.63387011295019, 'xgb__colsample_bytree': 0.7539046621641418, 'xgb__gamma': 7.8285357804041835, 'xgb__learning_rate': 0.19445420759309978, 'xgb__max_depth': 6, 'xgb__n_estimators'...
-9          0.848159        0.001977          0.865580         0.000564       7.713307         0.426861  {'xgb__colsample_bylevel': 0.5102139028487707, 'xgb__colsample_bynode': 0.49096197132679076, 'xgb__colsample_bytree': 0.607576439811385, 'xgb__gamma': 6.03584409744833, 'xgb__learning_rate': 0.20383515795792595, 'xgb__max_depth': 6, 'xgb__n_estimators'...
-2          0.847259        0.002360          0.883552         0.000413       6.409725         0.504037  {'xgb__colsample_bylevel': 0.5705937157778451, 'xgb__colsample_bynode': 0.4880783139076389, 'xgb__colsample_bytree': 0.4817316462527043, 'xgb__gamma': 0.9357136406805171, 'xgb__learning_rate': 0.22424779770742997, 'xgb__max_depth': 6, 'xgb__n_estimator...
-23         0.847210        0.002015          0.907668         0.000550      15.774911         1.525708                                                          {'xgb__colsample_bylevel': 0.4, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.9211434734370039, 'xgb__learning_rate': 0.1, 'xgb__max_depth': 7, 'xgb__n_estimators': 500}
-3          0.847091        0.001918          0.867697         0.000559       8.659207         0.590410  {'xgb__colsample_bylevel': 0.5062215827245327, 'xgb__colsample_bynode': 0.5298638844736357, 'xgb__colsample_bytree': 0.5972937588649918, 'xgb__gamma': 2.4447142494292793, 'xgb__learning_rate': 0.28242782344295725, 'xgb__max_depth': 4, 'xgb__n_estimator...
-18         0.846893        0.001801          0.862957         0.000622       4.368983         0.276310                                                                      {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.4, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.1, 'xgb__max_depth': 7, 'xgb__n_estimators': 100}
-16         0.846436        0.002035          0.876733         0.000797       3.965720         0.263715                                                      {'xgb__colsample_bylevel': 0.4, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.18682378914107212, 'xgb__max_depth': 7, 'xgb__n_estimators': 100}
-12         0.846370        0.001777          0.912741         0.000382      15.998838         1.525912  {'xgb__colsample_bylevel': 0.4188951571171435, 'xgb__colsample_bynode': 0.42228220968012403, 'xgb__colsample_bytree': 0.6920763799529912, 'xgb__gamma': 0.0006844100496697308, 'xgb__learning_rate': 0.12111542988248859, 'xgb__max_depth': 7, 'xgb__n_estim...
-7          0.846277        0.002094          0.856329         0.000536       3.131189         0.195938  {'xgb__colsample_bylevel': 0.7017951638767389, 'xgb__colsample_bynode': 0.43859790226158873, 'xgb__colsample_bytree': 0.5918828809112617, 'xgb__gamma': 0.06193963617317255, 'xgb__learning_rate': 0.1927741558770683, 'xgb__max_depth': 5, 'xgb__n_estimato...
-4          0.845558        0.001911          0.851145         0.000664       3.540260         0.189937  {'xgb__colsample_bylevel': 0.7737794195829326, 'xgb__colsample_bynode': 0.5269892793858081, 'xgb__colsample_bytree': 0.6305395178866385, 'xgb__gamma': 9.230762385662059, 'xgb__learning_rate': 0.19433252257229833, 'xgb__max_depth': 5, 'xgb__n_estimators...
-13         0.845499        0.001930          0.852580         0.000568       7.114504         0.447656  {'xgb__colsample_bylevel': 0.7785924009258985, 'xgb__colsample_bynode': 0.7989246323414526, 'xgb__colsample_bytree': 0.42801024530554277, 'xgb__gamma': 0.00010438922759268245, 'xgb__learning_rate': 0.1842621678556815, 'xgb__max_depth': 3, 'xgb__n_estim...
-17         0.845150        0.002284          0.898085         0.000821      10.877688         0.855523                                                       {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.2454220761128917, 'xgb__max_depth': 5, 'xgb__n_estimators': 500}
-0          0.844069        0.001764          0.907516         0.000255       5.573603         0.434659  {'xgb__colsample_bylevel': 0.7833845925097072, 'xgb__colsample_bynode': 0.527268135411362, 'xgb__colsample_bytree': 0.686945776354509, 'xgb__gamma': 0.04074738886168467, 'xgb__learning_rate': 0.27737176501449656, 'xgb__max_depth': 7, 'xgb__n_estimators...
-22         0.843617        0.001987          0.848819         0.000547       8.012814         0.495251                                                        {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.019686106725902246, 'xgb__learning_rate': 0.1, 'xgb__max_depth': 3, 'xgb__n_estimators': 500}
-10         0.842932        0.001772          0.849720         0.000805       4.918412         0.288307  {'xgb__colsample_bylevel': 0.427474759360376, 'xgb__colsample_bynode': 0.7050544950072616, 'xgb__colsample_bytree': 0.5294690884135803, 'xgb__gamma': 0.00016022369495412073, 'xgb__learning_rate': 0.296503199433384, 'xgb__max_depth': 3, 'xgb__n_estimato...
-11         0.842804        0.001770          0.873020         0.001091       3.930533         0.279109                                                                      {'xgb__colsample_bylevel': 0.4, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.4, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.3, 'xgb__max_depth': 7, 'xgb__n_estimators': 100}
-20         0.841601        0.001952          0.914026         0.000667      11.078026         0.952293                                                       {'xgb__colsample_bylevel': 0.4, 'xgb__colsample_bynode': 0.4, 'xgb__colsample_bytree': 0.7388406809684187, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.3, 'xgb__max_depth': 6, 'xgb__n_estimators': 403}
-1          0.841021        0.001820          0.845574         0.000959       4.171659         0.249123  {'xgb__colsample_bylevel': 0.5391411282776972, 'xgb__colsample_bynode': 0.6357658601298503, 'xgb__colsample_bytree': 0.5125949517467658, 'xgb__gamma': 5.287722359458671, 'xgb__learning_rate': 0.14654639037990994, 'xgb__max_depth': 4, 'xgb__n_estimators...
-19         0.840817        0.001789          0.842810         0.000576      16.562052         0.174743  {'xgb__colsample_bylevel': 0.7200246812888513, 'xgb__colsample_bynode': 0.763248673253706, 'xgb__colsample_bytree': 0.40271979862226, 'xgb__gamma': 38.311767249844856, 'xgb__learning_rate': 0.16651272392750185, 'xgb__max_depth': 7, 'xgb__n_estimators':...
-14         0.836814        0.001836          0.838957         0.000854      16.143388         0.177343  {'xgb__colsample_bylevel': 0.4185263042458023, 'xgb__colsample_bynode': 0.7711738625835236, 'xgb__colsample_bytree': 0.41918402529286564, 'xgb__gamma': 60.195513182592684, 'xgb__learning_rate': 0.27781778300607973, 'xgb__max_depth': 7, 'xgb__n_estimato...
-5          0.836757        0.001931          0.838024         0.000300       9.857814         0.174744  {'xgb__colsample_bylevel': 0.7439822726081585, 'xgb__colsample_bynode': 0.545919506929768, 'xgb__colsample_bytree': 0.7682624313669719, 'xgb__gamma': 44.828263836299705, 'xgb__learning_rate': 0.1047592034906219, 'xgb__max_depth': 5, 'xgb__n_estimators'...
-21         0.824439        0.002433          0.825222         0.001999       3.187371         0.106567  {'xgb__colsample_bylevel': 0.7260472538614812, 'xgb__colsample_bynode': 0.7558094467142296, 'xgb__colsample_bytree': 0.48682380738814135, 'xgb__gamma': 84.18612493202504, 'xgb__learning_rate': 0.29805599740452643, 'xgb__max_depth': 3, 'xgb__n_estimator...
-15         0.824057        0.001600          0.825124         0.000581       2.459403         0.142154  {'xgb__colsample_bylevel': 0.7871294871358044, 'xgb__colsample_bynode': 0.40731349614085904, 'xgb__colsample_bytree': 0.4204353528283491, 'xgb__gamma': 21.794309234519098, 'xgb__learning_rate': 0.10994661310254124, 'xgb__max_depth': 3, 'xgb__n_estimato...
+23         0.846679        0.002166          0.870737         0.000683      14.879745         0.620120  {'xgb__colsample_bylevel': 0.723941343631135, 'xgb__colsample_bynode': 0.43113537090327625, 'xgb__colsample_bytree': 0.7752841555917906, 'xgb__gamma': 8.196228854841756, 'xgb__learning_rate': 0.29894046369567073, 'xgb__max_depth': 7, 'xgb__n_estimators...
+13         0.846615        0.002344          0.876700         0.000438      12.261106         0.925903  {'xgb__colsample_bylevel': 0.776785291245477, 'xgb__colsample_bynode': 0.636397557159394, 'xgb__colsample_bytree': 0.7502399885692947, 'xgb__gamma': 0.00010671244584749776, 'xgb__learning_rate': 0.1347371371895231, 'xgb__max_depth': 5, 'xgb__n_estimato...
+15         0.846549        0.002334          0.894911         0.000771      13.198380         1.116240  {'xgb__colsample_bylevel': 0.4072697674921422, 'xgb__colsample_bynode': 0.799946073848963, 'xgb__colsample_bytree': 0.7919092937395072, 'xgb__gamma': 2.172702433124932, 'xgb__learning_rate': 0.11998231258960122, 'xgb__max_depth': 7, 'xgb__n_estimators'...
+20         0.846203        0.002580          0.895557         0.000905      12.259986         1.066296  {'xgb__colsample_bylevel': 0.4056207445685487, 'xgb__colsample_bynode': 0.420509973247002, 'xgb__colsample_bytree': 0.7827291737002742, 'xgb__gamma': 0.00016122673574346452, 'xgb__learning_rate': 0.12248218494203264, 'xgb__max_depth': 7, 'xgb__n_estima...
+0          0.845975        0.002118          0.863265         0.000380       7.239054         0.503307  {'xgb__colsample_bylevel': 0.7376253048977889, 'xgb__colsample_bynode': 0.772719230639151, 'xgb__colsample_bytree': 0.49980092479381627, 'xgb__gamma': 0.002193781697643269, 'xgb__learning_rate': 0.2649390244620766, 'xgb__max_depth': 4, 'xgb__n_estimato...
+8          0.845971        0.002578          0.895066         0.000419      12.791916         1.075053  {'xgb__colsample_bylevel': 0.7977375380494646, 'xgb__colsample_bynode': 0.7721150362816508, 'xgb__colsample_bytree': 0.7026100822845028, 'xgb__gamma': 0.000253288185446381, 'xgb__learning_rate': 0.13978734214320448, 'xgb__max_depth': 6, 'xgb__n_estimat...
+22         0.845828        0.002026          0.865027         0.000660       4.583941         0.313499                                                                      {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.4, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.1, 'xgb__max_depth': 7, 'xgb__n_estimators': 100}
+9          0.845767        0.002186          0.862217         0.000522       5.852049         0.369880  {'xgb__colsample_bylevel': 0.7000948817978917, 'xgb__colsample_bynode': 0.6407905177527418, 'xgb__colsample_bytree': 0.7539583307050431, 'xgb__gamma': 1.3507903328538506, 'xgb__learning_rate': 0.28851821069485306, 'xgb__max_depth': 4, 'xgb__n_estimator...
+6          0.845572        0.002039          0.859250         0.000537       8.014886         0.553092  {'xgb__colsample_bylevel': 0.5938249168166819, 'xgb__colsample_bynode': 0.6180351974762087, 'xgb__colsample_bytree': 0.4941312594490018, 'xgb__gamma': 0.5415824711709906, 'xgb__learning_rate': 0.11188519450949952, 'xgb__max_depth': 5, 'xgb__n_estimator...
+7          0.845420        0.002179          0.868633         0.000541      10.534461         0.758816  {'xgb__colsample_bylevel': 0.4642121569016155, 'xgb__colsample_bynode': 0.4726151880377958, 'xgb__colsample_bytree': 0.6734742022112976, 'xgb__gamma': 1.934298773542251, 'xgb__learning_rate': 0.2851073813982069, 'xgb__max_depth': 4, 'xgb__n_estimators'...
+14         0.845379        0.002190          0.861052         0.000679       4.736154         0.301101                                                                      {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.4, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.1, 'xgb__max_depth': 7, 'xgb__n_estimators': 100}
+12         0.845202        0.002336          0.880968         0.000677       9.302810         0.776127  {'xgb__colsample_bylevel': 0.40204308380465215, 'xgb__colsample_bynode': 0.7874297408733086, 'xgb__colsample_bytree': 0.7933534468981263, 'xgb__gamma': 0.00012901126701552317, 'xgb__learning_rate': 0.2567153425242795, 'xgb__max_depth': 5, 'xgb__n_estim...
+19         0.844603        0.002394          0.878137         0.000874       4.806951         0.328093  {'xgb__colsample_bylevel': 0.4593349819923235, 'xgb__colsample_bynode': 0.4020591179227745, 'xgb__colsample_bytree': 0.40412225524183154, 'xgb__gamma': 0.04018641752266629, 'xgb__learning_rate': 0.28466484533389647, 'xgb__max_depth': 7, 'xgb__n_estimat...
+2          0.844552        0.002387          0.890024         0.000787       6.825944         0.580416  {'xgb__colsample_bylevel': 0.6408341653501892, 'xgb__colsample_bynode': 0.5891499964262535, 'xgb__colsample_bytree': 0.6162617202749266, 'xgb__gamma': 0.01701769744762075, 'xgb__learning_rate': 0.276622030690776, 'xgb__max_depth': 6, 'xgb__n_estimators...
+17         0.843876        0.002222          0.848560         0.000617       4.862950         0.237924  {'xgb__colsample_bylevel': 0.7946972994333847, 'xgb__colsample_bynode': 0.720224990003812, 'xgb__colsample_bytree': 0.47956379899638574, 'xgb__gamma': 12.110595234232719, 'xgb__learning_rate': 0.12088608269009632, 'xgb__max_depth': 7, 'xgb__n_estimator...
+3          0.843175        0.002102          0.847029         0.000779       9.658538         0.296567  {'xgb__colsample_bylevel': 0.6673447757219371, 'xgb__colsample_bynode': 0.4918597689654979, 'xgb__colsample_bytree': 0.5575297603454175, 'xgb__gamma': 14.7374370575385, 'xgb__learning_rate': 0.16715629636669224, 'xgb__max_depth': 5, 'xgb__n_estimators'...
+1          0.839859        0.001828          0.847953         0.000581       4.160282         0.262118  {'xgb__colsample_bylevel': 0.6067334629878229, 'xgb__colsample_bynode': 0.5069206852367032, 'xgb__colsample_bytree': 0.44988675586387483, 'xgb__gamma': 0.21455942602149103, 'xgb__learning_rate': 0.13320592680191812, 'xgb__max_depth': 5, 'xgb__n_estimat...
+21         0.835252        0.002108          0.848605         0.000974       4.591317         0.297909                                                                      {'xgb__colsample_bylevel': 0.4, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.4, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.1, 'xgb__max_depth': 7, 'xgb__n_estimators': 100}
+10         0.835191        0.002109          0.838432         0.000657       2.381939         0.147152                                                                      {'xgb__colsample_bylevel': 0.4, 'xgb__colsample_bynode': 0.4, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.3, 'xgb__max_depth': 3, 'xgb__n_estimators': 100}
+4          0.834600        0.002531          0.836475         0.000850      15.064863         0.159649  {'xgb__colsample_bylevel': 0.44297382591095164, 'xgb__colsample_bynode': 0.538222322832233, 'xgb__colsample_bytree': 0.7028934455865293, 'xgb__gamma': 75.15348757960791, 'xgb__learning_rate': 0.2863981334464819, 'xgb__max_depth': 6, 'xgb__n_estimators'...
+5          0.832613        0.002478          0.834248         0.000564       8.312481         0.192829  {'xgb__colsample_bylevel': 0.5775159517315378, 'xgb__colsample_bynode': 0.7903950439562323, 'xgb__colsample_bytree': 0.48318385916740864, 'xgb__gamma': 35.668256258077115, 'xgb__learning_rate': 0.20640583745277558, 'xgb__max_depth': 3, 'xgb__n_estimato...
+11         0.832355        0.002952          0.961207         0.000331      17.093016         1.682336                                                                      {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.4, 'xgb__colsample_bytree': 0.8, 'xgb__gamma': 0.0001, 'xgb__learning_rate': 0.3, 'xgb__max_depth': 7, 'xgb__n_estimators': 500}
+18         0.830519        0.002146          0.831707         0.001095      12.344136         0.141166                                                                       {'xgb__colsample_bylevel': 0.8, 'xgb__colsample_bynode': 0.8, 'xgb__colsample_bytree': 0.4, 'xgb__gamma': 100.0, 'xgb__learning_rate': 0.3, 'xgb__max_depth': 5, 'xgb__n_estimators': 500}
+16         0.827186        0.001954          0.829235         0.000937       3.788089         0.275382  {'xgb__colsample_bylevel': 0.4012895497254316, 'xgb__colsample_bynode': 0.786954264464128, 'xgb__colsample_bytree': 0.7795520290642123, 'xgb__gamma': 0.07711830013173662, 'xgb__learning_rate': 0.10024647910655471, 'xgb__max_depth': 3, 'xgb__n_estimator...
 

@@ -1,0 +1,38 @@
+[2019-02-24 18:15:15.687487] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 16438, 1.0: 3562})
+Balanced Training Shape is Counter({0.0: 3562, 1.0: 3562})
+[2019-02-24 18:15:15.698467] Re-Sampling Complete.
+
+[2019-02-24 18:15:15.699467] Training Model...
+[2019-02-24 18:15:15.903460] Training Complete.
+
+[2019-02-24 18:15:15.903460] Testing Training Partition...
+[2019-02-24 18:15:16.817278] Testing Complete.
+
+[2019-02-24 18:15:16.818278] Testing Holdout Partition...
+[2019-02-24 18:15:17.599843] Testing Complete.
+
+[2019-02-24 18:15:17.610839] Testing Holdout Partition (probability)...
+[2019-02-24 18:15:18.410733] Testing Complete.
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.89      0.81      0.84      4126
+         1.0       0.36      0.52      0.43       874
+
+   micro avg       0.76      0.76      0.76      5000
+   macro avg       0.63      0.66      0.64      5000
+weighted avg       0.80      0.76      0.77      5000
+
+
+Confusion Matrix:
+      0    1
+0  3324  802
+1   418  456
+
+Performance:
+Accuracy: 0.756000
+ROC AUC: 0.663681
+Log-Loss: 7.670490
+
