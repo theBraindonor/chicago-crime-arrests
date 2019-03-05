@@ -14,6 +14,7 @@ from collections import Counter
 from skopt import BayesSearchCV
 
 from sklearn.model_selection import train_test_split
+from sklearn.utils import shuffle
 
 from utility import batch_predict, batch_predict_proba, EvaluationFrame, Evaluator, Logger, use_project_path
 
@@ -31,6 +32,7 @@ class Runner:
         self.target = target
         self.estimator = estimator
         self.hyper_parameters = hyper_parameters
+        self.trained_estimator = None
 
     def run_classification_experiment(
             self,
@@ -60,6 +62,9 @@ class Runner:
                 x_new = pd.DataFrame(x_new, columns=x_train.columns)
             x_train, y_train = x_new, y_new
             logger.time_log('Re-Sampling Complete.\n')
+            logger.time_log('Shuffling Re-Sampled Data.\n')
+            x_train, y_train = shuffle(x_train, y_train, random_state=random_state)
+            logger.time_log('Shuffling Complete.\n')
 
         if self.hyper_parameters is not None:
             self.estimator.set_params(**self.hyper_parameters.params)
@@ -102,6 +107,8 @@ class Runner:
 
         if self.hyper_parameters is not None:
             self.hyper_parameters.save('%s_params.p' % self.name)
+
+        self.trained_estimator = self.estimator
 
     def run_classification_search_experiment(
             self,
@@ -147,6 +154,9 @@ class Runner:
                 x_new = pd.DataFrame(x_new, columns=x_train.columns)
             x_train, y_train = x_new, y_new
             logger.time_log('Re-Sampling Complete.\n')
+            logger.time_log('Shuffling Re-Sampled Data.\n')
+            x_train, y_train = shuffle(x_train, y_train, random_state=random_state)
+            logger.time_log('Shuffling Complete.\n')
 
         logger.time_log('Starting HyperParameter Search...')
         results = search.fit(x_train, y_train)
@@ -186,3 +196,5 @@ class Runner:
 
         self.hyper_parameters.params = results.best_params_
         self.hyper_parameters.save('%s_params.p' % self.name)
+
+        self.trained_estimator = results.best_estimator_
