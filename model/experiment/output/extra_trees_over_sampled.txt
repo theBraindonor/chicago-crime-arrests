@@ -1,0 +1,76 @@
+[2019-03-06 10:51:12.044572] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354725, 1.0: 77526})
+Balanced Training Shape is Counter({1.0: 354725, 0.0: 354725})
+[2019-03-06 10:51:17.296877] Re-Sampling Complete.
+
+[2019-03-06 10:51:17.296877] Shuffling Re-Sampled Data.
+
+[2019-03-06 10:51:17.425849] Shuffling Complete.
+
+[2019-03-06 10:51:17.425849] Starting HyperParameter Search...
+[2019-03-06 10:54:39.902513] Search Complete.
+
+[2019-03-06 10:54:39.902513] Testing Training Partition...
+[2019-03-06 10:54:44.656979] Testing Complete.
+
+[2019-03-06 10:54:44.656979] Testing Holdout Partition...
+[2019-03-06 10:54:46.208479] Testing Complete.
+
+[2019-03-06 10:54:46.215494] Testing Holdout Partition (probability)...
+[2019-03-06 10:54:47.784981] Testing Complete.
+
+
+Best Score:
+0.8802297576099816
+
+Best Parameters:
+{'et__criterion': 'entropy', 'et__max_depth': 18, 'et__min_samples_leaf': 0.00030603964246294447, 'et__min_samples_split': 0.001103420137818322, 'et__n_estimators': 39}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.90      0.81      0.85     88604
+         1.0       0.41      0.59      0.48     19459
+
+   micro avg       0.77      0.77      0.77    108063
+   macro avg       0.65      0.70      0.67    108063
+weighted avg       0.81      0.77      0.79    108063
+
+
+Confusion Matrix:
+       0      1
+0  71877  16727
+1   7927  11532
+
+Performance:
+Accuracy: 0.771855
+ROC AUC: 0.701923
+Log-Loss: 0.513662
+
+Feature Importance:
+            Feature  Importance
+4              type    0.136840
+11         fbi_code    0.121608
+14      index_crime    0.117657
+15  non_index_crime    0.102905
+6          domestic    0.100733
+3              iucr    0.100312
+1           weekday    0.076359
+5          location    0.076107
+17   property_crime    0.066551
+16    violent_crime    0.025004
+2              hour    0.023555
+0             month    0.014571
+18  public_violence    0.011928
+7              beat    0.005000
+10        community    0.004682
+9              ward    0.004397
+8          district    0.004344
+12         latitude    0.004114
+13        longitude    0.003334
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                    params
+1         0.880230        0.002429          0.881554         0.002077      52.228747         1.116641  {'et__criterion': 'entropy', 'et__max_depth': 18, 'et__min_samples_leaf': 0.00030603964246294447, 'et__min_samples_split': 0.001103420137818322, 'et__n_estimators': 39}
+0         0.854141        0.001933          0.855015         0.001962      96.953101         1.911583  {'et__criterion': 'entropy', 'et__max_depth': 14, 'et__min_samples_leaf': 0.0006266985453365245, 'et__min_samples_split': 0.0008197352381121929, 'et__n_estimators': 84}
+

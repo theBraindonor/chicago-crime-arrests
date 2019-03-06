@@ -25,7 +25,7 @@ from utility import Runner
 from model import load_clean_sample_data_frame
 
 # Due to limitations on sample size with naive bayes, we really can't go beyond 25k records
-sample = 25000
+sample = 10000
 
 # We also have a significantly reduced feature space.  This takes the top features as reported by the best
 # performing model during experimentation, XGBoost.
@@ -41,7 +41,7 @@ mapper = DataFrameMapper([
 ])
 
 gaussian_naive_bayes = Pipeline([
-    ('mapper', mapper),
+    # ('mapper', mapper),
     ('gnb', GaussianNB())
 ])
 
@@ -55,8 +55,11 @@ def test_gaussian_naive_bayes():
     )
     runner.run_classification_experiment(
         sample=sample,
-        record_predict_proba=True
+        record_predict_proba=True,
+        transformer=mapper
     )
+
+    exit(0)
 
     runner = Runner(
         'model/experiment/output/gaussian_naive_bayes_under_samples',

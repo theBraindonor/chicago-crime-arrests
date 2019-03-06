@@ -1,0 +1,76 @@
+[2019-03-06 11:36:40.038979] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 16378, 1.0: 3622})
+Balanced Training Shape is Counter({0.0: 3622, 1.0: 3622})
+[2019-03-06 11:36:40.049971] Re-Sampling Complete.
+
+[2019-03-06 11:36:40.050976] Shuffling Re-Sampled Data.
+
+[2019-03-06 11:36:40.051971] Shuffling Complete.
+
+[2019-03-06 11:36:40.051971] Starting HyperParameter Search...
+[2019-03-06 11:36:44.850422] Search Complete.
+
+[2019-03-06 11:36:44.850422] Testing Training Partition...
+[2019-03-06 11:36:45.006376] Testing Complete.
+
+[2019-03-06 11:36:45.006376] Testing Holdout Partition...
+[2019-03-06 11:36:45.125321] Testing Complete.
+
+[2019-03-06 11:36:45.134318] Testing Holdout Partition (probability)...
+[2019-03-06 11:36:45.255279] Testing Complete.
+
+
+Best Score:
+0.811717481040011
+
+Best Parameters:
+{'gb__learning_rate': 0.02966919941162765, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 231, 'gb__subsample': 0.7165904515977057}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.92      0.73      0.81      4058
+         1.0       0.38      0.73      0.50       942
+
+   micro avg       0.73      0.73      0.73      5000
+   macro avg       0.65      0.73      0.66      5000
+weighted avg       0.82      0.73      0.75      5000
+
+
+Confusion Matrix:
+      0     1
+0  2949  1109
+1   256   686
+
+Performance:
+Accuracy: 0.727000
+ROC AUC: 0.727475
+Log-Loss: 0.531250
+
+Feature Importance:
+            Feature  Importance
+3              iucr    0.232269
+4              type    0.121115
+11         fbi_code    0.118777
+5          location    0.098374
+12         latitude    0.066710
+13        longitude    0.063005
+7              beat    0.047164
+2              hour    0.043543
+17   property_crime    0.033408
+10        community    0.030615
+9              ward    0.029685
+0             month    0.026545
+1           weekday    0.023942
+8          district    0.017754
+14      index_crime    0.015800
+15  non_index_crime    0.011288
+6          domestic    0.009454
+16    violent_crime    0.005306
+18  public_violence    0.005245
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                               params
+1         0.811717        0.009347          0.921099         0.001391       1.634273         0.025991  {'gb__learning_rate': 0.02966919941162765, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 231, 'gb__subsample': 0.7165904515977057}
+0         0.811392        0.011015          0.904798         0.001912       1.588688         0.024391    {'gb__learning_rate': 0.020227312831431934, 'gb__loss': 'deviance', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 234, 'gb__subsample': 0.6610771446758815}
+

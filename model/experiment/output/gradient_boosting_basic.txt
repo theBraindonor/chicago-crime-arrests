@@ -1,0 +1,67 @@
+[2019-03-06 11:36:24.445994] Starting HyperParameter Search...
+[2019-03-06 11:36:34.770674] Search Complete.
+
+[2019-03-06 11:36:34.770674] Testing Training Partition...
+[2019-03-06 11:36:35.178543] Testing Complete.
+
+[2019-03-06 11:36:35.178543] Testing Holdout Partition...
+[2019-03-06 11:36:35.279498] Testing Complete.
+
+[2019-03-06 11:36:35.287513] Testing Holdout Partition (probability)...
+[2019-03-06 11:36:35.394478] Testing Complete.
+
+
+Best Score:
+0.8136479005298339
+
+Best Parameters:
+{'gb__learning_rate': 0.05778404116349761, 'gb__loss': 'deviance', 'gb__max_depth': 5, 'gb__max_features': 'log2', 'gb__n_estimators': 218, 'gb__subsample': 0.7643787507519892}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.98      0.93      4135
+         1.0       0.76      0.36      0.49       865
+
+   micro avg       0.87      0.87      0.87      5000
+   macro avg       0.82      0.67      0.71      5000
+weighted avg       0.86      0.87      0.85      5000
+
+
+Confusion Matrix:
+      0    1
+0  4036   99
+1   551  314
+
+Performance:
+Accuracy: 0.870000
+ROC AUC: 0.669532
+Log-Loss: 0.338536
+
+Feature Importance:
+            Feature  Importance
+3              iucr    0.263907
+4              type    0.217753
+11         fbi_code    0.120696
+5          location    0.090570
+13        longitude    0.043995
+12         latitude    0.043662
+7              beat    0.028860
+17   property_crime    0.026080
+2              hour    0.025809
+10        community    0.020043
+0             month    0.018814
+9              ward    0.018595
+14      index_crime    0.016982
+15  non_index_crime    0.014955
+1           weekday    0.012715
+6          domestic    0.011466
+8          district    0.009569
+18  public_violence    0.007897
+16    violent_crime    0.007632
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                               params
+1         0.813648        0.010935          0.888525         0.003252       2.785102         0.035992     {'gb__learning_rate': 0.05778404116349761, 'gb__loss': 'deviance', 'gb__max_depth': 5, 'gb__max_features': 'log2', 'gb__n_estimators': 218, 'gb__subsample': 0.7643787507519892}
+0         0.812601        0.011687          0.917003         0.001409       3.287540         0.038587  {'gb__learning_rate': 0.08734488425509654, 'gb__loss': 'exponential', 'gb__max_depth': 5, 'gb__max_features': 'log2', 'gb__n_estimators': 241, 'gb__subsample': 0.8412095338636245}
+

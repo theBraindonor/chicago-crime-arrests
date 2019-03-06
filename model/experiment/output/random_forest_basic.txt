@@ -1,0 +1,67 @@
+[2019-03-06 11:01:46.536958] Starting HyperParameter Search...
+[2019-03-06 11:10:10.288759] Search Complete.
+
+[2019-03-06 11:10:10.288759] Testing Training Partition...
+[2019-03-06 11:10:22.769732] Testing Complete.
+
+[2019-03-06 11:10:22.769732] Testing Holdout Partition...
+[2019-03-06 11:10:25.711776] Testing Complete.
+
+[2019-03-06 11:10:25.722774] Testing Holdout Partition (probability)...
+[2019-03-06 11:10:28.720796] Testing Complete.
+
+
+Best Score:
+0.8298085136635078
+
+Best Parameters:
+{'rf__bootstrap': False, 'rf__criterion': 'entropy', 'rf__max_depth': 10, 'rf__max_features': None, 'rf__n_estimators': 61}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.87      0.98      0.92     88413
+         1.0       0.79      0.36      0.50     19650
+
+   micro avg       0.87      0.87      0.87    108063
+   macro avg       0.83      0.67      0.71    108063
+weighted avg       0.86      0.87      0.85    108063
+
+
+Confusion Matrix:
+       0     1
+0  86482  1931
+1  12506  7144
+
+Performance:
+Accuracy: 0.866402
+ROC AUC: 0.670861
+Log-Loss: 0.381969
+
+Feature Importance:
+            Feature  Importance
+3              iucr    0.493360
+4              type    0.233540
+11         fbi_code    0.108009
+5          location    0.053791
+17   property_crime    0.052569
+2              hour    0.008457
+13        longitude    0.007474
+7              beat    0.007124
+12         latitude    0.007050
+10        community    0.005452
+6          domestic    0.005069
+18  public_violence    0.004547
+14      index_crime    0.002567
+16    violent_crime    0.002419
+9              ward    0.002333
+0             month    0.002185
+15  non_index_crime    0.001858
+1           weekday    0.001280
+8          district    0.000912
+
+Search Scoring
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                       params
+1         0.829809        0.002553          0.840282         0.002138     239.053466         0.731364  {'rf__bootstrap': False, 'rf__criterion': 'entropy', 'rf__max_depth': 10, 'rf__max_features': None, 'rf__n_estimators': 61}
+0         0.827235        0.001195          0.833781         0.000518      56.299433         0.772352  {'rf__bootstrap': True, 'rf__criterion': 'entropy', 'rf__max_depth': 9, 'rf__max_features': 'sqrt', 'rf__n_estimators': 64}
+
