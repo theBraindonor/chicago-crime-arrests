@@ -10,14 +10,35 @@ __version__ = "1.0"
 import numpy as np
 import pandas as pd
 
-from collections import Counter
-
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, roc_auc_score, log_loss
 
 
 class Evaluator:
     def __init__(self, logger):
         self.logger = logger
+
+    @staticmethod
+    def evaluate_classifier_fold(test, test_proba=None, multiclass=False):
+        fold_score = dict()
+        fold_score['Accuracy'] = accuracy_score(test.y_actual, test.y_predict)
+        if not multiclass:
+            fold_score['ROC AUC'] = roc_auc_score(test.y_actual, test.y_predict)
+        if test_proba is not None:
+            fold_score['Log-Loss'] = log_loss(test_proba.y_actual, test_proba.y_predict)
+        return fold_score
+
+    def evaluate_fold_scores(self, fold_scores):
+        scores = dict()
+        for score in fold_scores:
+            for key in score.keys():
+                if key in scores:
+                    scores[key].append(score[key])
+                else:
+                    scores[key] = [score[key]]
+        self.logger.log('Cross Validation Scores:')
+        for key in scores.keys():
+            self.logger.log("%s: %0.5f (+/- %0.5f)" % (key, np.mean(scores[key]), np.std(scores[key])))
+        self.logger.log('')
 
     def evaluate_classifier_result(self, results, test, train=None, test_proba=None, multiclass=False):
         search_results = hasattr(results, 'best_score_')

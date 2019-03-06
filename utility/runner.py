@@ -13,10 +13,33 @@ from collections import Counter
 
 from skopt import BayesSearchCV
 
-from sklearn.model_selection import train_test_split
+from sklearn.base import clone
+from sklearn.externals.joblib import Parallel, delayed
+from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.utils import shuffle
 
 from utility import batch_predict, batch_predict_proba, EvaluationFrame, Evaluator, Logger, use_project_path
+
+
+def crossfold_classifier(estimator, transformer, x_train, y_train, train_index, test_index, record_predict_proba):
+    x_fold_train, x_fold_test = x_train.iloc[train_index], x_train.iloc[test_index]
+    y_fold_train, y_fold_test = y_train.iloc[train_index], y_train.iloc[test_index]
+
+    if transformer is not None:
+        x_fold_train = transformer.transform(x_fold_train)
+        x_fold_test = transformer.transform(x_fold_test)
+
+    estimator.fit(x_fold_train, y_fold_train)
+
+    y_fold_test_predict = batch_predict(estimator, x_fold_test, verbose=False)
+    fold_predict_frame = EvaluationFrame(y_fold_test, y_fold_test_predict)
+
+    fold_predict_proba_frame = None
+    if record_predict_proba:
+        y_fold_test_predict_proba = batch_predict_proba(estimator, x_fold_test, verbose=False)
+        fold_predict_proba_frame = EvaluationFrame(y_fold_test, y_fold_test_predict_proba)
+
+    return Evaluator.evaluate_classifier_fold(fold_predict_frame, fold_predict_proba_frame)
 
 
 class Runner:
@@ -41,10 +64,16 @@ class Runner:
             test_size=0.20,
             multiclass=False,
             record_predict_proba=False,
-            sampling=None):
+            sampling=None,
+            cv=5,
+            verbose=True,
+            transformer=None,
+            fit_increment=None,
+            n_jobs=-1):
         use_project_path()
 
         logger = Logger('%s.txt' % self.name)
+        evaluator = Evaluator(logger)
 
         data_frame = self.df
 
@@ -69,7 +98,29 @@ class Runner:
         if self.hyper_parameters is not None:
             self.estimator.set_params(**self.hyper_parameters.params)
 
+        if transformer is not None:
+            logger.time_log('Fitting Transformer...')
+            transformer.fit(x_train)
+            logger.time_log('Transformer Fit Complete.\n')
+
+        if cv is not None:
+            kfold = StratifiedKFold(n_splits=cv, random_state=random_state)
+            logger.time_log('Cross Validating Model...')
+            fold_scores = Parallel(n_jobs=n_jobs, verbose=3)(
+                delayed(crossfold_classifier)(
+                    clone(self.estimator),
+                    transformer,
+                    x_train, y_train,
+                    train_index, test_index,
+                    record_predict_proba
+                )
+                for train_index, test_index in kfold.split(x_train, y_train)
+            )
+            logger.time_log('Cross Validation Complete.\n')
+
         logger.time_log('Training Model...')
+        if transformer is not None:
+            x_train = transformer.transform(x_train)
         self.estimator.fit(x_train, y_train)
         logger.time_log('Training Complete.\n')
 
@@ -80,6 +131,8 @@ class Runner:
         train_evaluation_frame = EvaluationFrame(y_train, y_train_predict)
 
         logger.time_log('Testing Holdout Partition...')
+        if transformer is not None:
+            x_test = transformer.transform(x_test)
         y_test_predict = batch_predict(self.estimator, x_test)
         logger.time_log('Testing Complete.\n')
 
@@ -94,7 +147,9 @@ class Runner:
             test_proba_evaluation_frame.save('%s_predict_proba.p' % self.name)
             logger.time_log('Testing Complete.\n')
 
-        evaluator = Evaluator(logger)
+        if cv is not None:
+            evaluator.evaluate_fold_scores(fold_scores)
+
         evaluator.evaluate_classifier_result(
             self.estimator,
             test_evaluation_frame,

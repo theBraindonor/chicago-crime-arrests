@@ -1,10 +1,9 @@
 # Completed Experiments
 
 Please note that the following experiments were conducted without setting a random_state value.
-These models are for exploration of the data only. Final models will be constructed with
-repeatability in mind.
+These models are for exploration of the data only.
 
-The goal for most models with hyper-parameters is to run 24 iterations using BayesSearchCV.
+The goal for most models with hyper-parameters is to run 12-24 iterations using BayesSearchCV.
 
 # Before Removal of Arrest-Based Crime Reports
 
@@ -62,6 +61,31 @@ Log-Loss: 0.376843
 
 # After Removal of Arrest-Based Crimes
 
+## Ada Boost
+
+Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
+
+```
+No Sampling:
+Accuracy: 0.864172
+ROC AUC:  0.661261
+Log-Loss: 0.690205
+
+Random Under-Sampling: ({0.0: 354829, 1.0: 77422}) -> ({0.0: 77422, 1.0: 77422})
+Accuracy: 0.733424
+ROC AUC:  0.747122
+Log-Loss: 0.691808
+
+SMOTE Sampling: ({0.0: 354530, 1.0: 77721}) -> ({1.0: 354530, 0.0: 354530})
+Accuracy: 0.850097
+ROC AUC: 0.676358
+Log-Loss: 0.689690
+
+SMOTEENN Sampling: ({0.0: 354715, 1.0: 77536}) -> ({1.0: 317433, 0.0: 223336})
+Accuracy: 0.807279
+ROC AUC: 0.711530
+Log-Loss: 0.690642
+```
 
 ## Decision Tree
 
@@ -87,6 +111,90 @@ SMOTEENN Sampling: ({0.0: 354726, 1.0: 77525}) -> ({1.0: 317471, 0.0: 223851})
 Accuracy: 0.800246
 ROC AUC:  0.737632
 Log-Loss: 0.791114
+```
+
+## Extra Trees
+
+Performed on a 10% Sample (613445 records); 24 Iterations each Sampling Strategy
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Gaussian Naive Bayes
+
+Performed on a 10% Sample
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Gradient Boosting
+
+Performed on a 10% Sample (613445 records); 24 Iterations each Sampling Strategy
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Neural Network
+
+Performed on a 10% Sample (613445 records)
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Random Forest
+
+Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Stochastic Gradient Descent
+
+Performed on a 10% Sample (613445 records)
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
 ```
 
 ## XGBoost
