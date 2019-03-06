@@ -1,0 +1,86 @@
+[2019-03-06 12:19:38.869385] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354530, 1.0: 77721})
+Balanced Training Shape is Counter({1.0: 354530, 0.0: 354530})
+[2019-03-06 12:19:44.178684] Re-Sampling Complete.
+
+[2019-03-06 12:19:44.178684] Shuffling Re-Sampled Data.
+
+[2019-03-06 12:19:44.305643] Shuffling Complete.
+
+[2019-03-06 12:19:44.305643] Starting HyperParameter Search...
+[2019-03-06 13:12:35.391948] Search Complete.
+
+[2019-03-06 13:12:35.391948] Testing Training Partition...
+[2019-03-06 13:13:08.616244] Testing Complete.
+
+[2019-03-06 13:13:08.616244] Testing Holdout Partition...
+[2019-03-06 13:13:13.256730] Testing Complete.
+
+[2019-03-06 13:13:13.263727] Testing Holdout Partition (probability)...
+[2019-03-06 13:13:18.061179] Testing Complete.
+
+
+Best Score:
+0.9478748090715481
+
+Best Parameters:
+{'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 1.5, 'ada__n_estimators': 135}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.95      0.91     88799
+         1.0       0.62      0.41      0.49     19264
+
+   micro avg       0.85      0.85      0.85    108063
+   macro avg       0.75      0.68      0.70    108063
+weighted avg       0.83      0.85      0.84    108063
+
+
+Confusion Matrix:
+       0     1
+0  84036  4763
+1  11436  7828
+
+Performance:
+Accuracy: 0.850097
+ROC AUC: 0.676358
+Log-Loss: 0.689690
+
+Feature Importance:
+            Feature  Importance
+1           weekday    0.355556
+0             month    0.244444
+3              iucr    0.118519
+5          location    0.096296
+11         fbi_code    0.051852
+6          domestic    0.044444
+2              hour    0.022222
+4              type    0.022222
+15  non_index_crime    0.014815
+14      index_crime    0.014815
+17   property_crime    0.007407
+16    violent_crime    0.007407
+13        longitude    0.000000
+9              ward    0.000000
+12         latitude    0.000000
+10        community    0.000000
+8          district    0.000000
+7              beat    0.000000
+18  public_violence    0.000000
+
+Search Scoring
+    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                             params
+10         0.947875        0.000862          0.947977         0.000641     239.540709         4.257028                 {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 1.5, 'ada__n_estimators': 135}
+0          0.947522        0.000835          0.947556         0.000576     307.376621         5.384062  {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 1.2315953394622823, 'ada__n_estimators': 175}
+11         0.945346        0.001546          0.945419         0.001113     337.574077         3.421296                   {'ada__algorithm': 'SAMME', 'ada__learning_rate': 1.5, 'ada__n_estimators': 200}
+1          0.942521        0.001974          0.942565         0.001605     301.644069         5.379868  {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 1.0207303791591043, 'ada__n_estimators': 174}
+3          0.940971        0.001602          0.941074         0.001065     281.893240         4.836240  {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 1.0159727439764568, 'ada__n_estimators': 158}
+5          0.937340        0.001002          0.937367         0.000429     197.234759         2.178703    {'ada__algorithm': 'SAMME', 'ada__learning_rate': 1.3188331029602076, 'ada__n_estimators': 117}
+9          0.935366        0.000998          0.935427         0.000598     332.485717         5.818722  {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 0.6900841518563599, 'ada__n_estimators': 187}
+8          0.933475        0.001182          0.933614         0.001011     154.352962         1.762632     {'ada__algorithm': 'SAMME', 'ada__learning_rate': 1.4911555783934003, 'ada__n_estimators': 91}
+4          0.929409        0.001588          0.929377         0.001362     132.499049         2.543380    {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 1.101870392765445, 'ada__n_estimators': 74}
+7          0.920850        0.001737          0.920921         0.001552     219.738698         2.396429    {'ada__algorithm': 'SAMME', 'ada__learning_rate': 0.9081114891393368, 'ada__n_estimators': 130}
+2          0.902126        0.000652          0.902171         0.000471     133.651674         2.486998   {'ada__algorithm': 'SAMME.R', 'ada__learning_rate': 0.6596887292972103, 'ada__n_estimators': 74}
+6          0.899211        0.003297          0.899279         0.003038      90.261677         1.167825      {'ada__algorithm': 'SAMME', 'ada__learning_rate': 1.174725040901206, 'ada__n_estimators': 54}
+
