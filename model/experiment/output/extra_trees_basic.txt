@@ -1,0 +1,89 @@
+[2019-03-06 14:00:18.636452] Starting HyperParameter Search...
+[2019-03-06 14:20:38.457442] Search Complete.
+
+[2019-03-06 14:20:38.457442] Testing Training Partition...
+[2019-03-06 14:21:08.887636] Testing Complete.
+
+[2019-03-06 14:21:08.887636] Testing Holdout Partition...
+[2019-03-06 14:21:16.273240] Testing Complete.
+
+[2019-03-06 14:21:16.281238] Testing Holdout Partition (probability)...
+[2019-03-06 14:21:23.770838] Testing Complete.
+
+
+Best Score:
+0.8323695944992522
+
+Best Parameters:
+{'et__criterion': 'gini', 'et__max_depth': 23, 'et__min_samples_leaf': 6.796228289197244e-06, 'et__min_samples_split': 1.6222216884914828e-05, 'et__n_estimators': 98}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.87      0.99      0.92     88671
+         1.0       0.82      0.31      0.45     19392
+
+   micro avg       0.86      0.86      0.86    108063
+   macro avg       0.84      0.65      0.69    108063
+weighted avg       0.86      0.86      0.84    108063
+
+
+Confusion Matrix:
+       0     1
+0  87355  1316
+1  13331  6061
+
+Performance:
+Accuracy: 0.864459
+ROC AUC: 0.648855
+Log-Loss: 0.346560
+
+Feature Importance:
+            Feature  Importance
+3              iucr    0.203150
+4              type    0.184137
+11         fbi_code    0.166317
+5          location    0.091986
+2              hour    0.037304
+12         latitude    0.032684
+13        longitude    0.031952
+7              beat    0.031580
+17   property_crime    0.028936
+10        community    0.026457
+9              ward    0.026322
+0             month    0.025784
+1           weekday    0.025214
+14      index_crime    0.023768
+15  non_index_crime    0.021126
+8          district    0.019756
+6          domestic    0.014418
+16    violent_crime    0.005124
+18  public_violence    0.003987
+
+Search Scoring
+    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                     params
+21         0.832370        0.001014          0.943812         0.000778      67.644763         2.904863     {'et__criterion': 'gini', 'et__max_depth': 23, 'et__min_samples_leaf': 6.796228289197244e-06, 'et__min_samples_split': 1.6222216884914828e-05, 'et__n_estimators': 98}
+20         0.830493        0.001045          0.970359         0.000628      71.830819         3.048414                                  {'et__criterion': 'entropy', 'et__max_depth': 21, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+23         0.830000        0.001421          0.982855         0.000556      72.166111         3.349320                                     {'et__criterion': 'gini', 'et__max_depth': 22, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+14         0.829812        0.001536          0.955735         0.001371      72.573784         2.789304                                  {'et__criterion': 'entropy', 'et__max_depth': 20, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+16         0.829485        0.001411          0.956379         0.001027      69.865049         2.757911                                  {'et__criterion': 'entropy', 'et__max_depth': 20, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+19         0.827768        0.001335          0.870611         0.000660      63.668256         2.073331    {'et__criterion': 'entropy', 'et__max_depth': 23, 'et__min_samples_leaf': 4.119760569477919e-05, 'et__min_samples_split': 9.16907865014607e-05, 'et__n_estimators': 98}
+22         0.825002        0.001614          0.861035         0.000721      59.062734         1.725846     {'et__criterion': 'gini', 'et__max_depth': 17, 'et__min_samples_leaf': 4.741945891735737e-06, 'et__min_samples_split': 0.00011547525252677574, 'et__n_estimators': 92}
+15         0.819709        0.001555          0.830463         0.000828      59.625958         1.528910   {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 2.2848059507720446e-05, 'et__min_samples_split': 0.001498644687538552, 'et__n_estimators': 95}
+10         0.815810        0.002752          0.912904         0.003771       7.315632         0.373480                                      {'et__criterion': 'gini', 'et__max_depth': 18, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 10}
+13         0.815311        0.001880          0.822522         0.000360      63.977356         1.473324                                  {'et__criterion': 'entropy', 'et__max_depth': 16, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 0.002, 'et__n_estimators': 100}
+17         0.812924        0.001528          0.820583         0.002085       7.388210         0.278106   {'et__criterion': 'entropy', 'et__max_depth': 20, 'et__min_samples_leaf': 4.164378499267021e-05, 'et__min_samples_split': 0.0017706399801313657, 'et__n_estimators': 11}
+1          0.810299        0.002142          0.816437         0.000672      60.093409         1.461329        {'et__criterion': 'gini', 'et__max_depth': 20, 'et__min_samples_leaf': 0.0002538972929809177, 'et__min_samples_split': 0.00195682646183122, 'et__n_estimators': 97}
+7          0.810122        0.002195          0.817353         0.001361      30.790265         0.762554     {'et__criterion': 'entropy', 'et__max_depth': 22, 'et__min_samples_leaf': 0.00039444740574206, 'et__min_samples_split': 0.0002805010559979089, 'et__n_estimators': 50}
+18         0.808460        0.003373          0.820704         0.002712      54.608381         1.311577      {'et__criterion': 'gini', 'et__max_depth': 13, 'et__min_samples_leaf': 2.673405673133286e-05, 'et__min_samples_split': 0.0001586301488906096, 'et__n_estimators': 94}
+4          0.806542        0.002738          0.812207         0.001191      31.833928         0.788946   {'et__criterion': 'entropy', 'et__max_depth': 16, 'et__min_samples_leaf': 0.0003762214660796563, 'et__min_samples_split': 0.0014521335992282247, 'et__n_estimators': 52}
+0          0.806476        0.004047          0.812449         0.003096      25.380411         0.642992   {'et__criterion': 'entropy', 'et__max_depth': 22, 'et__min_samples_leaf': 0.0004892887410061569, 'et__min_samples_split': 0.0009357692256257805, 'et__n_estimators': 42}
+11         0.806199        0.003466          0.990787         0.002594       8.699390         0.526431                                      {'et__criterion': 'gini', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 10}
+8          0.801072        0.001901          0.805218         0.001925      36.703153         0.864921  {'et__criterion': 'entropy', 'et__max_depth': 23, 'et__min_samples_leaf': 0.0007753107553029837, 'et__min_samples_split': 0.00036257216964490167, 'et__n_estimators': 63}
+6          0.800998        0.004749          0.805453         0.005593      19.193804         0.504237      {'et__criterion': 'gini', 'et__max_depth': 13, 'et__min_samples_leaf': 0.0003340737010531473, 'et__min_samples_split': 0.0012828619579639655, 'et__n_estimators': 32}
+9          0.787219        0.010278          0.790778         0.008475      20.143893         0.521831   {'et__criterion': 'entropy', 'et__max_depth': 13, 'et__min_samples_leaf': 0.0006753463651348013, 'et__min_samples_split': 0.0016826248503280378, 'et__n_estimators': 36}
+12         0.786213        0.005779          0.790011         0.004627       6.266971         0.250320                                      {'et__criterion': 'gini', 'et__max_depth': 19, 'et__min_samples_leaf': 0.001, 'et__min_samples_split': 2e-06, 'et__n_estimators': 10}
+3          0.759002        0.007476          0.760700         0.006640      14.361767         0.408070    {'et__criterion': 'entropy', 'et__max_depth': 9, 'et__min_samples_leaf': 0.0008761739409660254, 'et__min_samples_split': 0.0007003783467386178, 'et__n_estimators': 28}
+5          0.737059        0.002973          0.738110         0.002228      22.625692         0.583817    {'et__criterion': 'entropy', 'et__max_depth': 7, 'et__min_samples_leaf': 0.0001804770323630406, 'et__min_samples_split': 0.0013954730177840582, 'et__n_estimators': 50}
+2          0.736490        0.004064          0.737313         0.002999      35.249220         0.908108    {'et__criterion': 'entropy', 'et__max_depth': 7, 'et__min_samples_leaf': 0.0009472555648414203, 'et__min_samples_split': 0.0010643965309430617, 'et__n_estimators': 82}
+

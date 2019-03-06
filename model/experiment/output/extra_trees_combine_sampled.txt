@@ -1,76 +1,98 @@
-[2019-03-06 10:54:52.494451] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 354797, 1.0: 77454})
-Balanced Training Shape is Counter({1.0: 317400, 0.0: 223615})
-[2019-03-06 10:56:16.000506] Re-Sampling Complete.
+[2019-03-06 15:11:24.245078] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354505, 1.0: 77746})
+Balanced Training Shape is Counter({1.0: 316573, 0.0: 223396})
+[2019-03-06 15:12:48.080045] Re-Sampling Complete.
 
-[2019-03-06 10:56:16.001506] Shuffling Re-Sampled Data.
+[2019-03-06 15:12:48.080045] Shuffling Re-Sampled Data.
 
-[2019-03-06 10:56:16.093477] Shuffling Complete.
+[2019-03-06 15:12:48.176009] Shuffling Complete.
 
-[2019-03-06 10:56:16.093477] Starting HyperParameter Search...
-[2019-03-06 10:59:24.470463] Search Complete.
+[2019-03-06 15:12:48.176009] Starting HyperParameter Search...
+[2019-03-06 15:43:34.876080] Search Complete.
 
-[2019-03-06 10:59:24.470463] Testing Training Partition...
-[2019-03-06 10:59:32.906741] Testing Complete.
+[2019-03-06 15:43:34.877080] Testing Training Partition...
+[2019-03-06 15:44:09.890765] Testing Complete.
 
-[2019-03-06 10:59:32.906741] Testing Holdout Partition...
-[2019-03-06 10:59:35.772817] Testing Complete.
+[2019-03-06 15:44:09.890765] Testing Holdout Partition...
+[2019-03-06 15:44:16.934510] Testing Complete.
 
-[2019-03-06 10:59:35.782812] Testing Holdout Partition (probability)...
-[2019-03-06 10:59:38.717866] Testing Complete.
+[2019-03-06 15:44:16.941508] Testing Holdout Partition (probability)...
+[2019-03-06 15:44:24.037201] Testing Complete.
 
 
 Best Score:
-0.9331027298105721
+0.969529133255495
 
 Best Parameters:
-{'et__criterion': 'entropy', 'et__max_depth': 22, 'et__min_samples_leaf': 8.714555481304673e-05, 'et__min_samples_split': 0.001530449862678889, 'et__n_estimators': 93}
+{'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.94      0.67      0.78     88532
-         1.0       0.35      0.80      0.49     19531
+         0.0       0.93      0.74      0.82     88824
+         1.0       0.38      0.74      0.50     19239
 
-   micro avg       0.70      0.70      0.70    108063
-   macro avg       0.65      0.74      0.64    108063
-weighted avg       0.83      0.70      0.73    108063
+   micro avg       0.74      0.74      0.74    108063
+   macro avg       0.65      0.74      0.66    108063
+weighted avg       0.83      0.74      0.77    108063
 
 
 Confusion Matrix:
        0      1
-0  59683  28849
-1   3899  15632
+0  65429  23395
+1   4919  14320
 
 Performance:
-Accuracy: 0.696955
-ROC AUC: 0.737255
-Log-Loss: 0.576258
+Accuracy: 0.737986
+ROC AUC: 0.740468
+Log-Loss: 0.498893
 
 Feature Importance:
             Feature  Importance
-3              iucr    0.157467
-4              type    0.153279
-11         fbi_code    0.144800
-15  non_index_crime    0.090285
-5          location    0.082507
-14      index_crime    0.079340
-17   property_crime    0.078665
-6          domestic    0.068889
-1           weekday    0.039368
-2              hour    0.027067
-16    violent_crime    0.022120
-0             month    0.013208
-18  public_violence    0.009029
-7              beat    0.006494
-9              ward    0.006106
-8          district    0.005737
-10        community    0.005478
-13        longitude    0.005148
-12         latitude    0.005013
+3              iucr    0.167277
+4              type    0.129432
+11         fbi_code    0.123551
+5          location    0.085889
+1           weekday    0.064461
+6          domestic    0.060045
+17   property_crime    0.055768
+14      index_crime    0.054386
+15  non_index_crime    0.053943
+2              hour    0.040843
+0             month    0.032448
+7              beat    0.019740
+13        longitude    0.019566
+12         latitude    0.019493
+16    violent_crime    0.017585
+10        community    0.017524
+9              ward    0.016747
+8          district    0.013211
+18  public_violence    0.008090
 
 Search Scoring
-   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                   params
-0         0.933103        0.001896          0.934595         0.000729      99.579518         1.863600  {'et__criterion': 'entropy', 'et__max_depth': 22, 'et__min_samples_leaf': 8.714555481304673e-05, 'et__min_samples_split': 0.001530449862678889, 'et__n_estimators': 93}
-1         0.838727        0.002747          0.839182         0.002495       8.750575         0.359684    {'et__criterion': 'gini', 'et__max_depth': 8, 'et__min_samples_leaf': 0.00015070282449025207, 'et__min_samples_split': 0.0007528528336239689, 'et__n_estimators': 12}
+    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                      params
+14         0.969529        0.000600          0.983711         0.000542     115.298998         3.189370                                   {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+20         0.969402        0.000504          0.983589         0.000331     114.382088         3.146786                                   {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+19         0.969357        0.000628          0.983558         0.000426     114.849541         3.205366                                   {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+18         0.969304        0.000611          0.983391         0.000500     115.944189         3.189370                                   {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+15         0.969150        0.000199          0.983356         0.000524     114.740171         3.116595                                   {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 100}
+10         0.964254        0.001387          0.980308         0.001380      12.383204         0.511637                                    {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 2e-06, 'et__n_estimators': 10}
+23         0.954015        0.000720          0.961568         0.000266     100.638728         2.389629      {'et__criterion': 'gini', 'et__max_depth': 20, 'et__min_samples_leaf': 2.223319762384254e-06, 'et__min_samples_split': 2.9926998186638483e-05, 'et__n_estimators': 95}
+21         0.948382        0.001019          0.951511         0.000631     105.480561         2.228682    {'et__criterion': 'entropy', 'et__max_depth': 21, 'et__min_samples_leaf': 1.0709630536269373e-05, 'et__min_samples_split': 0.000344189336004587, 'et__n_estimators': 98}
+12         0.945519        0.001011          0.947346         0.000546      60.050023         1.320374       {'et__criterion': 'gini', 'et__max_depth': 24, 'et__min_samples_leaf': 5.425551775167546e-06, 'et__min_samples_split': 0.0012728431754876165, 'et__n_estimators': 56}
+13         0.939317        0.000933          0.940856         0.001380      11.855174         0.382478                                    {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 1e-06, 'et__min_samples_split': 0.002, 'et__n_estimators': 10}
+2          0.929217        0.001882          0.931293         0.001372      33.140906         0.788346     {'et__criterion': 'gini', 'et__max_depth': 20, 'et__min_samples_leaf': 0.00016237761265894946, 'et__min_samples_split': 0.00013405398680783282, 'et__n_estimators': 33}
+17         0.928983        0.001949          0.930984         0.001861      38.006935         0.877118      {'et__criterion': 'gini', 'et__max_depth': 24, 'et__min_samples_leaf': 0.0002168376533739933, 'et__min_samples_split': 2.5825446137488336e-05, 'et__n_estimators': 38}
+6          0.915581        0.001543          0.916772         0.002075      61.298620         1.237799  {'et__criterion': 'entropy', 'et__max_depth': 18, 'et__min_samples_leaf': 0.00035015909624713754, 'et__min_samples_split': 0.00011801945757195226, 'et__n_estimators': 65}
+4          0.907953        0.000931          0.909013         0.000928      66.455154         1.368958      {'et__criterion': 'gini', 'et__max_depth': 18, 'et__min_samples_leaf': 0.00048806448681506647, 'et__min_samples_split': 0.0013995407369217926, 'et__n_estimators': 74}
+22         0.906769        0.002019          0.907699         0.002084      72.440223         1.421542        {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 0.000632767472440905, 'et__min_samples_split': 0.0019793667291842, 'et__n_estimators': 79}
+5          0.900336        0.002409          0.901296         0.001687      24.403328         0.615797       {'et__criterion': 'gini', 'et__max_depth': 17, 'et__min_samples_leaf': 0.0006729237098606615, 'et__min_samples_split': 0.0005464392027465134, 'et__n_estimators': 27}
+7          0.900050        0.002124          0.900804         0.001389      46.813096         0.997478       {'et__criterion': 'gini', 'et__max_depth': 16, 'et__min_samples_leaf': 0.0006683051907235242, 'et__min_samples_split': 0.0019005391485709844, 'et__n_estimators': 54}
+11         0.896462        0.001766          0.897229         0.001380      80.465233         1.559297                    {'et__criterion': 'entropy', 'et__max_depth': 24, 'et__min_samples_leaf': 0.001, 'et__min_samples_split': 0.0004450981137057592, 'et__n_estimators': 94}
+9          0.892621        0.001981          0.893326         0.002596      48.114871         1.029868      {'et__criterion': 'entropy', 'et__max_depth': 16, 'et__min_samples_leaf': 0.000867242539905065, 'et__min_samples_split': 0.001303754505284976, 'et__n_estimators': 57}
+8          0.887808        0.003391          0.888384         0.003240      74.445780         1.464728    {'et__criterion': 'entropy', 'et__max_depth': 13, 'et__min_samples_leaf': 0.0005760252707990591, 'et__min_samples_split': 0.0012354244665425662, 'et__n_estimators': 91}
+0          0.878216        0.007365          0.878694         0.006207      35.375784         0.772550        {'et__criterion': 'gini', 'et__max_depth': 11, 'et__min_samples_leaf': 1.140997969418852e-05, 'et__min_samples_split': 0.001397773059007889, 'et__n_estimators': 44}
+3          0.845931        0.003410          0.846288         0.002216      43.829655         0.979485       {'et__criterion': 'gini', 'et__max_depth': 8, 'et__min_samples_leaf': 0.0001073216545258555, 'et__min_samples_split': 0.00010294879146807098, 'et__n_estimators': 70}
+1          0.832453        0.005155          0.832599         0.003912      39.401486         0.979884        {'et__criterion': 'gini', 'et__max_depth': 6, 'et__min_samples_leaf': 6.935614549062614e-05, 'et__min_samples_split': 6.638418270280756e-05, 'et__n_estimators': 79}
+16         0.803020        0.004903          0.803173         0.003207      13.892713         0.531628     {'et__criterion': 'entropy', 'et__max_depth': 4, 'et__min_samples_leaf': 0.0009732096138702962, 'et__min_samples_split': 0.0019846823592070857, 'et__n_estimators': 37}
 

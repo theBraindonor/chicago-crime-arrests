@@ -78,12 +78,12 @@ Log-Loss: 0.691808
 
 SMOTE Sampling: ({0.0: 354530, 1.0: 77721}) -> ({1.0: 354530, 0.0: 354530})
 Accuracy: 0.850097
-ROC AUC: 0.676358
+ROC AUC:  0.676358
 Log-Loss: 0.689690
 
 SMOTEENN Sampling: ({0.0: 354715, 1.0: 77536}) -> ({1.0: 317433, 0.0: 223336})
 Accuracy: 0.807279
-ROC AUC: 0.711530
+ROC AUC:  0.711530
 Log-Loss: 0.690642
 ```
 
@@ -119,12 +119,25 @@ Performed on a 10% Sample (613445 records); 24 Iterations each Sampling Strategy
 
 ```
 No Sampling:
+Accuracy: 0.864459
+ROC AUC:  0.648855
+Log-Loss: 0.346560
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354675, 1.0: 77576}) -> ({0.0: 77576, 1.0: 77576})
+Accuracy: 0.745593
+ROC AUC:  0.749975
+Log-Loss: 0.504406
 
-SMOTE Sampling: 
+SMOTE Sampling: ({0.0: 354800, 1.0: 77451}) ->({0.0: 354800, 1.0: 354800})
+Accuracy: 0.844859
+ROC AUC:  0.713848
+Log-Loss: 0.417312
 
-SMOTEENN Sampling:
+SMOTEENN Sampling: ({0.0: 354505, 1.0: 77746}) -> ({1.0: 316573, 0.0: 223396})
+Accuracy: 0.737986
+ROC AUC:  0.740468
+Log-Loss: 0.498893
+
 ```
 
 ## Gaussian Naive Bayes
