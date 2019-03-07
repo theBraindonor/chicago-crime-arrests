@@ -1,76 +1,98 @@
-[2019-03-06 11:36:40.038979] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 16378, 1.0: 3622})
-Balanced Training Shape is Counter({0.0: 3622, 1.0: 3622})
-[2019-03-06 11:36:40.049971] Re-Sampling Complete.
+[2019-03-06 21:25:20.158912] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354664, 1.0: 77587})
+Balanced Training Shape is Counter({0.0: 77587, 1.0: 77587})
+[2019-03-06 21:25:20.412829] Re-Sampling Complete.
 
-[2019-03-06 11:36:40.050976] Shuffling Re-Sampled Data.
+[2019-03-06 21:25:20.412829] Shuffling Re-Sampled Data.
 
-[2019-03-06 11:36:40.051971] Shuffling Complete.
+[2019-03-06 21:25:20.458831] Shuffling Complete.
 
-[2019-03-06 11:36:40.051971] Starting HyperParameter Search...
-[2019-03-06 11:36:44.850422] Search Complete.
+[2019-03-06 21:25:20.458831] Starting HyperParameter Search...
+[2019-03-06 22:33:50.632522] Search Complete.
 
-[2019-03-06 11:36:44.850422] Testing Training Partition...
-[2019-03-06 11:36:45.006376] Testing Complete.
+[2019-03-06 22:33:50.633539] Testing Training Partition...
+[2019-03-06 22:33:54.706602] Testing Complete.
 
-[2019-03-06 11:36:45.006376] Testing Holdout Partition...
-[2019-03-06 11:36:45.125321] Testing Complete.
+[2019-03-06 22:33:54.706602] Testing Holdout Partition...
+[2019-03-06 22:33:57.449315] Testing Complete.
 
-[2019-03-06 11:36:45.134318] Testing Holdout Partition (probability)...
-[2019-03-06 11:36:45.255279] Testing Complete.
+[2019-03-06 22:33:57.455314] Testing Holdout Partition (probability)...
+[2019-03-06 22:34:00.282197] Testing Complete.
 
 
 Best Score:
-0.811717481040011
+0.8475045195964275
 
 Best Parameters:
-{'gb__learning_rate': 0.02966919941162765, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 231, 'gb__subsample': 0.7165904515977057}
+{'gb__learning_rate': 0.1, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 250, 'gb__subsample': 1.0}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.92      0.73      0.81      4058
-         1.0       0.38      0.73      0.50       942
+         0.0       0.93      0.76      0.84     88665
+         1.0       0.40      0.76      0.53     19398
 
-   micro avg       0.73      0.73      0.73      5000
-   macro avg       0.65      0.73      0.66      5000
-weighted avg       0.82      0.73      0.75      5000
+   micro avg       0.76      0.76      0.76    108063
+   macro avg       0.67      0.76      0.68    108063
+weighted avg       0.84      0.76      0.78    108063
 
 
 Confusion Matrix:
-      0     1
-0  2949  1109
-1   256   686
+       0      1
+0  66993  21672
+1   4691  14707
 
 Performance:
-Accuracy: 0.727000
-ROC AUC: 0.727475
-Log-Loss: 0.531250
+Accuracy: 0.756040
+ROC AUC: 0.756873
+Log-Loss: 0.477190
 
 Feature Importance:
             Feature  Importance
-3              iucr    0.232269
-4              type    0.121115
-11         fbi_code    0.118777
-5          location    0.098374
-12         latitude    0.066710
-13        longitude    0.063005
-7              beat    0.047164
-2              hour    0.043543
-17   property_crime    0.033408
-10        community    0.030615
-9              ward    0.029685
-0             month    0.026545
-1           weekday    0.023942
-8          district    0.017754
-14      index_crime    0.015800
-15  non_index_crime    0.011288
-6          domestic    0.009454
-16    violent_crime    0.005306
-18  public_violence    0.005245
+3              iucr    0.361746
+4              type    0.227203
+11         fbi_code    0.079905
+5          location    0.061281
+17   property_crime    0.058054
+13        longitude    0.052291
+12         latitude    0.047943
+2              hour    0.023748
+7              beat    0.017510
+0             month    0.012998
+10        community    0.009746
+1           weekday    0.009672
+6          domestic    0.009275
+9              ward    0.009122
+15  non_index_crime    0.005256
+16    violent_crime    0.004489
+14      index_crime    0.004213
+18  public_violence    0.003754
+8          district    0.001792
 
 Search Scoring
-   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                               params
-1         0.811717        0.009347          0.921099         0.001391       1.634273         0.025991  {'gb__learning_rate': 0.02966919941162765, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 231, 'gb__subsample': 0.7165904515977057}
-0         0.811392        0.011015          0.904798         0.001912       1.588688         0.024391    {'gb__learning_rate': 0.020227312831431934, 'gb__loss': 'deviance', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 234, 'gb__subsample': 0.6610771446758815}
+    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                                                                               params
+12         0.847505        0.000650          0.889919         0.000615     383.307166         0.307711                                   {'gb__learning_rate': 0.1, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 250, 'gb__subsample': 1.0}
+10         0.847484        0.000593          0.890109         0.000253     362.032031         0.307367                                   {'gb__learning_rate': 0.1, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 250, 'gb__subsample': 1.0}
+20         0.847462        0.000736          0.883052         0.000126     380.068221         0.332692       {'gb__learning_rate': 0.06789479493252096, 'gb__loss': 'deviance', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 246, 'gb__subsample': 0.9868360886614109}
+21         0.847374        0.000625          0.880630         0.000421     383.629055         0.329614                   {'gb__learning_rate': 0.07206301878844559, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 250, 'gb__subsample': 1.0}
+23         0.846748        0.000895          0.878846         0.000319     295.332296         0.325295                   {'gb__learning_rate': 0.06807147131495983, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 250, 'gb__subsample': 0.5}
+6          0.846549        0.000638          0.867934         0.000439     225.465851         0.264718    {'gb__learning_rate': 0.08215550367488646, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': None, 'gb__n_estimators': 221, 'gb__subsample': 0.7174438023420524}
+17         0.845397        0.000822          0.867476         0.000359     127.100617         0.194543    {'gb__learning_rate': 0.09529307228938903, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 107, 'gb__subsample': 0.5311028856103568}
+15         0.844476        0.000538          0.895006         0.000461     270.531299         0.334866                                      {'gb__learning_rate': 0.1, 'gb__loss': 'deviance', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 250, 'gb__subsample': 0.5}
+18         0.844013        0.000301          0.884637         0.000233      94.500284         0.393273     {'gb__learning_rate': 0.09992667994792732, 'gb__loss': 'deviance', 'gb__max_depth': 7, 'gb__max_features': 'sqrt', 'gb__n_estimators': 248, 'gb__subsample': 0.5963760248926102}
+4          0.843330        0.000540          0.852643         0.000046     103.891879         0.193337     {'gb__learning_rate': 0.08648447796322517, 'gb__loss': 'exponential', 'gb__max_depth': 5, 'gb__max_features': None, 'gb__n_estimators': 158, 'gb__subsample': 0.548222745243767}
+7          0.843181        0.000379          0.859843         0.000459      63.890985         0.312499    {'gb__learning_rate': 0.0753265331742079, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': 'log2', 'gb__n_estimators': 225, 'gb__subsample': 0.737406044982662}
+13         0.843128        0.000589          0.880182         0.000472      83.257571         0.387579                                 {'gb__learning_rate': 0.1, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': 'log2', 'gb__n_estimators': 250, 'gb__subsample': 0.5}
+19         0.842965        0.000880          0.852158         0.000470     115.860912         0.177145       {'gb__learning_rate': 0.09985062824459506, 'gb__loss': 'deviance', 'gb__max_depth': 5, 'gb__max_features': None, 'gb__n_estimators': 127, 'gb__subsample': 0.9780646674611098}
+16         0.842127        0.000895          0.850942         0.000158     281.636448         0.412486   {'gb__learning_rate': 0.012846172746895968, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 235, 'gb__subsample': 0.5254020075158446}
+11         0.841593        0.000764          0.861082         0.000388      37.251724         0.195145                      {'gb__learning_rate': 0.1, 'gb__loss': 'deviance', 'gb__max_depth': 7, 'gb__max_features': 'log2', 'gb__n_estimators': 100, 'gb__subsample': 0.624958562383285}
+2          0.838564        0.001198          0.850798         0.000445      66.215435         0.274311    {'gb__learning_rate': 0.036190390016759846, 'gb__loss': 'deviance', 'gb__max_depth': 7, 'gb__max_features': 'log2', 'gb__n_estimators': 143, 'gb__subsample': 0.9524156869825449}
+14         0.838528        0.000912          0.841889         0.000195     101.604179         0.178567                    {'gb__learning_rate': 0.1, 'gb__loss': 'exponential', 'gb__max_depth': 3, 'gb__max_features': None, 'gb__n_estimators': 245, 'gb__subsample': 0.7584970063969685}
+3          0.834915        0.000951          0.842565         0.000286      57.779555         0.274513     {'gb__learning_rate': 0.03656877440650888, 'gb__loss': 'deviance', 'gb__max_depth': 6, 'gb__max_features': 'log2', 'gb__n_estimators': 159, 'gb__subsample': 0.9980085679440356}
+8          0.834377        0.001245          0.840156         0.000163      28.542391         0.176144  {'gb__learning_rate': 0.07297363076662183, 'gb__loss': 'exponential', 'gb__max_depth': 5, 'gb__max_features': 'sqrt', 'gb__n_estimators': 131, 'gb__subsample': 0.6355565186003852}
+5          0.834087        0.000343          0.838279         0.000636      39.797757         0.202934  {'gb__learning_rate': 0.08224313637070674, 'gb__loss': 'exponential', 'gb__max_depth': 4, 'gb__max_features': 'sqrt', 'gb__n_estimators': 188, 'gb__subsample': 0.9234844042680725}
+9          0.833449        0.001176          0.839728         0.000795      31.372275         0.203735  {'gb__learning_rate': 0.044416743767560905, 'gb__loss': 'exponential', 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__n_estimators': 105, 'gb__subsample': 0.769240414557679}
+1          0.833008        0.001067          0.839406         0.000668      69.627135         0.311499    {'gb__learning_rate': 0.022537019532926028, 'gb__loss': 'deviance', 'gb__max_depth': 6, 'gb__max_features': 'log2', 'gb__n_estimators': 208, 'gb__subsample': 0.8570619134706414}
+22         0.830928        0.001360          0.835578         0.000385     171.819902         0.226822   {'gb__learning_rate': 0.011757172918196123, 'gb__loss': 'exponential', 'gb__max_depth': 7, 'gb__max_features': None, 'gb__n_estimators': 107, 'gb__subsample': 0.9183724412090295}
+0          0.815737        0.001506          0.817203         0.000816      23.167125         0.169346        {'gb__learning_rate': 0.0342798649854981, 'gb__loss': 'deviance', 'gb__max_depth': 4, 'gb__max_features': 'log2', 'gb__n_estimators': 119, 'gb__subsample': 0.77524588576916}
 

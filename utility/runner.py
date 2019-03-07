@@ -18,25 +18,39 @@ from sklearn.externals.joblib import Parallel, delayed
 from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.utils import shuffle
 
-from utility import batch_predict, batch_predict_proba, EvaluationFrame, Evaluator, Logger, use_project_path
+from utility import batch_predict, batch_predict_proba, EvaluationFrame, Evaluator, Logger, use_project_path, batch_fit_classifier
 
 
-def crossfold_classifier(estimator, transformer, x_train, y_train, train_index, test_index, record_predict_proba):
-    x_fold_train, x_fold_test = x_train.iloc[train_index], x_train.iloc[test_index]
-    y_fold_train, y_fold_test = y_train.iloc[train_index], y_train.iloc[test_index]
+def crossfold_classifier(estimator, transformer, x_train, y_train, train_index, test_index,
+                         record_predict_proba, verbose, fit_increment, warm_start, max_iters, random_state):
+    if hasattr(x_train, 'iloc'):
+        x_fold_train, x_fold_test = x_train.iloc[train_index], x_train.iloc[test_index]
+    else:
+        x_fold_train, x_fold_test = x_train[train_index], x_train[test_index]
 
-    if transformer is not None:
-        x_fold_train = transformer.transform(x_fold_train)
-        x_fold_test = transformer.transform(x_fold_test)
+    if hasattr(y_train, 'iloc'):
+        y_fold_train, y_fold_test = y_train.iloc[train_index], y_train.iloc[test_index]
+    else:
+        y_fold_train, y_fold_test = y_train[train_index], y_train[test_index]
 
-    estimator.fit(x_fold_train, y_fold_train)
+    if fit_increment is not None:
+        if max_iters is not None:
+            for iter in range(max_iters):
+                x_fold_train, y_fold_train = shuffle(x_fold_train, y_fold_train, random_state=random_state)
+                batch_fit_classifier(estimator, x_fold_train, y_fold_train, transformer=transformer, increment=fit_increment, verbose=verbose)
+        else:
+            batch_fit_classifier(estimator, x_fold_train, y_fold_train, transformer=transformer, increment=fit_increment, verbose=verbose)
+    else:
+        if transformer is not None:
+            x_fold_train = transformer.transform(x_fold_train)
+        estimator.fit(x_fold_train, y_fold_train)
 
-    y_fold_test_predict = batch_predict(estimator, x_fold_test, verbose=False)
+    y_fold_test_predict = batch_predict(estimator, x_fold_test, transformer=transformer, verbose=False)
     fold_predict_frame = EvaluationFrame(y_fold_test, y_fold_test_predict)
 
     fold_predict_proba_frame = None
     if record_predict_proba:
-        y_fold_test_predict_proba = batch_predict_proba(estimator, x_fold_test, verbose=False)
+        y_fold_test_predict_proba = batch_predict_proba(estimator, x_fold_test, transformer=transformer, verbose=False)
         fold_predict_proba_frame = EvaluationFrame(y_fold_test, y_fold_test_predict_proba)
 
     return Evaluator.evaluate_classifier_fold(fold_predict_frame, fold_predict_proba_frame)
@@ -69,6 +83,8 @@ class Runner:
             verbose=True,
             transformer=None,
             fit_increment=None,
+            warm_start=False,
+            max_iters=None,
             n_jobs=-1):
         use_project_path()
 
@@ -81,6 +97,11 @@ class Runner:
             data_frame = data_frame.sample(n=sample, random_state=random_state)
 
         x_train, x_test, y_train, y_test = train_test_split(data_frame, data_frame[self.target], test_size=test_size)
+
+        if transformer is not None:
+            logger.time_log('Fitting Transformer...')
+            transformer.fit(x_train)
+            logger.time_log('Transformer Fit Complete.\n')
 
         if sampling is not None:
             logger.time_log('Starting Data Re-Sampling...')
@@ -98,11 +119,6 @@ class Runner:
         if self.hyper_parameters is not None:
             self.estimator.set_params(**self.hyper_parameters.params)
 
-        if transformer is not None:
-            logger.time_log('Fitting Transformer...')
-            transformer.fit(x_train)
-            logger.time_log('Transformer Fit Complete.\n')
-
         if cv is not None:
             kfold = StratifiedKFold(n_splits=cv, random_state=random_state)
             logger.time_log('Cross Validating Model...')
@@ -112,28 +128,37 @@ class Runner:
                     transformer,
                     x_train, y_train,
                     train_index, test_index,
-                    record_predict_proba
+                    record_predict_proba, verbose,
+                    fit_increment, warm_start, max_iters, random_state
                 )
                 for train_index, test_index in kfold.split(x_train, y_train)
             )
             logger.time_log('Cross Validation Complete.\n')
 
         logger.time_log('Training Model...')
-        if transformer is not None:
-            x_train = transformer.transform(x_train)
-        self.estimator.fit(x_train, y_train)
+        if fit_increment is not None:
+            if max_iters is not None:
+                for iter in range(max_iters):
+                    x_iter_train, y_iter_train = shuffle(x_train, y_train, random_state=random_state)
+                    batch_fit_classifier(self.estimator, x_iter_train, y_iter_train, transformer=transformer, increment=fit_increment, verbose=verbose)
+            else:
+                batch_fit_classifier(self.estimator, x_train, y_train, transformer=transformer, increment=fit_increment, verbose=verbose)
+        else:
+            if transformer is not None:
+                x_train_transformed = transformer.transform(x_train)
+                self.estimator.fit(x_train_transformed, y_train)
+            else:
+                self.estimator.fit(x_train, y_train)
         logger.time_log('Training Complete.\n')
 
         logger.time_log('Testing Training Partition...')
-        y_train_predict = batch_predict(self.estimator, x_train)
+        y_train_predict = batch_predict(self.estimator, x_train, transformer=transformer, verbose=verbose)
         logger.time_log('Testing Complete.\n')
 
         train_evaluation_frame = EvaluationFrame(y_train, y_train_predict)
 
         logger.time_log('Testing Holdout Partition...')
-        if transformer is not None:
-            x_test = transformer.transform(x_test)
-        y_test_predict = batch_predict(self.estimator, x_test)
+        y_test_predict = batch_predict(self.estimator, x_test, transformer=transformer, verbose=verbose)
         logger.time_log('Testing Complete.\n')
 
         test_evaluation_frame = EvaluationFrame(y_test, y_test_predict)
@@ -142,7 +167,7 @@ class Runner:
         test_proba_evaluation_frame = None
         if record_predict_proba:
             logger.time_log('Testing Holdout Partition (probability)...')
-            y_test_predict_proba = batch_predict_proba(self.estimator, x_test)
+            y_test_predict_proba = batch_predict_proba(self.estimator, x_test, transformer=transformer, verbose=verbose)
             test_proba_evaluation_frame = EvaluationFrame(y_test, y_test_predict_proba)
             test_proba_evaluation_frame.save('%s_predict_proba.p' % self.name)
             logger.time_log('Testing Complete.\n')

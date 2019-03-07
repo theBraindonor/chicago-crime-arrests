@@ -146,22 +146,34 @@ Performed on a 10% Sample
 
 ```
 No Sampling:
+Accuracy: 0.841648
+ROC AUC:  0.668736
+Log-Loss: 5.142512
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354708, 1.0: 77543}) -> ({0.0: 77543, 1.0: 77543})
+Accuracy: 0.843850
+ROC AUC:  0.609538
+Log-Loss: 5.335369
 
-SMOTE Sampling: 
+SMOTE Sampling: ({0.0: 354602, 1.0: 77649}) -> ({1.0: 354602, 0.0: 354602})
+Accuracy: 0.695280
+ROC AUC:  0.675047
+Log-Loss: 9.669953
 
-SMOTEENN Sampling:
+SMOTEENN Sampling: ({0.0: 354821, 1.0: 77430}) -> ({1.0: 317549, 0.0: 223623})
+Accuracy: 0.849514
+ROC AUC:  0.689653
+Log-Loss: 5.051578
 ```
 
 ## Gradient Boosting
 
-Performed on a 10% Sample (613445 records); 24 Iterations each Sampling Strategy
+Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
 
 ```
 No Sampling:
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354664, 1.0: 77587}) -> ({0.0: 77587, 1.0: 77587})
 
 SMOTE Sampling: 
 
@@ -196,7 +208,21 @@ SMOTE Sampling:
 SMOTEENN Sampling:
 ```
 
-## Stochastic Gradient Descent
+## Stochastic Gradient Descent (huber loss)
+
+Performed on a 10% Sample (613445 records)
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Stochastic Gradient Descent (log loss)
 
 Performed on a 10% Sample (613445 records)
 

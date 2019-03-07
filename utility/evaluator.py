@@ -73,31 +73,32 @@ class Evaluator:
             self.logger.log('Log-Loss: %f' % log_loss(test_proba.y_actual, test_proba.y_predict))
         self.logger.log('')
 
-        if 'pca' in estimator.named_steps:
-            pca_n_components = estimator.named_steps['pca'].n_components_
-            pca_explained_variance = np.sum(estimator.named_steps['pca'].explained_variance_ratio_)
-            self.logger.log('PCA:')
-            self.logger.log('      N Components: %f' % pca_n_components)
-            self.logger.log('Explained Variance: %f' % pca_explained_variance)
-            self.logger.log('')
-        else:
-            features = None
-            importance = None
-
-            if 'mapper' in estimator.named_steps:
-                features = pd.Series(estimator.named_steps['mapper'].transformed_names_)
-
-            for index, step in estimator.named_steps.items():
-                if hasattr(step, 'feature_importances_'):
-                    importance = pd.Series(step.feature_importances_)
-
-            if features is not None and importance is not None:
-                feature_importance = pd.concat([features, importance], axis=1)
-                feature_importance.columns = ['Feature', 'Importance']
-                feature_importance = feature_importance.sort_values('Importance', ascending=False)
-                self.logger.log('Feature Importance:')
-                self.logger.log(feature_importance)
+        if hasattr(estimator, 'named_steps'):
+            if 'pca' in estimator.named_steps:
+                pca_n_components = estimator.named_steps['pca'].n_components_
+                pca_explained_variance = np.sum(estimator.named_steps['pca'].explained_variance_ratio_)
+                self.logger.log('PCA:')
+                self.logger.log('      N Components: %f' % pca_n_components)
+                self.logger.log('Explained Variance: %f' % pca_explained_variance)
                 self.logger.log('')
+            else:
+                features = None
+                importance = None
+
+                if 'mapper' in estimator.named_steps:
+                    features = pd.Series(estimator.named_steps['mapper'].transformed_names_)
+
+                for index, step in estimator.named_steps.items():
+                    if hasattr(step, 'feature_importances_'):
+                        importance = pd.Series(step.feature_importances_)
+
+                if features is not None and importance is not None:
+                    feature_importance = pd.concat([features, importance], axis=1)
+                    feature_importance.columns = ['Feature', 'Importance']
+                    feature_importance = feature_importance.sort_values('Importance', ascending=False)
+                    self.logger.log('Feature Importance:')
+                    self.logger.log(feature_importance)
+                    self.logger.log('')
 
         if search_results:
             self.logger.log('Search Scoring')

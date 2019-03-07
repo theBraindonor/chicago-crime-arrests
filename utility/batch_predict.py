@@ -25,7 +25,7 @@ def batch_predict(estimator, x, transformer=None, increment=500, verbose=True):
         if verbose:
             print('.', end='')
             if steps > 0 and steps % 100 == 0:
-                print(steps*increment)
+                print(steps * increment)
             steps += 1
         if transformer is not None:
             chunk = transformer.transform(chunk)

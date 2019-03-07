@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a gaussian naive bayes model with a variety of balancing techniques on the cleaned data set
+    Experiment with a stochastic gradient descent model with log loss and a variety of balancing techniques
+    on the cleaned data set
 """
 
 __author__ = "John Hoff"
@@ -15,76 +16,81 @@ from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import SGDClassifier
 
 from utility import Runner
 from model import load_clean_sample_data_frame, binned_geo_one_hot_data_mapper
 
 
 sample = None
-fit_increment = 10000
+fit_increment = 100000
+max_iters = 10
 
 
-def test_gaussian_naive_bayes():
+def test_sgd_log_loss():
     runner = Runner(
-        'model/experiment/output/gaussian_naive_bayes_basic',
+        'model/experiment/output/sgd_log_loss_basic',
         load_clean_sample_data_frame(),
         'arrest',
-        GaussianNB()
+        SGDClassifier(loss='log')
     )
     runner.run_classification_experiment(
         sample=sample,
         record_predict_proba=True,
         transformer=binned_geo_one_hot_data_mapper,
         fit_increment=fit_increment,
+        max_iters=max_iters,
         n_jobs=1
     )
 
     runner = Runner(
-        'model/experiment/output/gaussian_naive_bayes_under_sampled',
+        'model/experiment/output/sgd_log_loss_under_sampled',
         load_clean_sample_data_frame(),
         'arrest',
-        GaussianNB()
+        SGDClassifier(loss='log')
     )
     runner.run_classification_experiment(
         sample=sample,
         record_predict_proba=True,
         transformer=binned_geo_one_hot_data_mapper,
         fit_increment=fit_increment,
+        max_iters=max_iters,
         n_jobs=1,
         sampling=RandomUnderSampler()
     )
 
     runner = Runner(
-        'model/experiment/output/gaussian_naive_bayes_over_sampled',
+        'model/experiment/output/sgd_log_loss_over_sampled',
         load_clean_sample_data_frame(),
         'arrest',
-        GaussianNB()
+        SGDClassifier(loss='log')
     )
     runner.run_classification_experiment(
         sample=sample,
         record_predict_proba=True,
         transformer=binned_geo_one_hot_data_mapper,
         fit_increment=fit_increment,
+        max_iters=max_iters,
         n_jobs=1,
         sampling=SMOTE()
     )
 
     runner = Runner(
-        'model/experiment/output/gaussian_naive_bayes_combine_sampled',
+        'model/experiment/output/sgd_log_loss_combine_sampled',
         load_clean_sample_data_frame(),
         'arrest',
-        GaussianNB()
+        SGDClassifier(loss='log')
     )
     runner.run_classification_experiment(
         sample=sample,
         record_predict_proba=True,
         transformer=binned_geo_one_hot_data_mapper,
         fit_increment=fit_increment,
+        max_iters=max_iters,
         n_jobs=1,
         sampling=SMOTEENN()
     )
 
 
 if __name__ == '__main__':
-    test_gaussian_naive_bayes()
+    test_sgd_log_loss()
