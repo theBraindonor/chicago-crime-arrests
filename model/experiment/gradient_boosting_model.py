@@ -23,21 +23,19 @@ from sklearn.pipeline import Pipeline
 from utility import HyperParameters, Runner
 from model import load_clean_sample_data_frame, ordinal_data_mapper
 
-sample = 25000
-iterations = 24
+sample = None
+iterations = 12
 
 hyper_parameters = HyperParameters({
-    'gb__n_estimators': Integer(100, 250),
-    'gb__loss': Categorical(['deviance', 'exponential']),
     'gb__learning_rate': Real(0.01, 0.1),
     'gb__subsample': Real(0.5, 1),
     'gb__max_depth': Integer(3, 7),
-    'gb__max_features': Categorical([None, 'sqrt', 'log2'])
+    'gb__max_features': Categorical(['sqrt', 'log2'])
 })
 
 gradient_boosting_pipeline = Pipeline([
     ('mapper', ordinal_data_mapper),
-    ('gb', GradientBoostingClassifier())
+    ('gb', GradientBoostingClassifier(n_estimators=200))
 ])
 
 

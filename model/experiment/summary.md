@@ -208,9 +208,23 @@ SMOTE Sampling:
 SMOTEENN Sampling:
 ```
 
-## Stochastic Gradient Descent (huber loss)
+## Stochastic Gradient Descent (hinge loss)
 
-Performed on a 10% Sample (613445 records)
+Performed on a 10% Sample (613445 records); 10 iterations
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Stochastic Gradient Descent (modified huber loss)
+
+Performed on a 10% Sample (613445 records); 10 iterations
 
 ```
 No Sampling:
@@ -224,7 +238,35 @@ SMOTEENN Sampling:
 
 ## Stochastic Gradient Descent (log loss)
 
-Performed on a 10% Sample (613445 records)
+Performed on a 10% Sample (613445 records); 10 iterations
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Stochastic Gradient Descent (perceptron loss)
+
+Performed on a 10% Sample (613445 records); 10 iterations
+
+```
+No Sampling:
+
+Random Under-Sampling:
+
+SMOTE Sampling: 
+
+SMOTEENN Sampling:
+```
+
+## Stochastic Gradient Descent (squared hinge loss)
+
+Performed on a 10% Sample (613445 records); 10 iterations
 
 ```
 No Sampling:

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a stochastic gradient descent model with huber loss and a variety of balancing techniques
+    Experiment with a stochastic gradient descent model with modified huber loss and a variety of balancing techniques
     on the cleaned data set
 """
 

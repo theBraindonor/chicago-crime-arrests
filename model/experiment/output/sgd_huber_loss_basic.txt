@@ -1,0 +1,44 @@
+[2019-03-07 12:16:27.819481] Fitting Transformer...
+[2019-03-07 12:16:27.845472] Transformer Fit Complete.
+
+[2019-03-07 12:16:27.845472] Cross Validating Model...
+[2019-03-07 12:16:33.456660] Cross Validation Complete.
+
+[2019-03-07 12:16:33.457662] Training Model...
+[2019-03-07 12:16:34.189428] Training Complete.
+
+[2019-03-07 12:16:34.189428] Testing Training Partition...
+[2019-03-07 12:16:35.560982] Testing Complete.
+
+[2019-03-07 12:16:35.560982] Testing Holdout Partition...
+[2019-03-07 12:16:35.893875] Testing Complete.
+
+[2019-03-07 12:16:35.916867] Testing Holdout Partition (probability)...
+[2019-03-07 12:16:36.294745] Testing Complete.
+
+Cross Validation Scores:
+Accuracy: 0.79888 (+/- 0.02132)
+ROC AUC: 0.67752 (+/- 0.00681)
+Log-Loss: 6.41371 (+/- 0.64893)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.89      0.82      0.85      3257
+         1.0       0.41      0.56      0.48       743
+
+   micro avg       0.77      0.77      0.77      4000
+   macro avg       0.65      0.69      0.67      4000
+weighted avg       0.80      0.77      0.78      4000
+
+
+Confusion Matrix:
+      0    1
+0  2664  593
+1   324  419
+
+Performance:
+Accuracy: 0.770750
+ROC AUC: 0.690930
+Log-Loss: 7.062781
+

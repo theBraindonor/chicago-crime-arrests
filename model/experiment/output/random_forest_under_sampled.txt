@@ -1,76 +1,76 @@
-[2019-03-06 11:10:33.531259] Starting Data Re-Sampling...
-Original Training Shape is Counter({0.0: 354687, 1.0: 77564})
-Balanced Training Shape is Counter({0.0: 77564, 1.0: 77564})
-[2019-03-06 11:10:33.778162] Re-Sampling Complete.
+[2019-03-07 12:35:02.023082] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 19640, 1.0: 4360})
+Balanced Training Shape is Counter({0.0: 4360, 1.0: 4360})
+[2019-03-07 12:35:02.050070] Re-Sampling Complete.
 
-[2019-03-06 11:10:33.778162] Shuffling Re-Sampled Data.
+[2019-03-07 12:35:02.050070] Shuffling Re-Sampled Data.
 
-[2019-03-06 11:10:33.804167] Shuffling Complete.
+[2019-03-07 12:35:02.054070] Shuffling Complete.
 
-[2019-03-06 11:10:33.804167] Starting HyperParameter Search...
-[2019-03-06 11:13:24.772168] Search Complete.
+[2019-03-07 12:35:02.054070] Starting HyperParameter Search...
+[2019-03-07 12:35:09.251745] Search Complete.
 
-[2019-03-06 11:13:24.772168] Testing Training Partition...
-[2019-03-06 11:13:32.103818] Testing Complete.
+[2019-03-07 12:35:09.251745] Testing Training Partition...
+[2019-03-07 12:35:09.871550] Testing Complete.
 
-[2019-03-06 11:13:32.103818] Testing Holdout Partition...
-[2019-03-06 11:13:37.204157] Testing Complete.
+[2019-03-07 12:35:09.871550] Testing Holdout Partition...
+[2019-03-07 12:35:10.310406] Testing Complete.
 
-[2019-03-06 11:13:37.215172] Testing Holdout Partition (probability)...
-[2019-03-06 11:13:42.365513] Testing Complete.
+[2019-03-07 12:35:10.320404] Testing Holdout Partition (probability)...
+[2019-03-07 12:35:10.839233] Testing Complete.
 
 
 Best Score:
-0.841388954734392
+0.8201343005639256
 
 Best Parameters:
-{'rf__bootstrap': True, 'rf__criterion': 'gini', 'rf__max_depth': 16, 'rf__max_features': None, 'rf__n_estimators': 90}
+{'rf__bootstrap': False, 'rf__criterion': 'entropy', 'rf__max_depth': 9, 'rf__max_features': 'sqrt', 'rf__n_estimators': 99}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.94      0.76      0.84     88642
-         1.0       0.41      0.76      0.53     19421
+         0.0       0.93      0.72      0.81      4947
+         1.0       0.36      0.75      0.49      1053
 
-   micro avg       0.76      0.76      0.76    108063
-   macro avg       0.67      0.76      0.68    108063
-weighted avg       0.84      0.76      0.78    108063
+   micro avg       0.72      0.72      0.72      6000
+   macro avg       0.65      0.73      0.65      6000
+weighted avg       0.83      0.72      0.75      6000
 
 
 Confusion Matrix:
-       0      1
-0  66986  21656
-1   4645  14776
+      0     1
+0  3549  1398
+1   263   790
 
 Performance:
-Accuracy: 0.756614
-ROC AUC: 0.758259
-Log-Loss: 0.480870
+Accuracy: 0.723167
+ROC AUC: 0.733821
+Log-Loss: 0.510003
 
 Feature Importance:
             Feature  Importance
-3              iucr    0.296272
-4              type    0.183526
-11         fbi_code    0.084872
-13        longitude    0.065423
-12         latitude    0.057625
-17   property_crime    0.055785
-5          location    0.055282
-2              hour    0.044274
-7              beat    0.035665
-0             month    0.031330
-1           weekday    0.023743
-9              ward    0.020962
-10        community    0.020903
-6          domestic    0.008809
-8          district    0.006082
-18  public_violence    0.004551
-16    violent_crime    0.001654
-15  non_index_crime    0.001630
-14      index_crime    0.001615
+3              iucr    0.303129
+4              type    0.175708
+11         fbi_code    0.121197
+5          location    0.080400
+17   property_crime    0.043949
+13        longitude    0.038396
+12         latitude    0.034229
+2              hour    0.030815
+7              beat    0.030064
+14      index_crime    0.021238
+10        community    0.020282
+9              ward    0.019447
+0             month    0.017938
+8          district    0.014573
+15  non_index_crime    0.014328
+1           weekday    0.013508
+16    violent_crime    0.009975
+6          domestic    0.007307
+18  public_violence    0.003517
 
 Search Scoring
-   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                       params
-1         0.841389        0.001404          0.929818         0.000731      82.275053         0.586011      {'rf__bootstrap': True, 'rf__criterion': 'gini', 'rf__max_depth': 16, 'rf__max_features': None, 'rf__n_estimators': 90}
-0         0.786996        0.005568          0.787948         0.002108      11.188589         0.287110  {'rf__bootstrap': True, 'rf__criterion': 'entropy', 'rf__max_depth': 4, 'rf__max_features': 'log2', 'rf__n_estimators': 95}
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                        params
+1         0.820134        0.009233          0.908392         0.001353       2.554374         0.076376  {'rf__bootstrap': False, 'rf__criterion': 'entropy', 'rf__max_depth': 9, 'rf__max_features': 'sqrt', 'rf__n_estimators': 99}
+0         0.815863        0.009294          0.877796         0.002352       1.215207         0.057580   {'rf__bootstrap': True, 'rf__criterion': 'entropy', 'rf__max_depth': 8, 'rf__max_features': 'log2', 'rf__n_estimators': 70}
 

@@ -1,67 +1,67 @@
-[2019-03-06 11:01:46.536958] Starting HyperParameter Search...
-[2019-03-06 11:10:10.288759] Search Complete.
+[2019-03-07 12:34:32.119727] Starting HyperParameter Search...
+[2019-03-07 12:34:50.498798] Search Complete.
 
-[2019-03-06 11:10:10.288759] Testing Training Partition...
-[2019-03-06 11:10:22.769732] Testing Complete.
+[2019-03-07 12:34:50.499798] Testing Training Partition...
+[2019-03-07 12:34:52.749073] Testing Complete.
 
-[2019-03-06 11:10:22.769732] Testing Holdout Partition...
-[2019-03-06 11:10:25.711776] Testing Complete.
+[2019-03-07 12:34:52.750071] Testing Holdout Partition...
+[2019-03-07 12:34:53.262903] Testing Complete.
 
-[2019-03-06 11:10:25.722774] Testing Holdout Partition (probability)...
-[2019-03-06 11:10:28.720796] Testing Complete.
+[2019-03-07 12:34:53.273900] Testing Holdout Partition (probability)...
+[2019-03-07 12:34:53.800732] Testing Complete.
 
 
 Best Score:
-0.8298085136635078
+0.8184547199286945
 
 Best Parameters:
-{'rf__bootstrap': False, 'rf__criterion': 'entropy', 'rf__max_depth': 10, 'rf__max_features': None, 'rf__n_estimators': 61}
+{'rf__bootstrap': True, 'rf__criterion': 'gini', 'rf__max_depth': 10, 'rf__max_features': 'sqrt', 'rf__n_estimators': 134}
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.87      0.98      0.92     88413
-         1.0       0.79      0.36      0.50     19650
+         0.0       0.87      0.98      0.92      4938
+         1.0       0.80      0.31      0.45      1062
 
-   micro avg       0.87      0.87      0.87    108063
-   macro avg       0.83      0.67      0.71    108063
-weighted avg       0.86      0.87      0.85    108063
+   micro avg       0.86      0.86      0.86      6000
+   macro avg       0.84      0.65      0.69      6000
+weighted avg       0.86      0.86      0.84      6000
 
 
 Confusion Matrix:
-       0     1
-0  86482  1931
-1  12506  7144
+      0    1
+0  4857   81
+1   729  333
 
 Performance:
-Accuracy: 0.866402
-ROC AUC: 0.670861
-Log-Loss: 0.381969
+Accuracy: 0.865000
+ROC AUC: 0.648578
+Log-Loss: 0.347471
 
 Feature Importance:
             Feature  Importance
-3              iucr    0.493360
-4              type    0.233540
-11         fbi_code    0.108009
-5          location    0.053791
-17   property_crime    0.052569
-2              hour    0.008457
-13        longitude    0.007474
-7              beat    0.007124
-12         latitude    0.007050
-10        community    0.005452
-6          domestic    0.005069
-18  public_violence    0.004547
-14      index_crime    0.002567
-16    violent_crime    0.002419
-9              ward    0.002333
-0             month    0.002185
-15  non_index_crime    0.001858
-1           weekday    0.001280
-8          district    0.000912
+3              iucr    0.265169
+4              type    0.174712
+11         fbi_code    0.105770
+5          location    0.087306
+12         latitude    0.045783
+13        longitude    0.045508
+7              beat    0.038508
+2              hour    0.035040
+10        community    0.028030
+9              ward    0.025912
+0             month    0.025117
+17   property_crime    0.024008
+15  non_index_crime    0.020176
+14      index_crime    0.019810
+1           weekday    0.019449
+8          district    0.018655
+6          domestic    0.010283
+16    violent_crime    0.007372
+18  public_violence    0.003391
 
 Search Scoring
-   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                       params
-1         0.829809        0.002553          0.840282         0.002138     239.053466         0.731364  {'rf__bootstrap': False, 'rf__criterion': 'entropy', 'rf__max_depth': 10, 'rf__max_features': None, 'rf__n_estimators': 61}
-0         0.827235        0.001195          0.833781         0.000518      56.299433         0.772352  {'rf__bootstrap': True, 'rf__criterion': 'entropy', 'rf__max_depth': 9, 'rf__max_features': 'sqrt', 'rf__n_estimators': 64}
+   mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                      params
+1         0.818455        0.005262          0.906820         0.001619       5.486631         0.180142  {'rf__bootstrap': True, 'rf__criterion': 'gini', 'rf__max_depth': 10, 'rf__max_features': 'sqrt', 'rf__n_estimators': 134}
+0         0.782955        0.004874          0.791249         0.003522       2.333847         0.098168   {'rf__bootstrap': True, 'rf__criterion': 'gini', 'rf__max_depth': 4, 'rf__max_features': 'sqrt', 'rf__n_estimators': 100}
 

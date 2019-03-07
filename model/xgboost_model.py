@@ -13,10 +13,6 @@ __version__ = "1.0"
 
 import xgboost as xgb
 
-from imblearn.combine import SMOTEENN
-from imblearn.over_sampling import SMOTE
-from imblearn.under_sampling import RandomUnderSampler
-
 from skopt.space import Integer, Real
 
 from sklearn.externals import joblib
@@ -28,20 +24,16 @@ from utility import HyperParameters, Runner
 from model import load_clean_data_frame
 
 sample = None
-iterations = 50
-build_basic = False
-build_undersampled = False
-build_oversampled = False
-build_combine_sampled = True
+iterations = 24
 
 hyper_parameters = HyperParameters(search_space={
-    'xgb__n_estimators': Integer(100, 1000),
-    'xgb__learning_rate': Real(0.01, 0.3),
+    'xgb__n_estimators': Integer(100, 500),
+    'xgb__learning_rate': Real(0.1, 0.3),
     'xgb__gamma': Real(0.0001, 100.0, prior='log-uniform'),
     'xgb__max_depth': Integer(3, 7),
-    'xgb__colsample_bytree': Real(0.3, 0.9),
-    'xgb__colsample_bylevel': Real(0.3, 0.9),
-    'xgb__colsample_bynode': Real(0.3, 0.9)
+    'xgb__colsample_bytree': Real(0.4, 0.8),
+    'xgb__colsample_bylevel': Real(0.4, 0.8),
+    'xgb__colsample_bynode': Real(0.4, 0.8)
 })
 
 # Features were selected based on feature importance from experiments.
@@ -62,87 +54,24 @@ xgboost_pipeline = Pipeline([
     ('xgb', xgb.XGBClassifier(tree_method='hist'))
 ])
 
-
 def build_xgboost_model():
-    if build_basic:
-        runner = Runner(
-            'model/output/xgboost_basic',
-            load_clean_data_frame(),
-            'arrest',
-            xgboost_pipeline,
-            hyper_parameters
-        )
-        runner.run_classification_search_experiment(
-            'roc_auc',
-            sample=sample,
-            n_iter=iterations,
-            record_predict_proba=True
-        )
-        joblib.dump(
-            runner.trained_estimator,
-            'model/output/xgboost_basic.joblib'
-        )
-
-    if build_undersampled:
-        runner = Runner(
-            'model/output/xgboost_under_sampled',
-            load_clean_data_frame(),
-            'arrest',
-            xgboost_pipeline,
-            hyper_parameters
-        )
-        runner.run_classification_search_experiment(
-            'roc_auc',
-            sample=sample,
-            n_iter=iterations,
-            record_predict_proba=True,
-            sampling=RandomUnderSampler()
-        )
-        joblib.dump(
-            runner.trained_estimator,
-            'model/output/xgboost_under_sampled.joblib'
-        )
-
-    if build_oversampled:
-        runner = Runner(
-            'model/output/xgboost_over_sampled',
-            load_clean_data_frame(),
-            'arrest',
-            xgboost_pipeline,
-            hyper_parameters
-        )
-        runner.run_classification_search_experiment(
-            'roc_auc',
-            sample=sample,
-            n_iter=iterations,
-            record_predict_proba=True,
-            sampling=SMOTE()
-        )
-        joblib.dump(
-            runner.trained_estimator,
-            'model/output/xgboost_over_sampled.joblib'
-        )
-
-    if build_combine_sampled:
-        runner = Runner(
-            'model/output/xgboost_combine_sampled',
-            load_clean_data_frame(),
-            'arrest',
-            xgboost_pipeline,
-            hyper_parameters
-        )
-        runner.run_classification_search_experiment(
-            'roc_auc',
-            sample=sample,
-            n_iter=iterations,
-            record_predict_proba=True,
-            sampling=SMOTEENN()
-        )
-        joblib.dump(
-            runner.trained_estimator,
-            'model/output/xgboost_combine_sampled.joblib'
-        )
-
+    runner = Runner(
+        'model/output/xgboost_basic',
+        load_clean_data_frame(),
+        'arrest',
+        xgboost_pipeline,
+        hyper_parameters
+    )
+    runner.run_classification_search_experiment(
+        'roc_auc',
+        sample=sample,
+        n_iter=iterations,
+        record_predict_proba=True
+    )
+    joblib.dump(
+        runner.trained_estimator,
+        'model/output/xgboost_basic.joblib'
+    )
 
 if __name__ == '__main__':
     build_xgboost_model()
