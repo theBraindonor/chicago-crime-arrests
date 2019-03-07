@@ -1,0 +1,53 @@
+[2019-03-07 13:30:40.789550] Fitting Transformer...
+[2019-03-07 13:30:41.194420] Transformer Fit Complete.
+
+[2019-03-07 13:30:41.195421] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354658, 1.0: 77593})
+Balanced Training Shape is Counter({0.0: 354658, 1.0: 354658})
+[2019-03-07 13:30:52.806671] Re-Sampling Complete.
+
+[2019-03-07 13:30:52.806671] Shuffling Re-Sampled Data.
+
+[2019-03-07 13:30:53.155559] Shuffling Complete.
+
+[2019-03-07 13:30:53.155559] Cross Validating Model...
+[2019-03-07 13:45:51.274771] Cross Validation Complete.
+
+[2019-03-07 13:45:51.274771] Training Model...
+[2019-03-07 13:49:10.771399] Training Complete.
+
+[2019-03-07 13:49:10.772398] Testing Training Partition...
+[2019-03-07 13:50:19.660171] Testing Complete.
+
+[2019-03-07 13:50:19.660171] Testing Holdout Partition...
+[2019-03-07 13:50:29.478004] Testing Complete.
+
+[2019-03-07 13:50:29.495001] Testing Holdout Partition (probability)...
+[2019-03-07 13:50:39.400803] Testing Complete.
+
+Cross Validation Scores:
+Accuracy: 0.91917 (+/- 0.00045)
+ROC AUC: 0.91917 (+/- 0.00045)
+Log-Loss: 0.33412 (+/- 0.02786)
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.97      0.92     88671
+         1.0       0.76      0.39      0.51     19392
+
+   micro avg       0.87      0.87      0.87    108063
+   macro avg       0.82      0.68      0.72    108063
+weighted avg       0.86      0.87      0.85    108063
+
+
+Confusion Matrix:
+       0     1
+0  86311  2360
+1  11858  7534
+
+Performance:
+Accuracy: 0.868429
+ROC AUC: 0.680948
+Log-Loss: 0.462077
+

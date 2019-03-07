@@ -30,8 +30,7 @@ hyper_parameters = HyperParameters({
     'rf__n_estimators': Integer(50, 150),
     'rf__criterion': Categorical(['gini', 'entropy']),
     'rf__max_depth': Integer(4, 18),
-    'rf__max_features': Categorical(['sqrt', 'log2']),
-    'rf__bootstrap': Categorical([True, False])
+    'rf__max_features': Categorical(['sqrt', 'log2'])
 })
 
 random_forest_pipeline = Pipeline([
@@ -40,7 +39,7 @@ random_forest_pipeline = Pipeline([
 ])
 
 
-def test_extra_trees():
+def test_random_forest():
     runner = Runner(
         'model/experiment/output/random_forest_basic',
         load_clean_sample_data_frame(),
@@ -102,4 +101,4 @@ def test_extra_trees():
 
 
 if __name__ == '__main__':
-    test_extra_trees()
+    test_random_forest()

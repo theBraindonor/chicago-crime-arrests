@@ -17,6 +17,7 @@ from skopt.space import Integer, Real
 
 from sklearn.externals import joblib
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 from sklearn_pandas import DataFrameMapper
 
@@ -38,21 +39,32 @@ hyper_parameters = HyperParameters(search_space={
 
 # Features were selected based on feature importance from experiments.
 data_mapper = DataFrameMapper([
-    (['month'], None),
-    (['hour'], None),
-    (['iucr'], None),
-    (['type'], None),
-    (['location'], None),
-    (['beat'], None),
-    (['fbi_code'], None),
-    (['latitude'], None),
-    (['longitude'], None)
+    (['iucr'], [MinMaxScaler()]),
+    (['location'], [MinMaxScaler()]),
+    (['latitude'], [StandardScaler()]),
+    (['hour'], [MinMaxScaler()]),
+    (['longitude'], [StandardScaler()]),
+    (['beat'], [MinMaxScaler()]),
+    (['type'], [MinMaxScaler()]),
+    (['month'], [MinMaxScaler()]),
+    (['fbi_code'], [MinMaxScaler()]),
+    #(['community'], [MinMaxScaler()]),
+    #(['weekday'], [MinMaxScaler()]),
+    #(['ward'], [MinMaxScaler()]),
+    #(['domestic'], [MinMaxScaler()]),
+    #(['district'], [MinMaxScaler()]),
+    #(['index_crime'], None),
+    #(['property_crime'], None),
+    #(['violent_crime'], None),
+    #(['non_index_crime'], None),
+    #(['public_violence'], None),
 ])
 
 xgboost_pipeline = Pipeline([
     ('mapper', data_mapper),
     ('xgb', xgb.XGBClassifier(tree_method='hist'))
 ])
+
 
 def build_xgboost_model():
     runner = Runner(
@@ -72,6 +84,7 @@ def build_xgboost_model():
         runner.trained_estimator,
         'model/output/xgboost_basic.joblib'
     )
+
 
 if __name__ == '__main__':
     build_xgboost_model()

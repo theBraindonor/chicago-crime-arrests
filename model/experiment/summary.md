@@ -186,18 +186,26 @@ Accuracy: 0.868160
 ROC AUC:  0.689224
 Log-Loss: 0.337975
 
-SMOTEENN Sampling:
-
+SMOTEENN Sampling: ({0.0: 354918, 1.0: 77333}) -> ({1.0: 317951, 0.0: 223749})
+Accuracy: 0.832986
+ROC AUC:  0.735438
+Log-Loss: 0.390972
 ```
 
 ## Neural Network
 
-Performed on a 10% Sample (613445 records); 200 Iterations each Sampling Strategy
+Performed on a 10% Sample (613445 records); 5 Iterations Per 1,000 Records each Sampling Stategy
 
 ```
 No Sampling:
+Accuracy: 0.871575
+ROC AUC:  0.693749
+Log-Loss: 0.328639
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354625, 1.0: 77626}) -> ({0.0: 77626, 1.0: 77626})
+Accuracy: 0.734470
+ROC AUC:  0.749096
+Log-Loss: 0.524631
 
 SMOTE Sampling: 
 
@@ -210,12 +218,21 @@ Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
 
 ```
 No Sampling:
+Accuracy: 0.872232
+ROC AUC:  0.679874
+Log-Loss: 0.329539
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354601, 1.0: 77650}) -> ({0.0: 77650, 1.0: 77650})
+Accuracy: 0.748721
+ROC AUC:  0.756133
+Log-Loss: 0.478137
 
-SMOTE Sampling: 
+SMOTE Sampling: ({0.0: 354805, 1.0: 77446}) -> ({0.0: 354805, 1.0: 354805})
+Accuracy: 0.850134
+ROC AUC:  0.716569
+Log-Loss: 0.375394
 
-SMOTEENN Sampling:
+SMOTEENN Sampling: ({0.0: 354553, 1.0: 77698}) -> ({1.0: 317006, 0.0: 223166})
 ```
 
 ## Stochastic Gradient Descent (modified huber loss)
@@ -224,12 +241,24 @@ Performed on a 10% Sample (613445 records); 10 iterations
 
 ```
 No Sampling:
+Accuracy: 0.867947
+ROC AUC:  0.674138
+Log-Loss: 0.694200
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354678, 1.0: 77573}) -> ({0.0: 77573, 1.0: 77573})
+Accuracy: 0.817958
+ROC AUC:  0.727829
+Log-Loss: 0.717322
 
-SMOTE Sampling: 
+SMOTE Sampling: ({0.0: 354658, 1.0: 77593}) -> ({0.0: 354658, 1.0: 354658})
+Accuracy: 0.868429
+ROC AUC:  0.680948
+Log-Loss: 0.462077
 
-SMOTEENN Sampling:
+SMOTEENN Sampling: ({0.0: 354539, 1.0: 77712}) -> ({1.0: 317269, 0.0: 223564})
+Accuracy: 0.854539
+ROC AUC:  0.715291
+Log-Loss: 0.752777
 ```
 
 ## Stochastic Gradient Descent (log loss)
