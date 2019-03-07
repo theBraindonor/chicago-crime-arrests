@@ -1,0 +1,20 @@
+Sorted For Accuracy:
+                                model  threshold        f1  accuracy  precision    recall
+7          xgboost_under_sampled_full     0.6507  0.765575  0.884935   0.873369  0.681467
+6           xgboost_over_sampled_full     0.4090  0.765538  0.883197   0.864282  0.687044
+4                  xgboost_basic_full     0.3872  0.765246  0.883042   0.854165  0.693095
+3    decision_tree_under_sampled_full     0.6450  0.759905  0.882242   0.869006  0.675143
+5        xgboost_combine_sampled_full     0.7060  0.758130  0.879761   0.851276  0.683358
+2     decision_tree_over_sampled_full     0.5500  0.758932  0.879737   0.848924  0.686191
+0            decision_tree_basic_full     0.3630  0.762074  0.879459   0.836215  0.700009
+1  decision_tree_combine_sampled_full     0.7300  0.753302  0.875019   0.837188  0.684696
+Sorted For F1:
+                                model  threshold        f1  accuracy  precision    recall
+7          xgboost_under_sampled_full     0.6507  0.765575  0.884935   0.873369  0.681467
+6           xgboost_over_sampled_full     0.4090  0.765538  0.883197   0.864282  0.687044
+4                  xgboost_basic_full     0.3872  0.765246  0.883042   0.854165  0.693095
+0            decision_tree_basic_full     0.3630  0.762074  0.879459   0.836215  0.700009
+3    decision_tree_under_sampled_full     0.6450  0.759905  0.882242   0.869006  0.675143
+2     decision_tree_over_sampled_full     0.5500  0.758932  0.879737   0.848924  0.686191
+5        xgboost_combine_sampled_full     0.7060  0.758130  0.879761   0.851276  0.683358
+1  decision_tree_combine_sampled_full     0.7300  0.753302  0.875019   0.837188  0.684696

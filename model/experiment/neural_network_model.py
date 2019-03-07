@@ -15,91 +15,81 @@ from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-from skopt.space import Categorical, Integer, Real
+from sklearn.neural_network import MLPClassifier
 
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.pipeline import Pipeline
+from utility import Runner
+from model import load_clean_sample_data_frame, binned_geo_one_hot_data_mapper
 
-from utility import HyperParameters, Runner
-from model import load_clean_sample_data_frame, ordinal_data_mapper
 
 sample = None
-iterations = 24
-
-hyper_parameters = HyperParameters({
-    'et__n_estimators': Integer(10, 100),
-    'et__criterion': Categorical(['gini', 'entropy']),
-    'et__max_depth': Integer(4, 24),
-    'et__min_samples_leaf': Real(0.000001, 0.001),
-    'et__min_samples_split': Real(0.000002, 0.002)
-})
-
-extra_trees_pipeline = Pipeline([
-    ('mapper', ordinal_data_mapper),
-    ('et', ExtraTreesClassifier())
-])
+fit_increment = 1000
+max_iters = 5
 
 
-def test_extra_trees():
+def test_sgd_huber_loss():
     runner = Runner(
-        'model/experiment/output/extra_trees_basic',
+        'model/experiment/output/neural_network_basic',
         load_clean_sample_data_frame(),
         'arrest',
-        extra_trees_pipeline,
-        hyper_parameters=hyper_parameters
+        MLPClassifier(hidden_layer_sizes=(750,125,), verbose=True)
     )
-    runner.run_classification_search_experiment(
-        'roc_auc',
+    runner.run_classification_experiment(
         sample=sample,
-        n_iter=iterations,
-        record_predict_proba=True
-    )
-
-    runner = Runner(
-        'model/experiment/output/extra_trees_under_sampled',
-        load_clean_sample_data_frame(),
-        'arrest',
-        extra_trees_pipeline,
-        hyper_parameters=hyper_parameters
-    )
-    runner.run_classification_search_experiment(
-        'roc_auc',
-        sample=sample,
-        n_iter=iterations,
         record_predict_proba=True,
+        transformer=binned_geo_one_hot_data_mapper,
+        fit_increment=fit_increment,
+        max_iters=max_iters,
+        n_jobs=1
+    )
+
+    runner = Runner(
+        'model/experiment/output/neural_network_under_sampled',
+        load_clean_sample_data_frame(),
+        'arrest',
+        MLPClassifier(hidden_layer_sizes=(750,125,), verbose=True)
+    )
+    runner.run_classification_experiment(
+        sample=sample,
+        record_predict_proba=True,
+        transformer=binned_geo_one_hot_data_mapper,
+        fit_increment=fit_increment,
+        max_iters=max_iters,
+        n_jobs=1,
         sampling=RandomUnderSampler()
     )
 
     runner = Runner(
-        'model/experiment/output/extra_trees_over_sampled',
+        'model/experiment/output/neural_network_over_sampled',
         load_clean_sample_data_frame(),
         'arrest',
-        extra_trees_pipeline,
-        hyper_parameters=hyper_parameters
+        MLPClassifier(hidden_layer_sizes=(750,125,), verbose=True)
     )
-    runner.run_classification_search_experiment(
-        'roc_auc',
+    runner.run_classification_experiment(
         sample=sample,
-        n_iter=iterations,
         record_predict_proba=True,
+        transformer=binned_geo_one_hot_data_mapper,
+        fit_increment=fit_increment,
+        max_iters=max_iters,
+        n_jobs=1,
         sampling=SMOTE()
     )
 
     runner = Runner(
-        'model/experiment/output/extra_trees_combine_sampled',
+        'model/experiment/output/neural_network_combine_sampled',
         load_clean_sample_data_frame(),
         'arrest',
-        extra_trees_pipeline,
-        hyper_parameters=hyper_parameters
+        MLPClassifier(hidden_layer_sizes=(750,125,), verbose=True)
     )
-    runner.run_classification_search_experiment(
-        'roc_auc',
+    runner.run_classification_experiment(
         sample=sample,
-        n_iter=iterations,
         record_predict_proba=True,
+        transformer=binned_geo_one_hot_data_mapper,
+        fit_increment=fit_increment,
+        max_iters=max_iters,
+        n_jobs=1,
         sampling=SMOTEENN()
     )
 
 
 if __name__ == '__main__':
-    test_extra_trees()
+    test_sgd_huber_loss()

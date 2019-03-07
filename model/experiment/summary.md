@@ -173,7 +173,7 @@ Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
 ```
 No Sampling:
 
-Random Under-Sampling: ({0.0: 354664, 1.0: 77587}) -> ({0.0: 77587, 1.0: 77587})
+Random Under-Sampling:
 
 SMOTE Sampling: 
 
@@ -182,7 +182,7 @@ SMOTEENN Sampling:
 
 ## Neural Network
 
-Performed on a 10% Sample (613445 records)
+Performed on a 10% Sample (613445 records); 200 Iterations each Sampling Strategy
 
 ```
 No Sampling:
@@ -197,20 +197,6 @@ SMOTEENN Sampling:
 ## Random Forest
 
 Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
-
-```
-No Sampling:
-
-Random Under-Sampling:
-
-SMOTE Sampling: 
-
-SMOTEENN Sampling:
-```
-
-## Stochastic Gradient Descent (hinge loss)
-
-Performed on a 10% Sample (613445 records); 10 iterations
 
 ```
 No Sampling:
@@ -237,34 +223,6 @@ SMOTEENN Sampling:
 ```
 
 ## Stochastic Gradient Descent (log loss)
-
-Performed on a 10% Sample (613445 records); 10 iterations
-
-```
-No Sampling:
-
-Random Under-Sampling:
-
-SMOTE Sampling: 
-
-SMOTEENN Sampling:
-```
-
-## Stochastic Gradient Descent (perceptron loss)
-
-Performed on a 10% Sample (613445 records); 10 iterations
-
-```
-No Sampling:
-
-Random Under-Sampling:
-
-SMOTE Sampling: 
-
-SMOTEENN Sampling:
-```
-
-## Stochastic Gradient Descent (squared hinge loss)
 
 Performed on a 10% Sample (613445 records); 10 iterations
 

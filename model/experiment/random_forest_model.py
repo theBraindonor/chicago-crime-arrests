@@ -23,8 +23,8 @@ from sklearn.pipeline import Pipeline
 from utility import HyperParameters, Runner
 from model import load_clean_sample_data_frame, ordinal_data_mapper
 
-sample = 30000
-iterations = 2
+sample = None
+iterations = 12
 
 hyper_parameters = HyperParameters({
     'rf__n_estimators': Integer(50, 150),

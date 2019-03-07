@@ -15,6 +15,7 @@ from utility.batch_fit import *
 from utility.batch_predict import *
 from utility.evaluation_frame import *
 from utility.evaluator import *
+from utility.find_optimal_f1_threshold import *
 from utility.hyper_parameters import *
 from utility.logger import *
 from utility.path import *

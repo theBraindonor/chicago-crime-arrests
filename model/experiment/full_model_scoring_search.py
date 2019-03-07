@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-    Search the experiment scores and range their output.  Will focus on optimizing the threshold to maximize f1
-    score on all models and then sort from there.
+    Search the experiment scores and range their output.  Focuses on the initial models before removing
+    the false signals.
 """
 
 __author__ = "John Hoff"
@@ -20,47 +20,19 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 from utility import find_optimal_f1_threshold, Logger, use_project_path
 
 input_predictions = [
-    'ada_boost_basic',
-    'ada_boost_combine_sampled',
-    'ada_boost_over_sampled',
-    'ada_boost_under_sampled',
-    'decision_tree_basic',
-    'decision_tree_combine_sampled',
-    'decision_tree_over_sampled',
-    'decision_tree_under_sampled',
-    'extra_trees_basic',
-    'extra_trees_combine_sampled',
-    'extra_trees_over_sampled',
-    'extra_trees_under_sampled',
-    'gaussian_naive_bayes_basic',
-    'gaussian_naive_bayes_combine_sampled',
-    'gaussian_naive_bayes_over_sampled',
-    'gaussian_naive_bayes_under_sampled',
-    'gradient_boosting_basic',
-    'gradient_boosting_combine_sampled',
-    'gradient_boosting_over_sampled',
-    'gradient_boosting_under_sampled',
-    'random_forest_basic',
-    'random_forest_combine_sampled',
-    'random_forest_over_sampled',
-    'random_forest_under_sampled',
-    'sgd_huber_loss_basic',
-    'sgd_huber_loss_combine_sampled',
-    'sgd_huber_loss_over_sampled',
-    'sgd_huber_loss_under_sampled',
-    'sgd_log_loss_basic',
-    'sgd_log_loss_combine_sampled',
-    'sgd_log_loss_over_sampled',
-    'sgd_log_loss_under_sampled',
-    'xgboost_basic',
-    'xgboost_combine_sampled',
-    'xgboost_over_sampled',
-    'xgboost_under_sampled',
+    'decision_tree_basic_full',
+    'decision_tree_combine_sampled_full',
+    'decision_tree_over_sampled_full',
+    'decision_tree_under_sampled_full',
+    'xgboost_basic_full',
+    'xgboost_combine_sampled_full',
+    'xgboost_over_sampled_full',
+    'xgboost_under_sampled_full',
 ]
 
 if __name__ == '__main__':
     use_project_path()
-    logger = Logger('model/experiment/output/model_scoring_search.txt')
+    logger = Logger('model/experiment/output/full_model_scoring_search.txt')
 
     scores = []
 
