@@ -172,12 +172,22 @@ Performed on a 10% Sample (613445 records); 12 Iterations each Sampling Strategy
 
 ```
 No Sampling:
+Accuracy: 0.870131
+ROC AUC:  0.680829
+Log-Loss: 0.332007
 
-Random Under-Sampling:
+Random Under-Sampling: ({0.0: 354645, 1.0: 77606}) -> ({0.0: 77606, 1.0: 77606})
+Accuracy: 0.757466
+ROC AUC:  0.758798
+Log-Loss: 0.475262
 
-SMOTE Sampling: 
+SMOTE Sampling: ({0.0: 354494, 1.0: 77757}) -> ({0.0: 354494, 1.0: 354494})
+Accuracy: 0.868160
+ROC AUC:  0.689224
+Log-Loss: 0.337975
 
 SMOTEENN Sampling:
+
 ```
 
 ## Neural Network
@@ -228,12 +238,24 @@ Performed on a 10% Sample (613445 records); 10 iterations
 
 ```
 No Sampling:
+Accuracy: 0.867966
+ROC AUC:  0.678979
+Log-Loss: 0.340009
+ 
+Random Under-Sampling: ({0.0: 354636, 1.0: 77615}) -> ({0.0: 77615, 1.0: 77615})
+Accuracy: 0.752043
+ROC AUC:  0.754341
+Log-Loss: 0.480028
 
-Random Under-Sampling:
+SMOTE Sampling: ({0.0: 354673, 1.0: 77578}) -> ({0.0: 354673, 1.0: 354673})
+Accuracy: 0.867411
+ROC AUC:  0.682312
+Log-Loss: 0.340646
 
-SMOTE Sampling: 
-
-SMOTEENN Sampling:
+SMOTEENN Sampling: ({0.0: 354758, 1.0: 77493}) -> ({1.0: 317259, 0.0: 223584})
+Accuracy: 0.842906
+ROC AUC:  0.723230
+Log-Loss: 0.378919
 ```
 
 ## XGBoost

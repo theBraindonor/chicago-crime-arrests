@@ -26,7 +26,7 @@ fit_increment = 1000
 max_iters = 5
 
 
-def test_sgd_huber_loss():
+def test_neural_network():
     runner = Runner(
         'model/experiment/output/neural_network_basic',
         load_clean_sample_data_frame(),
@@ -92,4 +92,4 @@ def test_sgd_huber_loss():
 
 
 if __name__ == '__main__':
-    test_sgd_huber_loss()
+    test_neural_network()

@@ -1,0 +1,86 @@
+[2019-03-07 11:18:05.359548] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 354494, 1.0: 77757})
+Balanced Training Shape is Counter({0.0: 354494, 1.0: 354494})
+[2019-03-07 11:18:11.071697] Re-Sampling Complete.
+
+[2019-03-07 11:18:11.071697] Shuffling Re-Sampled Data.
+
+[2019-03-07 11:18:11.196657] Shuffling Complete.
+
+[2019-03-07 11:18:11.196657] Starting HyperParameter Search...
+[2019-03-07 13:16:53.975330] Search Complete.
+
+[2019-03-07 13:16:53.975330] Testing Training Partition...
+[2019-03-07 13:17:12.475361] Testing Complete.
+
+[2019-03-07 13:17:12.475361] Testing Holdout Partition...
+[2019-03-07 13:17:15.054539] Testing Complete.
+
+[2019-03-07 13:17:15.061527] Testing Holdout Partition (probability)...
+[2019-03-07 13:17:17.684680] Testing Complete.
+
+
+Best Score:
+0.9635758144223477
+
+Best Parameters:
+{'gb__learning_rate': 0.1, 'gb__max_depth': 7, 'gb__max_features': 'log2', 'gb__subsample': 0.5}
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.97      0.92     88835
+         1.0       0.73      0.41      0.53     19228
+
+   micro avg       0.87      0.87      0.87    108063
+   macro avg       0.81      0.69      0.72    108063
+weighted avg       0.86      0.87      0.85    108063
+
+
+Confusion Matrix:
+       0     1
+0  85905  2930
+1  11317  7911
+
+Performance:
+Accuracy: 0.868160
+ROC AUC: 0.689224
+Log-Loss: 0.337975
+
+Feature Importance:
+            Feature  Importance
+3              iucr    0.181230
+1           weekday    0.159656
+4              type    0.149564
+5          location    0.093486
+11         fbi_code    0.076045
+0             month    0.072443
+6          domestic    0.064728
+15  non_index_crime    0.063790
+14      index_crime    0.036290
+2              hour    0.032335
+17   property_crime    0.029382
+16    violent_crime    0.014827
+12         latitude    0.004784
+7              beat    0.004617
+10        community    0.004517
+13        longitude    0.004405
+18  public_violence    0.003861
+9              ward    0.002506
+8          district    0.001535
+
+Search Scoring
+    mean_test_score  std_test_score  mean_train_score  std_train_score  mean_fit_time  mean_score_time                                                                                                                            params
+11         0.963576        0.000406          0.966983         0.000073     872.541834         1.550899                                  {'gb__learning_rate': 0.1, 'gb__max_depth': 7, 'gb__max_features': 'log2', 'gb__subsample': 0.5}
+8          0.963470        0.000355          0.966651         0.000088     974.005724         1.742639   {'gb__learning_rate': 0.09250836563459872, 'gb__max_depth': 7, 'gb__max_features': 'sqrt', 'gb__subsample': 0.7821703035760664}
+10         0.960984        0.000517          0.963285         0.000159     895.947710         1.585888                  {'gb__learning_rate': 0.06361907911343521, 'gb__max_depth': 7, 'gb__max_features': 'sqrt', 'gb__subsample': 0.5}
+3          0.960638        0.000420          0.962232         0.000223     615.415629         1.423942   {'gb__learning_rate': 0.08181843663572486, 'gb__max_depth': 6, 'gb__max_features': 'sqrt', 'gb__subsample': 0.7186365136506746}
+6          0.955180        0.000426          0.956743         0.000206     857.724644         1.461332   {'gb__learning_rate': 0.03988319254794941, 'gb__max_depth': 7, 'gb__max_features': 'log2', 'gb__subsample': 0.8056860931912608}
+4          0.952700        0.000471          0.953697         0.000674     617.217047         1.415943   {'gb__learning_rate': 0.04579645428634078, 'gb__max_depth': 6, 'gb__max_features': 'log2', 'gb__subsample': 0.7701393454003337}
+9          0.951789        0.000765          0.952264         0.000589     238.157156         1.181420   {'gb__learning_rate': 0.08925238026393724, 'gb__max_depth': 4, 'gb__max_features': 'sqrt', 'gb__subsample': 0.5177622093169038}
+1          0.945690        0.001472          0.946255         0.001086     386.759407         1.436337   {'gb__learning_rate': 0.04576192975525875, 'gb__max_depth': 5, 'gb__max_features': 'sqrt', 'gb__subsample': 0.6853011694967389}
+7          0.942758        0.001611          0.943288         0.001550     412.746824         1.191419  {'gb__learning_rate': 0.041966140924575984, 'gb__max_depth': 5, 'gb__max_features': 'sqrt', 'gb__subsample': 0.9558950963017314}
+5          0.930795        0.002546          0.930981         0.002055     199.081364         1.027072   {'gb__learning_rate': 0.07613354301707338, 'gb__max_depth': 3, 'gb__max_features': 'log2', 'gb__subsample': 0.8749459168450592}
+0          0.927210        0.002246          0.927424         0.002882     165.187494         0.997880   {'gb__learning_rate': 0.06775003950616992, 'gb__max_depth': 3, 'gb__max_features': 'log2', 'gb__subsample': 0.6163863934304935}
+2          0.901936        0.000992          0.902254         0.000795     456.540493         1.370558  {'gb__learning_rate': 0.013371489526339738, 'gb__max_depth': 5, 'gb__max_features': 'sqrt', 'gb__subsample': 0.9001745602985156}
+

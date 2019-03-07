@@ -1,44 +1,44 @@
-[2019-03-07 12:16:27.819481] Fitting Transformer...
-[2019-03-07 12:16:27.845472] Transformer Fit Complete.
+[2019-03-07 13:17:11.559657] Fitting Transformer...
+[2019-03-07 13:17:11.798580] Transformer Fit Complete.
 
-[2019-03-07 12:16:27.845472] Cross Validating Model...
-[2019-03-07 12:16:33.456660] Cross Validation Complete.
+[2019-03-07 13:17:11.798580] Cross Validating Model...
+[2019-03-07 13:23:46.502227] Cross Validation Complete.
 
-[2019-03-07 12:16:33.457662] Training Model...
-[2019-03-07 12:16:34.189428] Training Complete.
+[2019-03-07 13:23:46.502227] Training Model...
+[2019-03-07 13:25:31.659294] Training Complete.
 
-[2019-03-07 12:16:34.189428] Testing Training Partition...
-[2019-03-07 12:16:35.560982] Testing Complete.
+[2019-03-07 13:25:31.660295] Testing Training Partition...
+[2019-03-07 13:26:06.457066] Testing Complete.
 
-[2019-03-07 12:16:35.560982] Testing Holdout Partition...
-[2019-03-07 12:16:35.893875] Testing Complete.
+[2019-03-07 13:26:06.457066] Testing Holdout Partition...
+[2019-03-07 13:26:14.841364] Testing Complete.
 
-[2019-03-07 12:16:35.916867] Testing Holdout Partition (probability)...
-[2019-03-07 12:16:36.294745] Testing Complete.
+[2019-03-07 13:26:14.854360] Testing Holdout Partition (probability)...
+[2019-03-07 13:26:23.324625] Testing Complete.
 
 Cross Validation Scores:
-Accuracy: 0.79888 (+/- 0.02132)
-ROC AUC: 0.67752 (+/- 0.00681)
-Log-Loss: 6.41371 (+/- 0.64893)
+Accuracy: 0.86753 (+/- 0.00095)
+ROC AUC: 0.67715 (+/- 0.00578)
+Log-Loss: 0.67500 (+/- 0.08311)
 
 Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.89      0.82      0.85      3257
-         1.0       0.41      0.56      0.48       743
+         0.0       0.88      0.98      0.92     88624
+         1.0       0.78      0.37      0.50     19439
 
-   micro avg       0.77      0.77      0.77      4000
-   macro avg       0.65      0.69      0.67      4000
-weighted avg       0.80      0.77      0.78      4000
+   micro avg       0.87      0.87      0.87    108063
+   macro avg       0.83      0.67      0.71    108063
+weighted avg       0.86      0.87      0.85    108063
 
 
 Confusion Matrix:
-      0    1
-0  2664  593
-1   324  419
+       0     1
+0  86573  2051
+1  12219  7220
 
 Performance:
-Accuracy: 0.770750
-ROC AUC: 0.690930
-Log-Loss: 7.062781
+Accuracy: 0.867947
+ROC AUC: 0.674138
+Log-Loss: 0.694200
 
