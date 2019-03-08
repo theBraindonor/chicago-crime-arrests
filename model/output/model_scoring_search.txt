@@ -1,0 +1,10 @@
+Sorted For Accuracy:
+                         model  threshold        f1  accuracy  precision    recall
+2                xgboost_basic     0.2894  0.583743  0.853969   0.594539  0.573333
+0         neural_network_basic     0.2830  0.532164  0.840000   0.514124  0.551515
+1  sgd_huber_loss_over_sampled     0.9630  0.434906  0.700500   0.329286  0.640278
+Sorted For F1:
+                         model  threshold        f1  accuracy  precision    recall
+2                xgboost_basic     0.2894  0.583743  0.853969   0.594539  0.573333
+0         neural_network_basic     0.2830  0.532164  0.840000   0.514124  0.551515
+1  sgd_huber_loss_over_sampled     0.9630  0.434906  0.700500   0.329286  0.640278
