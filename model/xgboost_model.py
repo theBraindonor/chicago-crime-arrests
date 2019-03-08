@@ -47,17 +47,7 @@ data_mapper = DataFrameMapper([
     (['beat'], [MinMaxScaler()]),
     (['type'], [MinMaxScaler()]),
     (['month'], [MinMaxScaler()]),
-    (['fbi_code'], [MinMaxScaler()]),
-    #(['community'], [MinMaxScaler()]),
-    #(['weekday'], [MinMaxScaler()]),
-    #(['ward'], [MinMaxScaler()]),
-    #(['domestic'], [MinMaxScaler()]),
-    #(['district'], [MinMaxScaler()]),
-    #(['index_crime'], None),
-    #(['property_crime'], None),
-    #(['violent_crime'], None),
-    #(['non_index_crime'], None),
-    #(['public_violence'], None),
+    (['fbi_code'], [MinMaxScaler()])
 ])
 
 xgboost_pipeline = Pipeline([

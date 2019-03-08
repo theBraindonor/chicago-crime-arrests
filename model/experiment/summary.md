@@ -207,9 +207,15 @@ Accuracy: 0.734470
 ROC AUC:  0.749096
 Log-Loss: 0.524631
 
-SMOTE Sampling: 
+SMOTE Sampling: ({0.0: 354594, 1.0: 77657}) -> ({0.0: 354594, 1.0: 354594})
+Accuracy: 0.871390
+ROC AUC:  0.689296
+Log-Loss: 0.336745
 
-SMOTEENN Sampling:
+SMOTEENN Sampling: ({0.0: 354806, 1.0: 77445}) -> ({1.0: 317259, 0.0: 223409})
+Accuracy: 0.847228
+ROC AUC:  0.729065
+Log-Loss: 0.406800
 ```
 
 ## Random Forest
@@ -233,6 +239,9 @@ ROC AUC:  0.716569
 Log-Loss: 0.375394
 
 SMOTEENN Sampling: ({0.0: 354553, 1.0: 77698}) -> ({1.0: 317006, 0.0: 223166})
+Accuracy: 0.767265
+ROC AUC:  0.747090
+Log-Loss: 0.473223
 ```
 
 ## Stochastic Gradient Descent (modified huber loss)
