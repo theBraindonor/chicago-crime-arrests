@@ -1,0 +1,45 @@
+[2019-03-08 10:14:18.014092] Fitting Transformer...
+[2019-03-08 10:14:19.753530] Transformer Fit Complete.
+
+[2019-03-08 10:14:19.753530] Starting Data Re-Sampling...
+Original Training Shape is Counter({0.0: 3548638, 1.0: 773326})
+Balanced Training Shape is Counter({0.0: 3548638, 1.0: 3548638})
+[2019-03-08 10:17:09.491746] Re-Sampling Complete.
+
+[2019-03-08 10:17:09.491746] Shuffling Re-Sampled Data.
+
+[2019-03-08 10:17:11.698033] Shuffling Complete.
+
+[2019-03-08 10:17:11.698033] Training Model...
+[2019-03-08 10:41:41.571758] Training Complete.
+
+[2019-03-08 10:41:41.571758] Testing Training Partition...
+[2019-03-08 10:48:15.256748] Testing Complete.
+
+[2019-03-08 10:48:15.256748] Testing Holdout Partition...
+[2019-03-08 10:48:47.376367] Testing Complete.
+
+[2019-03-08 10:48:47.421354] Testing Holdout Partition (probability)...
+[2019-03-08 10:49:24.537377] Testing Complete.
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.97      0.92    887981
+         1.0       0.72      0.41      0.53    192510
+
+   micro avg       0.87      0.87      0.87   1080491
+   macro avg       0.80      0.69      0.72   1080491
+weighted avg       0.86      0.87      0.85   1080491
+
+
+Confusion Matrix:
+        0      1
+0  857552  30429
+1  112915  79595
+
+Performance:
+Accuracy: 0.867334
+ROC AUC: 0.689596
+Log-Loss: 0.377646
+

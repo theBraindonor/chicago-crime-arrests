@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a stochastic gradient descent model with modified huber loss and a variety of balancing techniques
-    on the cleaned data set
+    Build a stochastic gradient descent model of arrests in the Chicago crime data.
 """
 
 __author__ = "John Hoff"
@@ -22,13 +21,14 @@ from sklearn.preprocessing import KBinsDiscretizer, OneHotEncoder
 from sklearn_pandas import DataFrameMapper
 
 from utility import Runner
-from model import load_clean_data_frame
+from model import load_clean_data_frame, binned_geo_one_hot_data_mapper
 
 
 sample = None
 fit_increment = 10000
 max_iters = 20
 
+# Features were taken from average feature importance listed in all supported experiments
 mapper = DataFrameMapper([
     (['iucr'], [OneHotEncoder(handle_unknown='ignore')]),
     (['type'], [OneHotEncoder(handle_unknown='ignore')]),
@@ -36,8 +36,8 @@ mapper = DataFrameMapper([
     (['fbi_code'], [OneHotEncoder(handle_unknown='ignore')]),
     (['hour'], [OneHotEncoder(handle_unknown='ignore')]),
     (['property_crime'], None),
-    (['longitude'], [KBinsDiscretizer(n_bins=512)]),
-    (['latitude'], [KBinsDiscretizer(n_bins=512)]),
+    (['longitude'], [KBinsDiscretizer(n_bins=256)]),
+    (['latitude'], [KBinsDiscretizer(n_bins=256)]),
     (['weekday'], [OneHotEncoder(handle_unknown='ignore')]),
     (['domestic'], [OneHotEncoder(handle_unknown='ignore')])
 ])
@@ -45,13 +45,19 @@ mapper = DataFrameMapper([
 sgd = SGDClassifier(loss='modified_huber')
 
 pipeline = Pipeline([
-    ('mapper', mapper),
+    ('mapper', binned_geo_one_hot_data_mapper),
     ('sgd', sgd)
+])
+
+sgd_fs = SGDClassifier(loss='modified_huber')
+
+pipeline_fs = Pipeline([
+    ('mapper', mapper),
+    ('sgd', sgd_fs)
 ])
 
 
 def build_sgd_huber_loss():
-
     runner = Runner(
         'model/output/sgd_huber_loss_over_sampled',
         load_clean_data_frame(),
@@ -61,16 +67,37 @@ def build_sgd_huber_loss():
     runner.run_classification_experiment(
         sample=sample,
         record_predict_proba=True,
-        transformer=mapper,
+        transformer=binned_geo_one_hot_data_mapper,
+        sampling=SMOTE(),
         fit_increment=fit_increment,
         max_iters=max_iters,
         n_jobs=1,
-        sampling=SMOTE(),
         cv=None
     )
     joblib.dump(
         pipeline,
         'model/output/sgd_huber_loss_over_sampled.joblib'
+    )
+
+    runner = Runner(
+        'model/output/sgd_huber_loss_over_sampled_fs',
+        load_clean_data_frame(),
+        'arrest',
+        sgd_fs
+    )
+    runner.run_classification_experiment(
+        sample=sample,
+        record_predict_proba=True,
+        transformer=mapper,
+        sampling=SMOTE(),
+        fit_increment=fit_increment,
+        max_iters=max_iters,
+        n_jobs=1,
+        cv=None
+    )
+    joblib.dump(
+        pipeline_fs,
+        'model/output/sgd_huber_loss_over_sampled_fs.joblib'
     )
 
 

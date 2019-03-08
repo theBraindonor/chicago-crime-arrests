@@ -22,7 +22,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn_pandas import DataFrameMapper
 
 from utility import HyperParameters, Runner
-from model import load_clean_data_frame
+from model import load_clean_data_frame, ordinal_data_mapper
 
 sample = None
 iterations = 24
@@ -51,6 +51,11 @@ data_mapper = DataFrameMapper([
 ])
 
 xgboost_pipeline = Pipeline([
+    ('mapper', ordinal_data_mapper),
+    ('xgb', xgb.XGBClassifier(tree_method='hist'))
+])
+
+xgboost_pipeline_fs = Pipeline([
     ('mapper', data_mapper),
     ('xgb', xgb.XGBClassifier(tree_method='hist'))
 ])
@@ -73,6 +78,24 @@ def build_xgboost_model():
     joblib.dump(
         runner.trained_estimator,
         'model/output/xgboost_basic.joblib'
+    )
+
+    runner = Runner(
+        'model/output/xgboost_basic_fs',
+        load_clean_data_frame(),
+        'arrest',
+        xgboost_pipeline_fs,
+        hyper_parameters
+    )
+    runner.run_classification_search_experiment(
+        'roc_auc',
+        sample=sample,
+        n_iter=iterations,
+        record_predict_proba=True
+    )
+    joblib.dump(
+        runner.trained_estimator,
+        'model/output/xgboost_basic_fs.joblib'
     )
 
 

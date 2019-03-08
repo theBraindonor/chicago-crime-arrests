@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Experiment with a neural network model with a variety of balancing techniques on the cleaned data set
+    Build a neural network model of arrests in the Chicago crime data.
 """
 
 __author__ = "John Hoff"
@@ -19,12 +19,13 @@ from sklearn.neural_network import MLPClassifier
 from sklearn_pandas import DataFrameMapper
 
 from utility import Runner
-from model import load_clean_data_frame
+from model import load_clean_data_frame, binned_geo_one_hot_data_mapper
 
 sample = None
 fit_increment = 10000
-max_iters = 20
+max_iters = 5
 
+# Features were taken from average feature importance listed in all supported experiments
 mapper = DataFrameMapper([
     (['iucr'], [OneHotEncoder(handle_unknown='ignore')]),
     (['type'], [OneHotEncoder(handle_unknown='ignore')]),
@@ -32,8 +33,8 @@ mapper = DataFrameMapper([
     (['fbi_code'], [OneHotEncoder(handle_unknown='ignore')]),
     (['hour'], [OneHotEncoder(handle_unknown='ignore')]),
     (['property_crime'], None),
-    (['longitude'], [KBinsDiscretizer(n_bins=512)]),
-    (['latitude'], [KBinsDiscretizer(n_bins=512)]),
+    (['longitude'], [KBinsDiscretizer(n_bins=256)]),
+    (['latitude'], [KBinsDiscretizer(n_bins=256)]),
     (['weekday'], [OneHotEncoder(handle_unknown='ignore')]),
     (['domestic'], [OneHotEncoder(handle_unknown='ignore')])
 ])
@@ -41,8 +42,15 @@ mapper = DataFrameMapper([
 nn = MLPClassifier(hidden_layer_sizes=(1000,200,), verbose=True)
 
 pipeline = Pipeline([
-    ('mapper', mapper),
+    ('mapper', binned_geo_one_hot_data_mapper),
     ('nn', nn)
+])
+
+nn_fs = MLPClassifier(hidden_layer_sizes=(1000,200,), verbose=True)
+
+pipeline_fs = Pipeline([
+    ('mapper', mapper),
+    ('nn', nn_fs)
 ])
 
 
@@ -56,7 +64,7 @@ def build_neural_network():
     runner.run_classification_experiment(
         sample=sample,
         record_predict_proba=True,
-        transformer=mapper,
+        transformer=binned_geo_one_hot_data_mapper,
         fit_increment=fit_increment,
         max_iters=max_iters,
         cv=None,
@@ -65,6 +73,26 @@ def build_neural_network():
     joblib.dump(
         pipeline,
         'model/output/neural_network_basic.joblib'
+    )
+
+    runner = Runner(
+        'model/output/neural_network_basic_fs',
+        load_clean_data_frame(),
+        'arrest',
+        nn_fs
+    )
+    runner.run_classification_experiment(
+        sample=sample,
+        record_predict_proba=True,
+        transformer=mapper,
+        fit_increment=fit_increment,
+        max_iters=max_iters,
+        cv=None,
+        n_jobs=1
+    )
+    joblib.dump(
+        pipeline_fs,
+        'model/output/neural_network_basic_fs.joblib'
     )
 
 
