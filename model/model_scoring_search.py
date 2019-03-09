@@ -21,7 +21,7 @@ from utility import find_optimal_f1_threshold, Logger, use_project_path
 
 input_predictions = [
     'neural_network_basic',
-    #'neural_network_basic_fs',
+    'neural_network_basic_fs',
     'sgd_huber_loss_over_sampled',
     'sgd_huber_loss_over_sampled_fs',
     'xgboost_basic',
