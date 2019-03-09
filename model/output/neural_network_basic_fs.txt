@@ -1,0 +1,36 @@
+[2019-03-08 18:01:16.724473] Fitting Transformer...
+[2019-03-08 18:01:18.291968] Transformer Fit Complete.
+
+[2019-03-08 18:01:18.291968] Training Model...
+[2019-03-08 22:30:23.395365] Training Complete.
+
+[2019-03-08 22:30:23.395365] Testing Training Partition...
+[2019-03-08 22:40:20.985527] Testing Complete.
+
+[2019-03-08 22:40:20.985527] Testing Holdout Partition...
+[2019-03-08 22:42:36.783710] Testing Complete.
+
+[2019-03-08 22:42:36.818700] Testing Holdout Partition (probability)...
+[2019-03-08 22:44:57.126427] Testing Complete.
+
+Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.98      0.93    887389
+         1.0       0.79      0.42      0.55    193102
+
+   micro avg       0.88      0.88      0.88   1080491
+   macro avg       0.84      0.70      0.74   1080491
+weighted avg       0.87      0.88      0.86   1080491
+
+
+Confusion Matrix:
+        0      1
+0  866119  21270
+1  112605  80497
+
+Performance:
+Accuracy: 0.876098
+ROC AUC: 0.696447
+Log-Loss: 0.319366
+
