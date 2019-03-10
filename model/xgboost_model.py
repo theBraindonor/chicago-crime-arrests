@@ -44,7 +44,6 @@ data_mapper = DataFrameMapper([
     (['latitude'], [StandardScaler()]),
     (['hour'], [MinMaxScaler()]),
     (['longitude'], [StandardScaler()]),
-    (['beat'], [MinMaxScaler()]),
     (['type'], [MinMaxScaler()]),
     (['month'], [MinMaxScaler()]),
     (['fbi_code'], [MinMaxScaler()])
