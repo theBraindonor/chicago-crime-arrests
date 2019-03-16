@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Find an optimal f1 score for a classifier
+    Find an optimal f1 score for a classifier.  Used as an exercise to explore prediction thresholds.
 """
 
 __author__ = "John Hoff"

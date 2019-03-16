@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+    The evaluation frame allows for easy pickling of the test values and predicted values.  This allows for
+    easy scoring without having to refit model or to pickle the model itself.
+"""
+
 __author__ = "John Hoff"
 __email__ = "john.hoff@braindonor.net"
 __copyright__ = "Copyright 2019, John Hoff"

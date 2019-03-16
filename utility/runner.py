@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+    A common training and evaluation runner to allow for easy and consistent model creation and evalutation
+"""
+
 __author__ = "John Hoff"
 __email__ = "john.hoff@braindonor.net"
 __copyright__ = "Copyright 2019, John Hoff"
@@ -23,6 +27,10 @@ from utility import batch_predict, batch_predict_proba, EvaluationFrame, Evaluat
 
 def crossfold_classifier(estimator, transformer, x_train, y_train, train_index, test_index,
                          record_predict_proba, verbose, fit_increment, warm_start, max_iters, random_state):
+    """
+    This method allows for training to be done using the joblib parallelism in scikit learn.  Overall a hacky
+    method to allow for incremental training.  Really needs to be refactored into a cleaner form.
+    """
     if hasattr(x_train, 'iloc'):
         x_fold_train, x_fold_test = x_train.iloc[train_index], x_train.iloc[test_index]
     else:
@@ -57,6 +65,10 @@ def crossfold_classifier(estimator, transformer, x_train, y_train, train_index, 
 
 
 class Runner:
+    """
+    The runner supports bare estimator fitting and searvh-based fitting.  By default it will make use of the a
+    BayesianSearchCV to perform hyperparameter tuning.  Ensures everything is cleanly logged, evaluated, and pickled.
+    """
     def __init__(
             self,
             name,

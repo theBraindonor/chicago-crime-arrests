@@ -12,7 +12,6 @@ __license__ = "Creative Commons Attribution-ShareAlike 4.0 International License
 __version__ = "1.0"
 
 import numpy as np
-import pandas as pd
 
 
 def batch_fit_classifier(estimator, x, y, transformer=None, increment=500, verbose=True):
