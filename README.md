@@ -143,10 +143,11 @@ python -m model.model_scoring_search
 
 ## Visualizations
 
-ROC Curves for All Models:
+ROC AUC and Confusion Matrices:
 
 ```
 python -m jupyter notebook visualization/roc_curves.ipynb
+python -m jupyter notebook visualization/confusion_matrix.ipynb
 ```
 
 Map Visualization of XGBoost Model:
