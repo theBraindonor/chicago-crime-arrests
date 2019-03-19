@@ -22,7 +22,7 @@ from model import load_clean_sample_data_frame, binned_geo_one_hot_data_mapper
 
 
 sample = None
-fit_increment = 1000
+fit_increment = 10000
 max_iters = 5
 
 
